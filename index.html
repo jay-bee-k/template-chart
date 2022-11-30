@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<title>Template Chart</title>
 	<meta name="description" content="Template Chart">
@@ -17,7 +17,8 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+		  rel="stylesheet">
 
 	<link rel="icon" href="/assets/images/favicon.png">
 	<link rel="apple-touch-icon" href="/assets/images/favicon.png">
@@ -28,14 +29,150 @@
 <body>
 
 <div id="header" class="header position-relative index-10">
+	<div class="header-title">
+		Hệ thống thu thập thông tín và dự báo chỉ số chứng khoán bằng trí tuệ nhân tạo AI
+	</div>
 </div>
-<div id="main" class="main">
-
+<div class="chart-main d-flex flex-column" id="chart-main">
+	<div class="chart-header g-15 d-flex align-items-center">
+		<div class="chart-search position-relative">
+			<div class="chart-search_group d-flex align-items-center">
+				<input type="text" class="form-control chart-search_input" placeholder="Nhập mã CK...">
+				<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
+			</div>
+		</div>
+		<div class="chart-filter d-flex align-items-center g-10">
+			<button type="button" class="chart-filter_item">
+				Ngân hàng
+			</button>
+			<button type="button" class="chart-filter_item active">
+				Bất động sản
+			</button>
+			<button type="button" class="chart-filter_item">
+				Thép
+			</button>
+			<button type="button" class="chart-filter_item">
+				Chứng khoán
+			</button>
+			<button type="button" class="chart-filter_item">
+				Sàn HNX
+			</button>
+		</div>
+	</div>
+	<div class="chart-body flex-grow-1 flex-shrink-1">
+		<div class="table-responsive">
+			<table class="table-chart table table-bordered">
+				<thead>
+				<tr>
+					<th rowspan="3">
+						<div class="sort-table">
+							Mã CK
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Giá hiện tại
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							P/E
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Tăng trưởng năm <br> 2021
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Tăng trưởng quý <br> Q4/2022
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Tiền mặt
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Tổng thu quý <br> (tỷ)
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Giá thay đổi 1 năm
+						</div>
+					</th>
+					<th rowspan="3">
+						<div class="sort-table">
+							Giá thay đổi 3 tháng
+						</div>
+					</th>
+					<th colspan="6">
+						<div class="text-center">
+							Dự đoán giá
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<div class="text-center">
+							2022/11/1
+						</div>
+					</th>
+					<th colspan="2">
+						<div class="text-center">
+							2022/11/2
+						</div>
+					</th>
+					<th colspan="2">
+						<div class="text-center">
+							2022/11/3
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<div class="sort-table">
+							High
+						</div>
+					</th>
+					<th>
+						<div class="sort-table">
+							Low
+						</div>
+					</th>
+					<th>
+						<div class="sort-table">
+							High
+						</div>
+					</th>
+					<th>
+						<div class="sort-table">
+							Low
+						</div>
+					</th>
+					<th>
+						<div class="sort-table">
+							High
+						</div>
+					</th>
+					<th>
+						<div class="sort-table">
+							Low
+						</div>
+					</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
 </div>
 
 <script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
 <script type="text/javascript"
-        src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./assets/js/app.js"></script>
 </body>
 </html>
