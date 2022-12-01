@@ -26,146 +26,2824 @@
 	<link rel="stylesheet" href="./assets/fonts/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body class="chart-scrollbar">
 
-<div id="header" class="header position-relative index-10">
+<div id="header" class="header index-10">
 	<div class="header-title">
 		Hệ thống thu thập thông tín và dự báo chỉ số chứng khoán bằng trí tuệ nhân tạo AI
 	</div>
 </div>
-<div class="chart-main d-flex flex-column" id="chart-main">
-	<div class="chart-header g-15 d-flex align-items-center">
-		<div class="chart-search position-relative">
-			<div class="chart-search_group d-flex align-items-center">
-				<input type="text" class="form-control chart-search_input" placeholder="Nhập mã CK...">
-				<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
-			</div>
+<div class="chart-action g-15 d-flex align-items-center">
+	<div class="chart-search position-relative">
+		<div class="chart-search_group d-flex align-items-center">
+			<input type="text" class="form-control chart-search_input" id="chartSearch"
+				   placeholder="Nhập mã CK...">
+			<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
 		</div>
-		<div class="chart-filter d-flex align-items-center g-10">
-			<button type="button" class="chart-filter_item">
-				Ngân hàng
-			</button>
-			<button type="button" class="chart-filter_item active">
-				Bất động sản
-			</button>
-			<button type="button" class="chart-filter_item">
-				Thép
-			</button>
-			<button type="button" class="chart-filter_item">
-				Chứng khoán
-			</button>
-			<button type="button" class="chart-filter_item">
-				Sàn HNX
-			</button>
+		<div class="chart-search_result chart-scrollbar">
+			<ul class="list-unstyled mb-0">
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)">
+						AGP - Dược Agimexpharm - UPCOM
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
+	<div class="chart-filter d-flex align-items-center g-10">
+		<button type="button" class="chart-filter_item">
+			Ngân hàng
+		</button>
+		<button type="button" class="chart-filter_item active">
+			Bất động sản
+		</button>
+		<button type="button" class="chart-filter_item">
+			Thép
+		</button>
+		<button type="button" class="chart-filter_item">
+			Chứng khoán
+		</button>
+		<button type="button" class="chart-filter_item">
+			Sàn HNX
+		</button>
+	</div>
+</div>
+<div class="chart-main d-flex flex-column" id="chart-main">
 	<div class="chart-body flex-grow-1 flex-shrink-1">
-		<div class="table-responsive">
-			<table class="table-chart table table-bordered">
-				<thead>
-				<tr>
-					<th rowspan="3">
-						<div class="sort-table">
-							Mã CK
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Giá hiện tại
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							P/E
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Tăng trưởng năm <br> 2021
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Tăng trưởng quý <br> Q4/2022
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Tiền mặt
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Tổng thu quý <br> (tỷ)
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Giá thay đổi 1 năm
-						</div>
-					</th>
-					<th rowspan="3">
-						<div class="sort-table">
-							Giá thay đổi 3 tháng
-						</div>
-					</th>
-					<th colspan="6">
-						<div class="text-center">
-							Dự đoán giá
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<div class="text-center">
+		<div class="chart-table">
+			<div class="chart-table_header">
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Mã CK
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small chart-table_highlight">
+					Giá hiện tại
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					P/E
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Tăng trưởng năm <br> 2021
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Tăng trưởng quý <br> Q4/2022
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Tiền mặt
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Tổng thu quý <br> (tỷ)
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Giá thay đổi 1 năm
+				</div>
+				<div class="chart-table_col chart-table_sort chart-table_col__small">
+					Giá thay đổi 3 tháng
+				</div>
+				<div class="chart-table_col chart-table_col__group chart-table_col__big">
+					Dự đoán giá
+					<div class="chart-table_col__group__item">
+						<div class="chart-table_col chart-table_col__group chart-table_col__same">
 							2022/11/1
+							<div class="chart-table_col__group__item">
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									High
+								</div>
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									Low
+								</div>
+							</div>
 						</div>
-					</th>
-					<th colspan="2">
-						<div class="text-center">
+						<div class="chart-table_col chart-table_col__group chart-table_col__same">
 							2022/11/2
+							<div class="chart-table_col__group__item">
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									High
+								</div>
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									Low
+								</div>
+							</div>
 						</div>
-					</th>
-					<th colspan="2">
-						<div class="text-center">
+						<div class="chart-table_col chart-table_col__group chart-table_col__same">
 							2022/11/3
+							<div class="chart-table_col__group__item">
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									High
+								</div>
+								<div class="chart-table_col chart-table_sort chart-table_col__same">
+									Low
+								</div>
+							</div>
 						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div class="sort-table">
-							High
-						</div>
-					</th>
-					<th>
-						<div class="sort-table">
-							Low
-						</div>
-					</th>
-					<th>
-						<div class="sort-table">
-							High
-						</div>
-					</th>
-					<th>
-						<div class="sort-table">
-							Low
-						</div>
-					</th>
-					<th>
-						<div class="sort-table">
-							High
-						</div>
-					</th>
-					<th>
-						<div class="sort-table">
-							Low
-						</div>
-					</th>
-				</tr>
-				</thead>
-			</table>
+					</div>
+				</div>
+			</div>
+			<div class="chart-table_body">
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_danger">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_danger">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_danger">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_danger">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_violet">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_violet">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_info">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_info">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_info">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_info">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_success">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_success">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_success">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_success">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_danger">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_danger">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_danger">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_danger">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_danger">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_danger">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_warning">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_warning">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_warning">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_warning">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_violet">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_violet">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_violet">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_violet">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_info">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_info">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text chart-text_info">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text chart-text_info">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text chart-text_info">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text chart-text_info">
+							16300
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row">
+					<div class="chart-table_col chart-table_col__small text-start justify-content-start">
+						<span class="chart-table_text">
+							TCB
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text">
+							17000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							5.8
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							11%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							9%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							1122333
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							3242
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-12%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__small text-end justify-content-end">
+						<span class="chart-table_text">
+							-4%
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							18000
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							17350
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							12400
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16900
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_col__same text-end">
+						<span class="chart-table_text">
+							16300
+						</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
