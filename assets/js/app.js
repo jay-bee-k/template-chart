@@ -47,15 +47,10 @@
 	}
 
 	let handleSetMinWidth = function () {
-		if (windowWidth < 991 && $('.chart-table_row').length) {
-			let tempWidth = 0;
-			$('.chart-table_row').each(function () {
-				if ($(this)[0].scrollWidth > tempWidth) {
-					tempWidth = $(this)[0].scrollWidth;
-				}
-			});
-
-			$('.chart-table_body').css('width', tempWidth);
+		if ($('.chart-table_row').length) {
+			if (windowWidth < 1900) {
+				$('.chart-table_body, .chart-table_header').css('width', 2500);
+			}
 		}
 	}
 
@@ -63,5 +58,9 @@
 		handleSearch();
 		handleSort();
 		handleSetMinWidth();
+
+		$(window).resize(function () {
+			handleSetMinWidth();
+		})
 	});
 })(jQuery);
