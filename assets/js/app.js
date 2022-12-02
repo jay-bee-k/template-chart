@@ -48,14 +48,14 @@
 
 	let handleSetMinWidth = function () {
 		if (windowWidth < 991 && $('.chart-table_row').length) {
-			let temp = 0;
+			let tempWidth = 0;
 			$('.chart-table_row').each(function () {
-				if ($(this)[0].scrollWidth > temp) {
-					temp = $(this)[0].scrollWidth;
+				if ($(this)[0].scrollWidth > tempWidth) {
+					tempWidth = $(this)[0].scrollWidth;
 				}
 			});
 
-			$('.chart-table_body').css('width', temp);
+			$('.chart-table_body').css('width', tempWidth);
 		}
 	}
 
