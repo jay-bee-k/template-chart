@@ -254,12 +254,13 @@ textarea:focus {
 }
 
 .chart-main {
-	height: 92vh;
+	height: 100vh;
+	padding-top: 8vh;
 }
 
 .chart-main .chart-body {
 	height: 100%;
-	padding-top: calc(8vh + 37px + 102px);
+	padding-top: calc(37px + 102px);
 }
 
 .chart-table {
@@ -287,7 +288,7 @@ textarea:focus {
 	justify-content: center;
 	text-align: center;
 	background-color: var(--dark-200);
-	transition: var(--transition-default);
+	/*transition: var(--transition-default);*/
 }
 
 .chart-table .chart-table_col__small {
@@ -420,70 +421,38 @@ textarea:focus {
 	color: #1eeeee;
 }
 
-/*
-.chart-table {
-	font-size: .9em;
-	color: var(--bs-gray-200);
-	margin-bottom: 0;
-	table-layout: fixed;
-	border-collapse: collapse;
-	border-spacing: 0;
+@media screen and (max-width: 1199px) {
+	.chart-scrollbar {
+		overflow-x: hidden;
+	}
 }
 
-.chart-table.table > :not(caption) > * > * {
-	padding: 8px;
-	border: 1px solid var(--dark-500);
+@media screen and (max-width: 991px) {
+	.header .header-title {
+		font-size: 1.05em;
+	}
+
+	.chart-table .chart-table_col {
+		min-width: 100px;
+	}
+
+	.chart-table .chart-table_col__big {
+		min-width: 600px;
+	}
 }
 
-.chart-table thead tr {
-	background-color: var(--dark-400);
+@media screen and (max-width: 525px) {
+	.chart-table .chart-table_col {
+		min-width: 70px;
+	}
+
+	.chart-table .chart-table_col__big {
+		min-width: 420px;
+	}
 }
 
-.chart-table thead tr th {
-	font-weight: 400;
-	vertical-align: middle;
-	cursor: pointer;
-	min-width: 60px;
-	user-select: none;
+@media screen and (max-width: 375px) {
+	.header .header-title {
+		font-size: 0.9em;
+	}
 }
-
-.chart-table tbody tr:nth-child(even) {
-	background-color: var(--dark-100);
-}
-
-.chart-table tbody tr:hover {
-	background-color: var(--dark-300);
-}
-
-.chart-table .sort-table {
-	position: relative;
-	text-align: center;
-}
-
-.chart-table .chart-table_highlight {
-	background-color: var(--dark-450);
-}
-
-.chart-table .chart-table_text {
-	color: var(--bs-white);
-}
-
-.chart-table .chart-text_success {
-	color: #00ff00;
-}
-
-.chart-table .chart-text_danger {
-	color: #ff3737;
-}
-
-.chart-table .chart-text_warning {
-	color: #ffd900;
-}
-
-.chart-table .chart-text_violet {
-	color: #ff25ff;
-}
-
-.chart-table .chart-text_info {
-	color: #1eeeee;
-}*/
