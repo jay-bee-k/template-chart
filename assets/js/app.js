@@ -48,8 +48,12 @@
 
 	let handleSetMinWidth = function () {
 		if ($('.chart-table_row').length) {
-			if (windowWidth < 1900) {
+			if (windowWidth < 1399) {
 				$('.chart-table_body, .chart-table_header').css('width', 2500);
+			} else if (windowWidth < 1600) {
+				$('.chart-table_body, .chart-table_header').css('width', 3300);
+			} else if (windowWidth < 1900) {
+				$('.chart-table_body, .chart-table_header').css('width', 4500);
 			}
 		}
 	}

@@ -506,21 +506,6 @@ textarea:focus {
         padding-top: 37px;
     }
 
-    .chart-table {
-        overflow: auto hidden;
-    }
-
-    .chart-table .chart-table_header {
-        position: static;
-        padding: 0;
-    }
-
-    .chart-table .chart-table_body {
-        overflow: visible auto;
-        width: 100%;
-        will-change: auto;
-    }
-
     .chart-table .chart-table_row {
         width: 100%;
     }
@@ -548,7 +533,23 @@ textarea:focus {
     .chart-filter .chart-filter_item {
         white-space: nowrap;
     }
+
+    .chart-table {
+        overflow: auto hidden;
+    }
+
+    .chart-table .chart-table_header {
+        position: static;
+        padding: 0;
+    }
+
+    .chart-table .chart-table_body {
+        overflow: visible auto;
+        width: 100%;
+        will-change: auto;
+    }
 }
+
 
 @media screen and (max-width: 375px) {
     .header .header-title {
