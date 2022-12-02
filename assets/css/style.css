@@ -422,8 +422,26 @@ textarea:focus {
 }
 
 @media screen and (max-width: 1199px) {
-	.chart-scrollbar {
-		overflow-x: hidden;
+	.chart-main .chart-body {
+		padding-top: 37px;
+	}
+
+	.chart-table {
+		overflow: auto hidden;
+	}
+
+	.chart-table .chart-table_header {
+		position: static;
+	}
+
+	.chart-table .chart-table_body {
+		overflow: visible auto;
+		width: 100%;
+		will-change: auto;
+	}
+
+	.chart-table .chart-table_row {
+		width: 100%;
 	}
 }
 
@@ -439,15 +457,17 @@ textarea:focus {
 	.chart-table .chart-table_col__big {
 		min-width: 600px;
 	}
-}
 
-@media screen and (max-width: 525px) {
-	.chart-table .chart-table_col {
-		min-width: 70px;
+	.chart-action .chart-search {
+		min-width: 170px;
 	}
 
-	.chart-table .chart-table_col__big {
-		min-width: 420px;
+	.chart-filter {
+		overflow-x: auto;
+	}
+
+	.chart-filter .chart-filter_item {
+		white-space: nowrap;
 	}
 }
 
