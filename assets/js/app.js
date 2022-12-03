@@ -47,14 +47,19 @@
 	}
 
 	let handleSetMinWidth = function () {
-		if ($('.chart-table_row').length) {
-			if (windowWidth < 1399) {
-				$('.chart-table_body, .chart-table_header').css('width', 2500);
-			} else if (windowWidth < 1600) {
-				$('.chart-table_body, .chart-table_header').css('width', 3300);
-			} else if (windowWidth < 1900) {
-				$('.chart-table_body, .chart-table_header').css('width', 4500);
-			}
+		if (windowWidth < 1279 && $('.chart-table_row').length) {
+			let tempWidth = 0;
+			$('.chart-table_row').each(function () {
+				if ($(this)[0].scrollWidth > tempWidth) {
+					tempWidth = $(this)[0].scrollWidth;
+					if ($(this)[0].scrollWidth > tempWidth) {
+						tempWidth = $(this)[0].scrollWidth;
+					}
+				}
+			});
+			$('.chart-table_body, .chart-table_header').css('width', '1900px');
+		} else {
+			$('.chart-table_body, .chart-table_header').css('width', '100%');
 		}
 	}
 
@@ -64,6 +69,7 @@
 		handleSetMinWidth();
 
 		$(window).resize(function () {
+			windowWidth = $(window).width();
 			handleSetMinWidth();
 		})
 	});
