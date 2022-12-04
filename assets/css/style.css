@@ -17,6 +17,7 @@
     --dark-500: #3e3e44;
     --dark-550: #4f4f5650;
     --dark-600: #54545960;
+    --dark-700: #454545;
 
     --transition-default: .3s all ease-in-out;
     --size-theme: 14px;
@@ -186,17 +187,18 @@ textarea:focus {
 
 .chart-search .chart-search_result {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 5px);
     left: 0;
     width: 100%;
-    border-radius: 8px;
-    background-color: var(--dark-400);
+    border-radius: 0 0 4px 4px;
+    background-color: var(--dark-700);
     z-index: 2;
     max-height: 400px;
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    border: 1px solid var(--dark-500);
 }
 
 .chart-search.is-show .chart-search_result {
@@ -259,6 +261,14 @@ textarea:focus {
     font-size: .85em;
     padding-top: 5px;
     color: var(--bs-gray-200);
+}
+
+.chart-text .chart-text_item .chart-text_success {
+    color: #00ff00;
+}
+
+.chart-text .chart-text_item .chart-text_danger {
+    color: #ff3737;
 }
 
 .chart-text .chart-text_item + .chart-text_item:before {
@@ -614,7 +624,7 @@ textarea:focus {
     }
 
     .chart-action .chart-search {
-        min-width: 170px;
+        min-width: 130px;
     }
 
     .chart-filter {

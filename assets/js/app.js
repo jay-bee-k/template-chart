@@ -1,10 +1,14 @@
 ;(function ($) {
 	'use strict';
+	const urlAPI_Info = 'https://wipomart.com/systeminfor.php';
 	const urlAPI_Data = 'https://wipomart.com/main.php';
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
-	const timeFetchPrice = 2000;
+	const timeFetchPrice = 8000;
+	const timeFetchPriceTemp = 2000;
 	let intervalPrice = '';
-	let successFetchData = false;
+	let intervalPriceTemp = '';
+	let intervalInfo = '';
+	let isTemp = false;
 	let windowWidth = $(window).width();
 
 	let handleSetMinWidth = function () {
@@ -38,6 +42,10 @@
 		}
 	}
 
+	const formatPercent = function (value, fixed = 2) {
+		return parseFloat(value).toFixed(fixed).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+	}
+
 	const renderTemplate = function (data) {
 		return `<div class="chart-table_row chart-table_border__row ${formatClass(parseInt(data.price_status))}" data-row="${data.stock_code}">
 					<div class="chart-table_col chart-table_border__col chart-table_col__1 text-start justify-content-start">
@@ -46,28 +54,28 @@
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
-						<span class="chart-table_text" data-price> 
-							${data.stock_price}
+						<span class="chart-table_text" data-price-pre> 
+							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1) : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
 						<span class="chart-table_text" data-price> 
-							${data.stock_price}
+							${data.stock_price !== null ? formatPercent(data.stock_price) : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__3 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text" data-percent>
-							${data.changePercent}
+							${data.changePercent !== null ? formatPercent(data.changePercent) + '%' : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__4 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text">
-							${data.pe}
+							${data.pe !== null ? formatPercent(data.pe) + '%' : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__5 text-end justify-content-end chart-table_highlight__2">
 						<span class="chart-table_text">
-							${data.eps}
+							${data.eps !== null ? formatPercent(data.eps) + '%' : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__6 text-end justify-content-end">
@@ -82,7 +90,7 @@
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__8 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.deposit !== null ? formatPrice(data.deposit) : 'Updating'}
+							${data.deposit !== null ? formatPercent(data.deposit) : 'Updating'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__9 text-end justify-content-end">
@@ -103,32 +111,32 @@
 					<div class="chart-table_body__group">
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_high_next_day1 !== null ? data.stock_high_next_day1 : 'Updating'}
+								${data.stock_high_next_day1 !== null ? formatPercent(data.stock_high_next_day1) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_low_next_day1 !== null ? data.stock_low_next_day1 : 'Updating'}
+								${data.stock_low_next_day1 !== null ? formatPercent(data.stock_low_next_day1) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
 							<span class="chart-table_text">
-								${data.stock_close_next_day1 !== null ? data.stock_close_next_day1 : 'Updating'}
+								${data.stock_close_next_day1 !== null ? formatPercent(data.stock_close_next_day1) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_high_next_day2 !== null ? data.stock_high_next_day2 : 'Updating'}
+								${data.stock_high_next_day2 !== null ? formatPercent(data.stock_high_next_day2) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_low_next_day2 !== null ? data.stock_low_next_day2 : 'Updating'}
+								${data.stock_low_next_day2 !== null ? formatPercent(data.stock_low_next_day2) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
 							<span class="chart-table_text">
-								${data.stock_close_next_day2 !== null ? data.stock_close_next_day2 : 'Updating'}
+								${data.stock_close_next_day2 !== null ? formatPercent(data.stock_close_next_day2) : 'Updating'}
 							</span>
 						</div>
 						<div class="chart-table_col__group___last d-flex">
@@ -149,16 +157,6 @@
 
 	const renderTemplateEmpty = function () {
 		return '<div class="chart-table_row chart-table_border__row"><div class="chart-table chart-table_col chart-table_col__empty text-center w-100">Không có dữ liệu phù hợp</div></div>';
-	}
-
-	const formatPercent = function (value, fixed = 2) {
-		return parseFloat(value).toFixed(fixed).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-	}
-
-	const formatPrice = function (value) {
-		value = value.replace(/[^0-9]/g, '');
-		value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		return value;
 	}
 
 	const formatClass = function (value) {
@@ -187,66 +185,23 @@
 		return returnClass
 	}
 
-	const handleSortString = function (data, columnSort, type) {
-		let arrTemp = data.sort(function (a, b) {
-			return (a[columnSort] < b[columnSort]) - (a[columnSort] > b[columnSort])
-		});
-
-		return (type == 'up') ? arrTemp.reverse() : arrTemp;
-	}
-
-	const handleSortNumber = function (data, columnSort, type) {
-		let arrTemp = data.sort(function (a, b) {
-			return parseFloat(a[columnSort] !== null ? a[columnSort] : 0) - parseFloat(b[columnSort] !== null ? b[columnSort] : 0)
-		});
-
-		return (type == 'up') ? arrTemp.reverse() : arrTemp;
-	}
-
-	const handleFetchPrice = function () {
-		fetch(urlAPI_Price, {
+	const handleFetchInfo = function (callBack) {
+		fetch(urlAPI_Info, {
 			method: 'POST',
 		})
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.length) {
-					data.map(function (data) {
-						let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
-						if (rowChange.length) {
-							rowChange.removeClass(function (index, className) {
-								return (className.match(/(^|\s)chart-text_\S+/g) || []).join(' ');
-							}).addClass(formatClass(parseInt(data.price_status)));
-							rowChange.find('.chart-table_text[data-price]').html(data.stock_price);
-							rowChange.find('.chart-table_text[data-percent]').html(data.changePercent);
-						}
-					});
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
-
-	const handleFetchData = async function (callBack) {
-		await fetch(urlAPI_Data, {
-			method: 'POST',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.length) {
-					$('#chart-list').html('');
-					let renderTemplateList = '';
-					data.map(function (data) {
-						renderTemplateList += renderTemplate(data);
-					});
-
-					$('#chart-list').append(renderTemplateList);
-
-					$('.chart-table_sort').removeClass('chart-disabled');
-					handleSetMinWidth();
+					data = data[0];
+					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
+					$('.chart-stock').html(data.vn_index + '&nbsp;' + data.change_score + '&nbsp;(' + data.change_percent + '%)').addClass(classStatus);
+					$('.chart-view').html(data.view_count);
+					$('#chart-day_1').html(data.next_day1);
+					$('#chart-day_2').html(data.next_day2);
+					$('#chart-month').html(data.next_month);
 
 					if (callBack) {
-						callBack(data);
+						callBack();
 					}
 				}
 			})
@@ -255,8 +210,191 @@
 			});
 	}
 
+	let i = 0;
+	const handleFetchPrice = function () {
+		let isPriceSame = false;
+		let isChangeSame = false;
+		fetch(urlAPI_Price, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					i++;
+					data.map(function (data) {
+						let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
+						if (rowChange.length) {
+							let rowPrice = rowChange.find('.chart-table_text[data-price]');
+							let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+
+							rowChange.removeClass(function (index, className) {
+								return (className.match(/(^|\s)chart-text_\S+/g) || []).join(' ');
+							}).addClass(formatClass(parseInt(data.price_status)));
+
+							if (data.stock_price === null) {
+								rowPrice.attr({
+									'data-temp2': 'Updating'
+								});
+							} else {
+								if (parseFloat(rowPrice.attr('data-temp1')) == parseFloat(data.stock_price)) {
+									rowPrice.attr({
+										'data-temp1': parseFloat(data.stock_price),
+										'data-temp2': parseFloat(data.stock_price) + 0.1
+									});
+									isPriceSame = true;
+								} else {
+									if (parseFloat(rowPrice.attr('data-temp2')) != parseFloat(data.stock_price)) {
+										rowPrice.attr({
+											'data-temp3': parseFloat(rowPrice.attr('data-temp2')),
+										});
+									}
+									rowPrice.attr({
+										'data-temp2': parseFloat(data.stock_price),
+									});
+								}
+							}
+
+							if (data.changePercent === null) {
+								rowPercent.attr({
+									'data-temp2': 'Updating'
+								});
+							} else {
+								if (parseFloat(rowPercent.attr('data-temp1')) == parseFloat(data.changePercent)) {
+									rowPercent.attr({
+										'data-temp1': parseFloat(data.changePercent),
+										'data-temp2': parseFloat(data.changePercent) + 0.1
+									});
+									isChangeSame = true;
+								} else {
+									if (parseFloat(rowPercent.attr('data-temp2')) != parseFloat(data.changePercent)) {
+										rowPercent.attr({
+											'data-temp3': parseFloat(rowPercent.attr('data-temp2')),
+										});
+									}
+									rowPercent.attr({
+										'data-temp2': parseFloat(data.changePercent),
+									});
+								}
+							}
+
+							if (isPriceSame) {
+								rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp1'))));
+								rowPrice.attr('data-temp2', formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
+							} else {
+								if (i > 1 && parseFloat(rowPrice.attr('data-temp1')) != parseFloat(rowPrice.attr('data-temp2'))) {
+									rowPrice.attr('data-temp1', formatPercentparseFloat(rowPrice.attr('data-temp3')));
+								}
+								rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
+
+							}
+
+							if (isChangeSame) {
+								rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%');
+								rowPercent.attr('data-temp2', formatPercent(parseFloat(rowPercent.attr('data-temp2'))));
+							} else {
+								if (i > 1 && parseFloat(rowPercent.attr('data-temp1')) != parseFloat(rowPercent.attr('data-temp2'))) {
+									rowPercent.attr('data-temp1', formatPercent(parseFloat(rowPercent.attr('data-temp3'))));
+								}
+								rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%');
+							}
+						}
+					});
+
+					isTemp = false;
+					clearInterval(intervalPriceTemp);
+					intervalPriceTemp = setInterval(function () {
+						handlePriceTemp(data, true, i);
+					}, timeFetchPriceTemp);
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+
+	const handleFetchData = function (callBack) {
+		fetch(urlAPI_Data, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					$('#chart-list').html('');
+					let renderTemplateList = '';
+					let arrTemp = [];
+					data.map(function (data, index) {
+						renderTemplateList += renderTemplate(data);
+						arrTemp[index] = {
+							'stock_code': data.stock_code,
+							'stock_price': data.stock_price,
+							'changePercent': data.changePercent
+						};
+					});
+
+					$('#chart-list').append(renderTemplateList);
+
+					$('.chart-table_sort').removeClass('chart-disabled');
+					handleSetMinWidth();
+
+					clearInterval(intervalPriceTemp);
+					intervalPriceTemp = setInterval(function () {
+						handlePriceTemp(arrTemp);
+					}, timeFetchPriceTemp);
+
+					if (callBack) {
+						callBack(data, arrTemp);
+					}
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+
+	const handlePriceTemp = function (dataTemp, isFetch = false, i = 0) {
+		dataTemp.map(function (data) {
+			let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
+			if (rowChange.length) {
+				let rowPrice = rowChange.find('.chart-table_text[data-price]');
+				let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+
+				if (!isFetch) {
+					if (data.stock_price === null) {
+						rowPrice.attr({
+							'data-temp1': 'Updating', 'data-temp2': 'Updating'
+						});
+					} else {
+						rowPrice.attr({
+							'data-temp1': data.stock_price, 'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
+						});
+					}
+					if (data.changePercent === null) {
+						rowPercent.attr({
+							'data-temp1': 'Updating', 'data-temp2': 'Updating'
+						});
+					} else {
+						rowPercent.attr({
+							'data-temp1': data.changePercent, 'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
+						});
+					}
+				}
+
+				if (!isTemp) {
+					rowPrice.html(rowPrice.attr('data-temp2'));
+					rowPercent.html(rowPercent.attr('data-temp2') !== 'Updating' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
+				} else {
+					rowPrice.html(rowPrice.attr('data-temp1'));
+					rowPercent.html(rowPercent.attr('data-temp1') !== 'Updating' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
+				}
+			}
+		});
+		isTemp = !isTemp;
+	}
+
 	const handleColumnSort = function (column) {
 		switch (column) {
+			case 'price-pre':
+				return 'stock_pre_day1';
 			case 'price':
 				return 'stock_price';
 			case 'change':
@@ -296,6 +434,22 @@
 		}
 	}
 
+	const handleSortString = function (data, columnSort, type) {
+		let arrTemp = data.sort(function (a, b) {
+			return (a[columnSort] < b[columnSort]) - (a[columnSort] > b[columnSort])
+		});
+
+		return (type == 'up') ? arrTemp.reverse() : arrTemp;
+	}
+
+	const handleSortNumber = function (data, columnSort, type) {
+		let arrTemp = data.sort(function (a, b) {
+			return parseFloat(a[columnSort] !== null ? a[columnSort] : 0) - parseFloat(b[columnSort] !== null ? b[columnSort] : 0)
+		});
+
+		return (type == 'up') ? arrTemp.reverse() : arrTemp;
+	}
+
 	const handleFetchSort = function (column, type, filter = '') {
 		let columnSort = handleColumnSort(column);
 		fetch(urlAPI_Data, {
@@ -319,16 +473,24 @@
 						dataSorted = handleSortNumber(data, columnSort, type);
 					}
 					let renderTemplateList = '';
-
-					dataSorted.map(function (data) {
+					let arrTemp = [];
+					dataSorted.map(function (data, index) {
 						renderTemplateList += renderTemplate(data);
+						arrTemp[index] = {
+							'stock_code': data.stock_code,
+							'stock_price': data.stock_price,
+							'changePercent': data.changePercent
+						};
 					});
 
 					$('#chart-list').append(renderTemplateList);
 
 					$('.chart-table_sort').removeClass('chart-disabled');
 
-
+					clearInterval(intervalPriceTemp);
+					intervalPriceTemp = setInterval(function () {
+						handlePriceTemp(arrTemp);
+					}, timeFetchPriceTemp);
 				}
 			})
 			.catch((error) => {
@@ -376,9 +538,20 @@
 
 					data = data.filter(elm => elm.stock_type === filter);
 					if (data.length > 0) {
-						data.map(function (data) {
+						let arrTemp = [];
+						data.map(function (data, index) {
 							renderTemplateList += renderTemplate(data);
+							arrTemp[index] = {
+								'stock_code': data.stock_code,
+								'stock_price': data.stock_price,
+								'changePercent': data.changePercent
+							};
 						});
+
+						clearInterval(intervalPriceTemp);
+						intervalPriceTemp = setInterval(function () {
+							handlePriceTemp(arrTemp);
+						}, timeFetchPriceTemp);
 					} else {
 						renderTemplateList += renderTemplateEmpty();
 					}
@@ -401,7 +574,6 @@
 			chartFilter.click(function () {
 				let chartFilter_elm = $(this), chartFilter_type = chartFilter_elm.attr('data-value');
 				if (chartFilter_elm.hasClass('active') === false) {
-
 					if ($('.chart-table_sort').length) {
 						$('.chart-table_sort').removeClass('data-value')
 					}
@@ -416,14 +588,35 @@
 		}
 	}
 
-	const handleSearch = function (data) {
+	const handleSearch = function () {
 		if ($('#chartSearch').length) {
 			let chartSearch = $('#chartSearch'), chartSearch_wrap = chartSearch.closest('.chart-search');
 			chartSearch.keyup(function () {
-				let chartSearch_elm = $(this), chartSearch_value = $.trim(chartSearch_elm.val());
-				console.log(data)
+				let chartSearch_elm = $(this), chartSearch_value = $.trim(chartSearch_elm.val()).toUpperCase();
 				if (chartSearch_value.length > 0) {
 					chartSearch_wrap.addClass('is-show');
+
+					handleFetchData(function (data) {
+						let renderTemplateSearch = '';
+						data = data.filter(elm => Object.values(elm.stock_code).some(val => val.includes(chartSearch_value)));
+						if (data.length > 0) {
+							data.map(function (data) {
+								renderTemplateSearch += `<li>
+															<a href="javascript:void(0)">
+																${data.stock_code}
+															</a>
+														</li>`;
+							});
+						} else {
+							renderTemplateSearch = `<li>
+															<a href="javascript:void(0)">
+																Không tìm thấy mã CK
+															</a>
+														</li>`;
+						}
+
+						$('#chart-search_fill').html(renderTemplateSearch);
+					});
 				} else {
 					if (chartSearch_wrap.hasClass('is-show')) {
 						chartSearch_wrap.removeClass('is-show');
@@ -442,10 +635,18 @@
 	}
 
 	$(function () {
-		handleFetchData(function (data) {
+		handleFetchInfo(function () {
+			clearInterval(intervalInfo);
+			intervalInfo = setInterval(function () {
+				handleFetchInfo();
+			}, timeFetchPrice);
+		});
+
+		handleFetchData(function (data, arrTemp) {
 			handleSortData();
 			handleFilterData();
-			handleSearch(data);
+			handleSearch();
+
 			clearInterval(intervalPrice);
 			intervalPrice = setInterval(function () {
 				handleFetchPrice();
@@ -459,5 +660,4 @@
 			handleSetPadding();
 		});
 	});
-})
-(jQuery);
+})(jQuery);

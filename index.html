@@ -41,98 +41,7 @@
 			<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
 		</div>
 		<div class="chart-search_result chart-scrollbar">
-			<ul class="list-unstyled mb-0">
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-				<li>
-					<a href="javascript:void(0)">
-						AGP
-					</a>
-				</li>
-			</ul>
+			<ul class="list-unstyled mb-0" id="chart-search_fill"></ul>
 		</div>
 	</div>
 	<div class="chart-filter d-flex align-items-center g-10" id="chart-filter">
@@ -151,19 +60,19 @@
 	</div>
 	<div class="chart-text ms-auto align-items-center g-10 d-none d-lg-flex" id="chart-text">
 		<div class="chart-text_item">
-			<b>VNIndex 1280 +/- 2.6%</b>
+			<b>VNIndex <span class="chart-stock"></span></b>
 		</div>
 		<div class="chart-text_item">
-			Số lượt xem <b>123456</b>
+			Số lượt xem <b class="chart-view"></b>
 		</div>
 	</div>
 </div>
 <div class="chart-text ms-auto align-items-center g-10 d-flex d-lg-none">
 	<div class="chart-text_item">
-		<b>VNIndex 1280 +/- 2.6%</b>
+		<b>VNIndex <span class="chart-stock"></span></b>
 	</div>
 	<div class="chart-text_item">
-		Số lượt xem <b>123456</b>
+		Số lượt xem <b class="chart-view"></b>
 	</div>
 </div>
 <div class="chart-main d-flex flex-column" id="chart-main">
@@ -224,8 +133,8 @@
 					</div>
 					<div class="chart-table_col__group__item chart-table_border__row">
 						<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__same">
-							<div class="chart-table_col">
-								2022/12/1
+							<div class="chart-table_col" id="chart-day_1">
+								-------
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
@@ -243,8 +152,8 @@
 							</div>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__same chart-table_col__pseudo">
-							<div class="chart-table_col chart-table_col__100 chart-table_border__col">
-								2022/12/6
+							<div class="chart-table_col chart-table_col__100 chart-table_border__col" id="chart-day_2">
+								-------
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
@@ -262,8 +171,8 @@
 							</div>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__group___last">
-							<div class="chart-table_col chart-table_col__100 chart-table_border__col">
-								Tháng 12
+							<div class="chart-table_col chart-table_col__100 chart-table_border__col" id="chart-month">
+								-------
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_highlight"
