@@ -188,9 +188,9 @@ textarea:focus {
     position: absolute;
     top: 100%;
     left: 0;
-    width: calc(100% + 100px);
+    width: 100%;
     border-radius: 8px;
-    background-color: var(--dark-300);
+    background-color: var(--dark-400);
     z-index: 2;
     max-height: 400px;
     overflow-y: auto;
@@ -215,7 +215,7 @@ textarea:focus {
     line-height: 22px;
     padding: 8px 12px;
     color: var(--bs-gray-200);
-    font-size: 12px;
+    font-size: 1em;
     transition: var(--transition-default);
 }
 
@@ -238,7 +238,6 @@ textarea:focus {
     background-color: var(--dark-300);
     color: var(--bs-gray-200);
     border-radius: 2px 2px 0 0;
-    transition: var(--transition-default);
 }
 
 .chart-filter .chart-filter_item:hover {
@@ -250,6 +249,28 @@ textarea:focus {
     border-bottom-color: var(--secondary-color);
     color: var(--secondary-color);
     font-weight: 500;
+}
+
+.chart-text {
+    padding-right: 2px;
+}
+
+.chart-text .chart-text_item {
+    font-size: .85em;
+    padding-top: 5px;
+    color: var(--bs-gray-200);
+}
+
+.chart-text .chart-text_item + .chart-text_item:before {
+    display: inline;
+    content: "-";
+    padding-left: 5px;
+    margin-right: 10px;
+    color: var(--bs-gray-200);
+}
+
+.chart-text .chart-text_item b {
+    color: var(--secondary-color);
 }
 
 .chart-main {
@@ -420,13 +441,17 @@ textarea:focus {
 .chart-table .chart-table_header .chart-table_col {
     font-weight: 400;
     vertical-align: middle;
-    cursor: pointer;
     user-select: none;
     background-color: var(--dark-400);
 }
 
 .chart-table .chart-table_sort {
     position: relative;
+    cursor: pointer;
+}
+
+.chart-table .chart-table_sort.chart-disabled {
+    pointer-events: none;
 }
 
 .chart-table .chart-table_sort:before,
@@ -500,23 +525,23 @@ textarea:focus {
     background-color: #4072c4;
 }
 
-.chart-table .chart-text_success {
+.chart-table .chart-text_success .chart-table_text {
     color: #00ff00;
 }
 
-.chart-table .chart-text_danger {
+.chart-table .chart-text_danger .chart-table_text {
     color: #ff3737;
 }
 
-.chart-table .chart-text_warning {
+.chart-table .chart-text_warning .chart-table_text {
     color: #ffd900;
 }
 
-.chart-table .chart-text_violet {
+.chart-table .chart-text_violet .chart-table_text {
     color: #ff25ff;
 }
 
-.chart-table .chart-text_info {
+.chart-table .chart-text_info .chart-table_text {
     color: #1eeeee;
 }
 
@@ -570,14 +595,14 @@ textarea:focus {
     }
 
     .chart-table .chart-table_col__12,
-    .chart-table .chart-table_body__group{
+    .chart-table .chart-table_body__group {
         width: 40%;
     }
 }
 
 @media screen and (max-width: 1279px) {
     .chart-main .chart-body {
-        padding-top: 37px;
+        padding-top: 57px;
     }
 
     .chart-table .chart-table_row {
@@ -617,6 +642,16 @@ textarea:focus {
     }
 }
 
+@media screen and (max-width: 991px) {
+    .chart-text {
+        padding: 0 5px;
+        position: fixed;
+        top: calc(8vh + 37px);
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
 
 @media screen and (max-width: 375px) {
     .header .header-title {
