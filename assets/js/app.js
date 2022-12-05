@@ -48,14 +48,14 @@
 
 	const renderTemplate = function (data) {
 		return `<div class="chart-table_row chart-table_border__row ${formatClass(parseInt(data.price_status))}" data-row="${data.stock_code}">
+					<div class="chart-table_col chart-table_border__col chart-table_col__14 text-center justify-content-center">
+						<span class="chart-table_text">
+							<a href="" class="chart-table_btn">View More</a>
+						</span>
+					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__1 text-start justify-content-start">
 						<span class="chart-table_text">
 							${data.stock_code}
-						</span>
-					</div>
-					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-center justify-content-center">
-						<span class="chart-table_text">
-							<a href="" class="chart-table_btn">View More</a>
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">

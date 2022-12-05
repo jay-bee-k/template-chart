@@ -436,6 +436,11 @@ textarea:focus {
 	width: 5%;
 }
 
+.chart-table .chart-table_col__14 {
+	width: 4%;
+	padding: 8px 5px;
+}
+
 .chart-table .chart-table_col__group___last {
 	width: 30%;
 }
@@ -560,7 +565,7 @@ textarea:focus {
 	background-color: #4D91FF;
 	font-size: .75em;
 	border-radius: 4px;
-	padding: 2px 5px;
+	padding: 2px 2px;
 	color: var(--bs-white);
 	white-space: nowrap;
 }
