@@ -54,7 +54,7 @@
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
-						<span class="chart-table_text" data-price-pre> 
+						<span class="chart-table_text chart-text_warning" data-price-pre> 
 							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1) : 'Updating'}
 						</span>
 					</div>

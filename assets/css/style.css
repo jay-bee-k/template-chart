@@ -547,6 +547,10 @@ textarea:focus {
     color: #ffd900;
 }
 
+.chart-table .chart-text_warning.chart-table_text {
+	color: #ffd900 !important;
+}
+
 .chart-table .chart-text_violet .chart-table_text {
     color: #ff25ff;
 }
