@@ -50,104 +50,109 @@
 		return `<div class="chart-table_row chart-table_border__row ${formatClass(parseInt(data.price_status))}" data-row="${data.stock_code}">
 					<div class="chart-table_col chart-table_border__col chart-table_col__1 text-start justify-content-start">
 						<span class="chart-table_text">
-							${data.stock_code} <a href="" class="chart-table_btn">View More</a>
+							${data.stock_code}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-center justify-content-center">
+						<span class="chart-table_text">
+							<a href="" class="chart-table_btn">View More</a>
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
 						<span class="chart-table_text chart-text_warning" data-price-pre> 
-							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1) : 'Updating'}
+							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
 						<span class="chart-table_text" data-price> 
-							${data.stock_price !== null ? formatPercent(data.stock_price) : 'Updating'}
+							${data.stock_price !== null ? formatPercent(data.stock_price) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__3 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text" data-percent>
-							${data.changePercent !== null ? formatPercent(data.changePercent) + '%' : 'Updating'}
+							${data.changePercent !== null ? formatPercent(data.changePercent) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__4 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text">
-							${data.pe !== null ? formatPercent(data.pe) + '%' : 'Updating'}
+							${data.pe !== null ? formatPercent(data.pe) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__5 text-end justify-content-end chart-table_highlight__2">
 						<span class="chart-table_text">
-							${data.eps !== null ? formatPercent(data.eps) + '%' : 'Updating'}
+							${data.eps !== null ? formatPercent(data.eps) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__6 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.yearRevenueGrowth !== null ? formatPercent(data.yearRevenueGrowth) + '%' : 'Updating'}
+							${data.yearRevenueGrowth !== null ? formatPercent(data.yearRevenueGrowth) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__7 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.quarterRevenueGrowth !== null ? formatPercent(data.quarterRevenueGrowth) + '%' : 'Updating'}
+							${data.quarterRevenueGrowth !== null ? formatPercent(data.quarterRevenueGrowth) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__8 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.deposit !== null ? formatPercent(data.deposit) : 'Updating'}
+							${data.deposit !== null ? formatPercent(data.deposit) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__9 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.revenue !== null ? formatPercent(data.revenue) : 'Updating'}
+							${data.revenue !== null ? formatPercent(data.revenue) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__10 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.priceChange1y !== null ? formatPercent(data.priceChange1y) + '%' : 'Updating'}
+							${data.priceChange1y !== null ? formatPercent(data.priceChange1y) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__11 text-end justify-content-end">
 						<span class="chart-table_text">
-							${data.priceChange3m !== null ? formatPercent(data.priceChange3m) + '%' : 'Updating'}
+							${data.priceChange3m !== null ? formatPercent(data.priceChange3m) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_body__group">
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_high_next_day1 !== null ? formatPercent(data.stock_high_next_day1) : 'Updating'}
+								${data.stock_high_next_day1 !== null ? formatPercent(data.stock_high_next_day1) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_low_next_day1 !== null ? formatPercent(data.stock_low_next_day1) : 'Updating'}
+								${data.stock_low_next_day1 !== null ? formatPercent(data.stock_low_next_day1) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
 							<span class="chart-table_text">
-								${data.stock_close_next_day1 !== null ? formatPercent(data.stock_close_next_day1) : 'Updating'}
+								${data.stock_close_next_day1 !== null ? formatPercent(data.stock_close_next_day1) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_high_next_day2 !== null ? formatPercent(data.stock_high_next_day2) : 'Updating'}
+								${data.stock_high_next_day2 !== null ? formatPercent(data.stock_high_next_day2) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
 							<span class="chart-table_text">
-								${data.stock_low_next_day2 !== null ? formatPercent(data.stock_low_next_day2) : 'Updating'}
+								${data.stock_low_next_day2 !== null ? formatPercent(data.stock_low_next_day2) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
 							<span class="chart-table_text">
-								${data.stock_close_next_day2 !== null ? formatPercent(data.stock_close_next_day2) : 'Updating'}
+								${data.stock_close_next_day2 !== null ? formatPercent(data.stock_close_next_day2) : '---'}
 							</span>
 						</div>
 						<div class="chart-table_col__group___last d-flex">
 							<div class="chart-table_col chart-table_border__col chart-table_col__99 text-end chart-table_highlight">
 								<span class="chart-table_text">
-								Updating
+								---
 								</span>
 							</div>
 							<div class="chart-table_col chart-table_border__col chart-table_col__100 text-end chart-table_highlight">
 								<span class="chart-table_text">
-									Updating
+									---
 								</span>
 							</div>
 						</div>
@@ -233,7 +238,7 @@
 
 							if (data.stock_price === null) {
 								rowPrice.attr({
-									'data-temp2': 'Updating'
+									'data-temp2': '---'
 								});
 							} else {
 								if (parseFloat(rowPrice.attr('data-temp1')) == parseFloat(data.stock_price)) {
@@ -256,7 +261,7 @@
 
 							if (data.changePercent === null) {
 								rowPercent.attr({
-									'data-temp2': 'Updating'
+									'data-temp2': '---'
 								});
 							} else {
 								if (parseFloat(rowPercent.attr('data-temp1')) == parseFloat(data.changePercent)) {
@@ -361,30 +366,32 @@
 				if (!isFetch) {
 					if (data.stock_price === null) {
 						rowPrice.attr({
-							'data-temp1': 'Updating', 'data-temp2': 'Updating'
+							'data-temp1': '---', 'data-temp2': '---'
 						});
 					} else {
 						rowPrice.attr({
-							'data-temp1': data.stock_price, 'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
+							'data-temp1': data.stock_price,
+							'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
 						});
 					}
 					if (data.changePercent === null) {
 						rowPercent.attr({
-							'data-temp1': 'Updating', 'data-temp2': 'Updating'
+							'data-temp1': '---', 'data-temp2': '---'
 						});
 					} else {
 						rowPercent.attr({
-							'data-temp1': data.changePercent, 'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
+							'data-temp1': data.changePercent,
+							'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
 						});
 					}
 				}
 
 				if (!isTemp) {
 					rowPrice.html(rowPrice.attr('data-temp2'));
-					rowPercent.html(rowPercent.attr('data-temp2') !== 'Updating' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
+					rowPercent.html(rowPercent.attr('data-temp2') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
 				} else {
 					rowPrice.html(rowPrice.attr('data-temp1'));
-					rowPercent.html(rowPercent.attr('data-temp1') !== 'Updating' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
+					rowPercent.html(rowPercent.attr('data-temp1') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
 				}
 			}
 		});
