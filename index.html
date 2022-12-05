@@ -28,6 +28,156 @@
 </head>
 <body class="chart-scrollbar">
 
+<div class="modal fade chart-modal" id="chart-modal" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+		<div class="modal-content chart-modal_content">
+			<div class="modal-header">
+				<div class="modal-title">
+					Chi tiết cổ phiếu AAA
+				</div>
+				<button type="button" class="chart-modal_close" data-bs-dismiss="modal"><i class="fal fa-times"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="chart-modal_table">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+								<td class="text-center"></td>
+								<td class="text-center">Open</td>
+								<td class="text-center">High</td>
+								<td class="text-center">Low</td>
+								<td class="text-center">Close</td>
+								<td class="text-center">Volumn</td>
+								<td class="text-center">Trading Date</td>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td class="text-center">
+									0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									4226500
+								</td>
+								<td class="text-end">
+									2022-01-04
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									1
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									4226500
+								</td>
+								<td class="text-end">
+									2022-01-04
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									2
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									4226500
+								</td>
+								<td class="text-end">
+									2022-01-04
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									3
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									4226500
+								</td>
+								<td class="text-end">
+									2022-01-04
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center">
+									4
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									32182.0
+								</td>
+								<td class="text-end">
+									4226500
+								</td>
+								<td class="text-end">
+									2022-01-04
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="header" class="header index-10">
 	<div class="d-flex align-items-center justify-content-center">
 		<div class="header-logo text-center">
@@ -53,6 +203,9 @@
 		</div>
 	</div>
 	<div class="chart-filter d-flex align-items-center g-10" id="chart-filter">
+		<button type="button" class="chart-filter_item active" data-value="-1">
+			Tất cả
+		</button>
 		<button type="button" class="chart-filter_item" data-value="1">
 			Ngân hàng
 		</button>
@@ -200,6 +353,7 @@
 		</div>
 	</div>
 </div>
+<div class="chart-footer">Dữ liệu tính toán bên trên chỉ mang tính chất tham khảo</div>
 
 <script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
 <script type="text/javascript"

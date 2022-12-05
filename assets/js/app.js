@@ -3,8 +3,8 @@
 	const urlAPI_Info = 'https://wipomart.com/systeminfor.php';
 	const urlAPI_Data = 'https://wipomart.com/main.php';
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
-	const timeFetchPrice = 8000;
-	const timeFetchPriceTemp = 2000;
+	const timeFetchPrice = 20000;
+	const timeFetchPriceTemp = 5000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
@@ -50,7 +50,7 @@
 		return `<div class="chart-table_row chart-table_border__row ${formatClass(parseInt(data.price_status))}" data-row="${data.stock_code}">
 					<div class="chart-table_col chart-table_border__col chart-table_col__14 text-center justify-content-center">
 						<span class="chart-table_text">
-							<a href="" class="chart-table_btn">View More</a>
+							<a href="javascript:void(0)" class="chart-table_btn chart-detail_code">View More</a>
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__1 text-start justify-content-start">
@@ -494,6 +494,7 @@
 
 					$('.chart-table_sort').removeClass('chart-disabled');
 
+					handleChartModal();
 					clearInterval(intervalPriceTemp);
 					intervalPriceTemp = setInterval(function () {
 						handlePriceTemp(arrTemp);
@@ -566,8 +567,7 @@
 					$('#chart-list').append(renderTemplateList);
 
 					$('.chart-table_sort').removeClass('chart-table_sort__up chart-table_sort__down');
-
-
+					handleChartModal();
 				}
 			})
 			.catch((error) => {
@@ -587,7 +587,11 @@
 
 					chartFilter.removeClass('active');
 					chartFilter_elm.addClass('active');
-					handleFetchFilter(chartFilter_type);
+					if (!isNaN(parseInt(chartFilter_type)) && parseInt(chartFilter_type) > 0) {
+						handleFetchFilter(chartFilter_type);
+					} else {
+						handleFetchData();
+					}
 				} else {
 					return false;
 				}
@@ -641,6 +645,15 @@
 		}
 	}
 
+	const handleChartModal = function () {
+		$('.chart-detail_code').click(function () {
+			let chartModal = $('#chart-modal');
+			if (chartModal.length) {
+				chartModal.modal('show');
+			}
+		});
+	}
+
 	$(function () {
 		handleFetchInfo(function () {
 			clearInterval(intervalInfo);
@@ -649,10 +662,11 @@
 			}, timeFetchPrice);
 		});
 
-		handleFetchData(function (data, arrTemp) {
+		handleFetchData(function () {
 			handleSortData();
 			handleFilterData();
 			handleSearch();
+			handleChartModal();
 
 			clearInterval(intervalPrice);
 			intervalPrice = setInterval(function () {

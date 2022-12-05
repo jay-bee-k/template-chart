@@ -367,6 +367,7 @@ textarea:focus {
 
 .chart-table .chart-table_body {
 	border-left: 1px solid var(--dark-500);
+	padding-bottom: 25px;
 }
 
 .chart-table .chart-table_col {
@@ -598,6 +599,20 @@ textarea:focus {
 	color: #1eeeee;
 }
 
+.chart-footer {
+	position: fixed;
+	z-index: 4;
+	bottom: 0;
+	left: 5px;
+	right: 5px;
+	background-color: #000000;
+	padding: 4px 5px 4px;
+	color: var(--bs-gray-500);
+	font-size: .9em;
+	height: 25px;
+	max-width: calc(100% - 10px);
+}
+
 @media screen and (min-width: 1401px) and (max-width: 1730px) {
 	.chart-table {
 		font-size: .85em;
@@ -777,4 +792,52 @@ textarea:focus {
 	.header .header-title {
 		font-size: 0.9em;
 	}
+}
+
+.modal-backdrop {
+	--bs-backdrop-opacity: 0.8;
+}
+
+.chart-modal .chart-modal_content {
+	color: var(--bs-gray-200);
+	background-color: var(--dark-200);
+}
+
+.chart-modal .chart-modal_content .modal-header {
+	border-bottom: 1px solid var(--dark-600);
+}
+
+.chart-modal .chart-modal_content .modal-header .modal-title {
+	font-size: 1.15em;
+	color: var(--bs-gray-200);
+}
+
+.chart-modal .chart-modal_content .modal-header .chart-modal_close {
+	border-radius: 50%;
+	border: 0;
+	background-color: var(--dark-500);
+	color: var(--bs-gray-500);
+	height: 25px;
+	width: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.chart-modal .chart-modal_content .modal-body .table {
+	--bs-table-border-color: var(--dark-500);
+	color: var(--bs-gray-300);
+}
+
+.chart-modal .chart-modal_content .modal-body .table tbody {
+	color: var(--bs-white);
+}
+
+.chart-modal .chart-modal_content .modal-body .table tbody tr:hover{
+	background-color: var(--dark-300);
+	color: var(--bs-white);
+}
+
+.chart-modal .chart-modal_content .modal-body .table:last-child {
+	margin-bottom: 0;
 }
