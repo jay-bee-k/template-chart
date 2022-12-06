@@ -1,28 +1,39 @@
 ;(function ($) {
 	'use strict';
 	const urlAPI_Info = 'https://wipomart.com/systeminfor.php';
+	const urlAPI_DJIndex = 'https://wipomart.com/dj_index.php';
 	const urlAPI_Data = 'https://wipomart.com/main.php';
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
-	const timeFetchPrice = 20000;
-	const timeFetchPriceTemp = 5000;
+	const timeFetchPrice = 8000;
+	const timeFetchPriceTemp = 2000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
+	let intervalDJIndex = '';
 	let isTemp = false;
 	let windowWidth = $(window).width();
 
 	let handleSetMinWidth = function () {
 		if (windowWidth < 1280 && $('.chart-table_row').length) {
-			let rowWidth = 0;
-			$('.chart-table_row').each(function () {
-				if ($(this)[0].scrollWidth > rowWidth) {
-					rowWidth = $(this)[0].scrollWidth;
-					if ($(this)[0].scrollWidth > rowWidth) {
-						rowWidth = $(this)[0].scrollWidth;
-					}
+			$('.chart-table').each(function () {
+				let rowWidth = 0;
+				let table = $(this);
+				if (table.hasClass('chart-table_small') == false) {
+					table.find('.chart-table_header').css('width', '1900px');
+					table.find('.chart-table_body').css('width', '1900px');
+				} else {
+					table.find('.chart-table_row').each(function () {
+						if ($(this)[0].scrollWidth > rowWidth) {
+							rowWidth = $(this)[0].scrollWidth;
+							if ($(this)[0].scrollWidth > rowWidth) {
+								rowWidth = $(this)[0].scrollWidth;
+							}
+						}
+					});
+					table.find('.chart-table_header').css('width', 'calc(100% + 400px)');
+					table.find('.chart-table_body').css('width', 'calc(100% + 400px)');
 				}
-			});
-			$('.chart-table_body, .chart-table_header').css('width', '1900px');
+			})
 		} else {
 			$('.chart-table_body, .chart-table_header').css('width', '100%');
 		}
@@ -31,13 +42,13 @@
 	let handleSetPadding = function () {
 		if ($('.chart-table_header').length) {
 			let row = $('.chart-table_header'), rowHeight = row.outerHeight(),
-				filterHeight = $('#chart-filter').outerHeight(), textHeight = $('#chart-filter').outerHeight();
+				actionHeight = $('#chart-action').outerHeight(), textHeight = $('#chart-text').outerHeight();
 			if (windowWidth >= 1280) {
-				row.parents('.chart-body').css('padding-top', filterHeight + rowHeight);
+				row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
 			} else if (windowWidth >= 992 && windowWidth < 1280) {
-				row.parents('.chart-body').css('padding-top', filterHeight);
+				row.parents('.chart-body').css('padding-top', actionHeight);
 			} else {
-				row.parents('.chart-body').css('padding-top', filterHeight + textHeight - 10);
+				row.parents('.chart-body').css('padding-top', actionHeight + textHeight);
 			}
 		}
 	}
@@ -190,133 +201,6 @@
 		return returnClass
 	}
 
-	const handleFetchInfo = function (callBack) {
-		fetch(urlAPI_Info, {
-			method: 'POST',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.length) {
-					data = data[0];
-					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
-					$('.chart-stock').html(data.vn_index + '&nbsp;' + data.change_score + '&nbsp;(' + data.change_percent + '%)').addClass(classStatus);
-					$('.chart-view').html(data.view_count);
-					$('#chart-day_1').html(data.next_day1);
-					$('#chart-day_2').html(data.next_day2);
-					$('#chart-month').html(data.next_month);
-
-					if (callBack) {
-						callBack();
-					}
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
-
-	let i = 0;
-	const handleFetchPrice = function () {
-		let isPriceSame = false;
-		let isChangeSame = false;
-		fetch(urlAPI_Price, {
-			method: 'POST',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.length) {
-					i++;
-					data.map(function (data) {
-						let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
-						if (rowChange.length) {
-							let rowPrice = rowChange.find('.chart-table_text[data-price]');
-							let rowPercent = rowChange.find('.chart-table_text[data-percent]');
-
-							rowChange.removeClass(function (index, className) {
-								return (className.match(/(^|\s)chart-text_\S+/g) || []).join(' ');
-							}).addClass(formatClass(parseInt(data.price_status)));
-
-							if (data.stock_price === null) {
-								rowPrice.attr({
-									'data-temp2': '---'
-								});
-							} else {
-								if (parseFloat(rowPrice.attr('data-temp1')) == parseFloat(data.stock_price)) {
-									rowPrice.attr({
-										'data-temp1': parseFloat(data.stock_price),
-										'data-temp2': parseFloat(data.stock_price) + 0.1
-									});
-									isPriceSame = true;
-								} else {
-									if (parseFloat(rowPrice.attr('data-temp2')) != parseFloat(data.stock_price)) {
-										rowPrice.attr({
-											'data-temp3': parseFloat(rowPrice.attr('data-temp2')),
-										});
-									}
-									rowPrice.attr({
-										'data-temp2': parseFloat(data.stock_price),
-									});
-								}
-							}
-
-							if (data.changePercent === null) {
-								rowPercent.attr({
-									'data-temp2': '---'
-								});
-							} else {
-								if (parseFloat(rowPercent.attr('data-temp1')) == parseFloat(data.changePercent)) {
-									rowPercent.attr({
-										'data-temp1': parseFloat(data.changePercent),
-										'data-temp2': parseFloat(data.changePercent) + 0.1
-									});
-									isChangeSame = true;
-								} else {
-									if (parseFloat(rowPercent.attr('data-temp2')) != parseFloat(data.changePercent)) {
-										rowPercent.attr({
-											'data-temp3': parseFloat(rowPercent.attr('data-temp2')),
-										});
-									}
-									rowPercent.attr({
-										'data-temp2': parseFloat(data.changePercent),
-									});
-								}
-							}
-
-							if (isPriceSame) {
-								rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp1'))));
-								rowPrice.attr('data-temp2', formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
-							} else {
-								if (i > 1 && parseFloat(rowPrice.attr('data-temp1')) != parseFloat(rowPrice.attr('data-temp2'))) {
-									rowPrice.attr('data-temp1', formatPercentparseFloat(rowPrice.attr('data-temp3')));
-								}
-								rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
-
-							}
-
-							if (isChangeSame) {
-								rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%');
-								rowPercent.attr('data-temp2', formatPercent(parseFloat(rowPercent.attr('data-temp2'))));
-							} else {
-								if (i > 1 && parseFloat(rowPercent.attr('data-temp1')) != parseFloat(rowPercent.attr('data-temp2'))) {
-									rowPercent.attr('data-temp1', formatPercent(parseFloat(rowPercent.attr('data-temp3'))));
-								}
-								rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%');
-							}
-						}
-					});
-
-					isTemp = false;
-					clearInterval(intervalPriceTemp);
-					intervalPriceTemp = setInterval(function () {
-						handlePriceTemp(data, true, i);
-					}, timeFetchPriceTemp);
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
-
 	const handleFetchData = function (callBack) {
 		fetch(urlAPI_Data, {
 			method: 'POST',
@@ -352,50 +236,214 @@
 				}
 			})
 			.catch((error) => {
-				console.log(error);
+				setTimeout(function () {
+					handleFetchData()
+				}, timeFetchPrice)
 			});
 	}
 
+	let i = 0;
+	const handleFetchPrice = function () {
+		let isPriceSame = false;
+		let isChangeSame = false;
+		if (timeStatus) {
+			fetch(urlAPI_Price, {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.length) {
+						i++;
+						data.map(function (data) {
+							let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
+							if (rowChange.length) {
+								let rowPrice = rowChange.find('.chart-table_text[data-price]');
+								let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+
+								rowChange.removeClass(function (index, className) {
+									return (className.match(/(^|\s)chart-text_\S+/g) || []).join(' ');
+								}).addClass(formatClass(parseInt(data.price_status)));
+
+								if (data.stock_price === null) {
+									rowPrice.attr({
+										'data-temp2': '---'
+									});
+								} else {
+									if (parseFloat(rowPrice.attr('data-temp1')) == parseFloat(data.stock_price)) {
+										rowPrice.attr({
+											'data-temp1': parseFloat(data.stock_price),
+											'data-temp2': parseFloat(data.stock_price) + 0.1
+										});
+										isPriceSame = true;
+									} else {
+										if (parseFloat(rowPrice.attr('data-temp2')) != parseFloat(data.stock_price)) {
+											rowPrice.attr({
+												'data-temp3': parseFloat(rowPrice.attr('data-temp2')),
+											});
+										}
+										rowPrice.attr({
+											'data-temp2': parseFloat(data.stock_price),
+										});
+									}
+								}
+
+								if (data.changePercent === null) {
+									rowPercent.attr({
+										'data-temp2': '---'
+									});
+								} else {
+									if (parseFloat(rowPercent.attr('data-temp1')) == parseFloat(data.changePercent)) {
+										rowPercent.attr({
+											'data-temp1': parseFloat(data.changePercent),
+											'data-temp2': parseFloat(data.changePercent) + 0.1
+										});
+										isChangeSame = true;
+									} else {
+										if (parseFloat(rowPercent.attr('data-temp2')) != parseFloat(data.changePercent)) {
+											rowPercent.attr({
+												'data-temp3': parseFloat(rowPercent.attr('data-temp2')),
+											});
+										}
+										rowPercent.attr({
+											'data-temp2': parseFloat(data.changePercent),
+										});
+									}
+								}
+
+								if (isPriceSame) {
+									rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp1'))));
+									rowPrice.attr('data-temp2', formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
+								} else {
+									if (i > 1 && parseFloat(rowPrice.attr('data-temp1')) != parseFloat(rowPrice.attr('data-temp2'))) {
+										rowPrice.attr('data-temp1', formatPercentparseFloat(rowPrice.attr('data-temp3')));
+									}
+									rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
+
+								}
+
+								if (isChangeSame) {
+									rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%');
+									rowPercent.attr('data-temp2', formatPercent(parseFloat(rowPercent.attr('data-temp2'))));
+								} else {
+									if (i > 1 && parseFloat(rowPercent.attr('data-temp1')) != parseFloat(rowPercent.attr('data-temp2'))) {
+										rowPercent.attr('data-temp1', formatPercent(parseFloat(rowPercent.attr('data-temp3'))));
+									}
+									rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%');
+								}
+							}
+						});
+
+						isTemp = false;
+						clearInterval(intervalPriceTemp);
+						intervalPriceTemp = setInterval(function () {
+							handlePriceTemp(data, true, i);
+						}, timeFetchPriceTemp);
+					}
+				})
+				.catch((error) => {
+					setTimeout(function () {
+						handleFetchPrice()
+					}, timeFetchPrice)
+				});
+		}
+	}
+
 	const handlePriceTemp = function (dataTemp, isFetch = false, i = 0) {
-		dataTemp.map(function (data) {
-			let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
-			if (rowChange.length) {
-				let rowPrice = rowChange.find('.chart-table_text[data-price]');
-				let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+		if (timeStatus) {
+			dataTemp.map(function (data) {
+				let rowChange = $('.chart-table_row[data-row="' + data.stock_code + '"]');
+				if (rowChange.length) {
+					let rowPrice = rowChange.find('.chart-table_text[data-price]');
+					let rowPercent = rowChange.find('.chart-table_text[data-percent]');
 
-				if (!isFetch) {
-					if (data.stock_price === null) {
-						rowPrice.attr({
-							'data-temp1': '---', 'data-temp2': '---'
-						});
-					} else {
-						rowPrice.attr({
-							'data-temp1': data.stock_price,
-							'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
-						});
+					if (!isFetch) {
+						if (data.stock_price === null) {
+							rowPrice.attr({
+								'data-temp1': '---', 'data-temp2': '---'
+							});
+						} else {
+							rowPrice.attr({
+								'data-temp1': data.stock_price,
+								'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
+							});
+						}
+						if (data.changePercent === null) {
+							rowPercent.attr({
+								'data-temp1': '---', 'data-temp2': '---'
+							});
+						} else {
+							rowPercent.attr({
+								'data-temp1': data.changePercent,
+								'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
+							});
+						}
 					}
-					if (data.changePercent === null) {
-						rowPercent.attr({
-							'data-temp1': '---', 'data-temp2': '---'
-						});
+
+					if (!isTemp) {
+						rowPrice.html(rowPrice.attr('data-temp2'));
+						rowPercent.html(rowPercent.attr('data-temp2') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
 					} else {
-						rowPercent.attr({
-							'data-temp1': data.changePercent,
-							'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
-						});
+						rowPrice.html(rowPrice.attr('data-temp1'));
+						rowPercent.html(rowPercent.attr('data-temp1') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
 					}
 				}
+			});
+			isTemp = !isTemp;
+		}
+	}
 
-				if (!isTemp) {
-					rowPrice.html(rowPrice.attr('data-temp2'));
-					rowPercent.html(rowPercent.attr('data-temp2') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
-				} else {
-					rowPrice.html(rowPrice.attr('data-temp1'));
-					rowPercent.html(rowPercent.attr('data-temp1') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
+	let timeStatus = false;
+	const handleFetchInfo = function (callBack) {
+		fetch(urlAPI_Info, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					data = data[0];
+					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
+					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + data.change_score + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
+					$('.chart-view').html(data.view_count);
+					$('#chart-day_1').html(data.next_day1);
+					$('#chart-day_2').html(data.next_day2);
+					$('#chart-month').html(data.next_month);
+
+					if (parseInt(data.active) === 1) {
+						timeStatus = true;
+					} else {
+						timeStatus = false;
+					}
+
+					if (callBack) {
+						callBack();
+					}
 				}
-			}
-		});
-		isTemp = !isTemp;
+			})
+			.catch((error) => {
+				setTimeout(function () {
+					handleFetchInfo()
+				}, timeFetchPrice)
+			});
+	}
+
+	const handleFetchDJIndex = function (callBack) {
+		fetch(urlAPI_DJIndex, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
+				$('.chart-stock_dj').html(data.dj_index + '&nbsp;' + data.change_score + '&nbsp;(' + formatPercent(parseFloat(data.percent), 3) + '%)').addClass(classStatus);
+
+				if (callBack) {
+					callBack();
+				}
+			})
+			.catch((error) => {
+				setTimeout(function () {
+					handleFetchDJIndex()
+				}, timeFetchPrice)
+			});
 	}
 
 	const handleColumnSort = function (column) {
@@ -576,8 +624,8 @@
 	}
 
 	const handleFilterData = function () {
-		if ($('.chart-filter_item').length) {
-			let chartFilter = $('.chart-filter_item');
+		if ($('.chart-filter_call').length) {
+			let chartFilter = $('.chart-filter_call');
 			chartFilter.click(function () {
 				let chartFilter_elm = $(this), chartFilter_type = chartFilter_elm.attr('data-value');
 				if (chartFilter_elm.hasClass('active') === false) {
@@ -585,13 +633,38 @@
 						$('.chart-table_sort').removeClass('data-value')
 					}
 
-					chartFilter.removeClass('active');
+					chartFilter.parent().find('.chart-filter_item').removeClass('active');
 					chartFilter_elm.addClass('active');
 					if (!isNaN(parseInt(chartFilter_type)) && parseInt(chartFilter_type) > 0) {
 						handleFetchFilter(chartFilter_type);
 					} else {
 						handleFetchData();
 					}
+					$('#chart-main .chart-table').removeClass('is-show');
+					$('#chart-table').addClass('is-show');
+					handleSetPadding();
+					handleSetMinWidth();
+				} else {
+					return false;
+				}
+			});
+		}
+	}
+
+	const handleCallTab = function () {
+		if ($('.chart-tab_call').length) {
+			let chartTab = $('.chart-tab_call');
+			chartTab.click(function () {
+				let chartTab_elm = $(this), chartTab_type = chartTab_elm.attr('data-target');
+				if (chartTab_elm.hasClass('active') === false) {
+
+					chartTab_elm.parent().find('.chart-filter_item').removeClass('active');
+					chartTab_elm.addClass('active');
+					$('#chart-main .chart-table').removeClass('is-show');
+					$('#chart-table #chart-list').html('');
+					$(chartTab_type).addClass('is-show');
+					handleSetPadding();
+					handleSetMinWidth();
 				} else {
 					return false;
 				}
@@ -662,6 +735,13 @@
 			}, timeFetchPrice);
 		});
 
+		handleFetchDJIndex(function () {
+			clearInterval(intervalDJIndex);
+			intervalDJIndex = setInterval(function () {
+				handleFetchDJIndex();
+			}, timeFetchPrice);
+		});
+
 		handleFetchData(function () {
 			handleSortData();
 			handleFilterData();
@@ -673,6 +753,8 @@
 				handleFetchPrice();
 			}, timeFetchPrice);
 		});
+
+		handleCallTab();
 
 		handleSetPadding();
 		$(window).resize(function () {

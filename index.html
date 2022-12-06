@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<title>Template Chart</title>
 	<meta name="description" content="Template Chart">
@@ -18,7 +18,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-		  rel="stylesheet">
+	      rel="stylesheet">
 
 	<link rel="icon" href="/assets/images/favicon.png">
 	<link rel="apple-touch-icon" href="/assets/images/favicon.png">
@@ -38,139 +38,215 @@
 				<button type="button" class="chart-modal_close" data-bs-dismiss="modal"><i class="fal fa-times"></i>
 				</button>
 			</div>
-			<div class="modal-body">
-				<div class="chart-modal_table">
-					<div class="table-responsive">
-						<table class="table table-bordered">
-							<thead>
-							<tr>
-								<td class="text-center"></td>
-								<td class="text-center">Open</td>
-								<td class="text-center">High</td>
-								<td class="text-center">Low</td>
-								<td class="text-center">Close</td>
-								<td class="text-center">Volumn</td>
-								<td class="text-center">Trading Date</td>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td class="text-center">
+			<div class="modal-body chart-scrollbar">
+				<div class="chart-table chart-table_small is-show">
+					<div class="chart-table_header chart-table_border__row">
+						<div class="chart-table_col chart-table_border__col chart-table_col__same"></div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							Open tăng giá
+						</div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							High
+						</div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							Low
+						</div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							Close
+						</div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							Volumn
+						</div>
+						<div class="chart-table_col chart-table_border__col chart-table_col__same">
+							Trading Date
+						</div>
+					</div>
+					<div class="chart-table_body mb-0">
+						<div class="chart-table_row chart-table_border__row">
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									4226500
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									2022-01-04
-								</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									1
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+						</div>
+						<div class="chart-table_row chart-table_border__row">
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
+									0
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									4226500
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									2022-01-04
-								</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									2
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+						</div>
+						<div class="chart-table_row chart-table_border__row">
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
+									0
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									4226500
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									2022-01-04
-								</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									3
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+						</div>
+						<div class="chart-table_row chart-table_border__row">
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
+									0
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									4226500
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									2022-01-04
-								</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									4
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+						</div>
+						<div class="chart-table_row chart-table_border__row">
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
+									0
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									32182.0
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									4226500
-								</td>
-								<td class="text-end">
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+								<span class="chart-table_text">
 									2022-01-04
-								</td>
-							</tr>
-							</tbody>
-						</table>
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -191,11 +267,11 @@
 		</div>
 	</div>
 </div>
-<div class="chart-action g-15 d-flex align-items-center">
+<div class="chart-action g-15 d-flex align-items-center" id="chart-action">
 	<div class="chart-search position-relative">
 		<div class="chart-search_group d-flex align-items-center">
 			<input type="text" class="form-control chart-search_input" id="chartSearch"
-				   placeholder="Nhập mã CK...">
+			       placeholder="Nhập mã CK...">
 			<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
 		</div>
 		<div class="chart-search_result chart-scrollbar">
@@ -203,34 +279,46 @@
 		</div>
 	</div>
 	<div class="chart-filter d-flex align-items-center g-10" id="chart-filter">
-		<button type="button" class="chart-filter_item active" data-value="-1">
+		<button type="button" class="chart-filter_item chart-filter_call active" data-value="-1">
 			Tất cả
 		</button>
-		<button type="button" class="chart-filter_item" data-value="1">
+		<button type="button" class="chart-filter_item chart-filter_call" data-value="1">
 			Ngân hàng
 		</button>
-		<button type="button" class="chart-filter_item" data-value="2">
+		<button type="button" class="chart-filter_item chart-filter_call" data-value="2">
 			Bất động sản
 		</button>
-		<button type="button" class="chart-filter_item" data-value="3">
+		<button type="button" class="chart-filter_item chart-filter_call" data-value="3">
 			Thép
 		</button>
-		<button type="button" class="chart-filter_item" data-value="4">
+		<button type="button" class="chart-filter_item chart-filter_call" data-value="4">
 			Chứng khoán
 		</button>
+		<button type="button" class="chart-filter_item chart-tab_call" data-target="#chart-khoingoai">
+			Khối ngoại
+		</button>
+		<button type="button" class="chart-filter_item chart-tab_call" data-target="#chart-tanggia">
+			Top tăng giá
+		</button>
 	</div>
-	<div class="chart-text ms-auto align-items-center g-10 d-none d-lg-flex" id="chart-text">
+	<div class="chart-text ms-auto align-items-center g-10 text-nowrap d-none d-lg-flex">
 		<div class="chart-text_item">
-			<b>VNIndex <span class="chart-stock"></span></b>
+			<b>VNIndex <span class="chart-stock_vn"></span></b>
+		</div>
+		<div class="chart-text_item">
+			<b>DJIndex <span class="chart-stock_dj"></span></b>
 		</div>
 		<div class="chart-text_item">
 			Số lượt xem <b class="chart-view"></b>
 		</div>
 	</div>
 </div>
-<div class="chart-text ms-auto align-items-center g-10 d-flex d-lg-none">
+<div class="chart-text ms-auto align-items-center g-10 text-nowrap d-flex d-lg-none" id="chart-text">
 	<div class="chart-text_item">
-		<b>VNIndex <span class="chart-stock"></span></b>
+		<b>VNIndex <span class="chart-stock_vn"></span></b>
+	</div>
+	<div class="chart-text_item">
+		<b>DJIndex <span class="chart-stock_dj"></span></b>
 	</div>
 	<div class="chart-text_item">
 		Số lượt xem <b class="chart-view"></b>
@@ -238,55 +326,55 @@
 </div>
 <div class="chart-main d-flex flex-column" id="chart-main">
 	<div class="chart-body flex-grow-1 flex-shrink-1">
-		<div class="chart-table">
+		<div class="chart-table is-show" id="chart-table">
 			<div class="chart-table_header chart-table_border__row">
 				<div class="chart-table_col chart-table_border__col chart-table_col__14"></div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__1"
-					 data-sort="code">
+				     data-sort="code">
 					Mã CK
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2 chart-table_text chart-text_warning"
-					 data-sort="price-pre">
+				     data-sort="price-pre">
 					Giá tham chiếu <br>Reference Price
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2"
-					 data-sort="price">
+				     data-sort="price">
 					Giá hiện tại <br> Price
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__3 chart-table_highlight"
-					 data-sort="change">
+				     data-sort="change">
 					+/-
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__4 chart-table_highlight"
-					 data-sort="pe">
+				     data-sort="pe">
 					P/E
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__5 chart-table_highlight__2"
-					 data-sort="eps">
+				     data-sort="eps">
 					EPS
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__6"
-					 data-sort="year">
+				     data-sort="year">
 					Tăng trưởng năm <br> Year Revenue Growth <br> 2021
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__7"
-					 data-sort="quarter">
+				     data-sort="quarter">
 					Tăng trưởng quý <br> Quarter Revenue Growth <br> Q4/2022
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__8"
-					 data-sort="deposit">
+				     data-sort="deposit">
 					Tiền mặt <br> Deposit
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__9"
-					 data-sort="revenue">
+				     data-sort="revenue">
 					Tổng thu quý <br> Revenue <br> (tỷ)
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__10"
-					 data-sort="price-year">
+				     data-sort="price-year">
 					Giá thay đổi 1 năm <br> Price Change 1 Year
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__11"
-					 data-sort="price-quarter">
+				     data-sort="price-quarter">
 					Giá thay đổi 3 tháng <br> Price Change 3 Month
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__12">
@@ -300,15 +388,15 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
-									 data-sort="high-day-1">
+								     data-sort="high-day-1">
 									High
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
-									 data-sort="low-day-1">
+								     data-sort="low-day-1">
 									Low
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_highlight"
-									 data-sort="close-day-1">
+								     data-sort="close-day-1">
 									Close
 								</div>
 							</div>
@@ -319,15 +407,15 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
-									 data-sort="high-day-2">
+								     data-sort="high-day-2">
 									High
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same"
-									 data-sort="low-day-2">
+								     data-sort="low-day-2">
 									Low
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_highlight"
-									 data-sort="close-day-3">
+								     data-sort="close-day-3">
 									Close
 								</div>
 							</div>
@@ -338,7 +426,7 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_highlight"
-									 data-sort="agv">
+								     data-sort="agv">
 									Trung bình
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_highlight">
@@ -351,13 +439,1210 @@
 			</div>
 			<div class="chart-table_body" id="chart-list"></div>
 		</div>
+		<div class="chart-table chart-table_small" id="chart-khoingoai">
+			<div class="chart-table_header chart-table_border__row">
+				<div class="chart-table_col chart-table_border__col chart-table_col__same"></div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Open tăng giá
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					High
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Low
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Close
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Volumn
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Trading Date
+				</div>
+			</div>
+			<div class="chart-table_body">
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="chart-table chart-table_small" id="chart-tanggia">
+			<div class="chart-table_header chart-table_border__row">
+				<div class="chart-table_col chart-table_border__col chart-table_col__same"></div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Open tăng giá
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					High
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Low
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Close
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Volumn
+				</div>
+				<div class="chart-table_col chart-table_border__col chart-table_col__same">
+					Trading Date
+				</div>
+			</div>
+			<div class="chart-table_body">
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+				<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							32182.0
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							4226500
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							2022-01-04
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="chart-footer">Dữ liệu tính toán bên trên chỉ mang tính chất tham khảo</div>
 
 <script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
 <script type="text/javascript"
-		src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./assets/js/app.js"></script>
 </body>
 </html>
