@@ -4,8 +4,8 @@
 	const urlAPI_DJIndex = 'https://wipomart.com/dj_index.php';
 	const urlAPI_Data = 'https://wipomart.com/main.php';
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
-	const timeFetchPrice = 8000;
-	const timeFetchPriceTemp = 2000;
+	const timeFetchPrice = 20000;
+	const timeFetchPriceTemp = 5000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
