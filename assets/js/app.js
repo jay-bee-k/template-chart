@@ -4,6 +4,8 @@
 	const urlAPI_DJIndex = 'https://wipomart.com/dj_index.php';
 	const urlAPI_Data = 'https://wipomart.com/main.php';
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
+	const urlAPI_TopTangGia = 'https://wipomart.com/getvol.php';
+	const urlAPI_KhoiNgoai = 'https://wipomart.com/fore.php';
 	const timeFetchPrice = 20000;
 	const timeFetchPriceTemp = 5000;
 	let intervalPrice = '';
@@ -15,14 +17,14 @@
 
 	let handleSetMinWidth = function () {
 		if (windowWidth < 1280 && $('.chart-table_row').length) {
-			$('.chart-table').each(function () {
+			$('.chart-body').each(function () {
 				let rowWidth = 0;
-				let table = $(this);
-				if (table.hasClass('chart-table_small') == false) {
-					table.find('.chart-table_header').css('width', '1900px');
-					table.find('.chart-table_body').css('width', '1900px');
+				let body = $(this);
+				if (body.find('.chart-table').hasClass('chart-table_small') == false) {
+					body.find('.chart-table_header').css('width', '1900px');
+					body.find('.chart-table_body').css('width', '1900px');
 				} else {
-					table.find('.chart-table_row').each(function () {
+					body.find('.chart-table_row').each(function () {
 						if ($(this)[0].scrollWidth > rowWidth) {
 							rowWidth = $(this)[0].scrollWidth;
 							if ($(this)[0].scrollWidth > rowWidth) {
@@ -30,8 +32,8 @@
 							}
 						}
 					});
-					table.find('.chart-table_header').css('width', 'calc(100% + 400px)');
-					table.find('.chart-table_body').css('width', 'calc(100% + 400px)');
+					body.find('.chart-table_header').css('width', 'calc(100% + 400px)');
+					body.find('.chart-table_body').css('width', 'calc(100% + 400px)');
 				}
 			})
 		} else {
@@ -40,17 +42,25 @@
 	}
 
 	let handleSetPadding = function () {
-		if ($('.chart-table_header').length) {
-			let row = $('.chart-table_header'), rowHeight = row.outerHeight(),
-				actionHeight = $('#chart-action').outerHeight(), textHeight = $('#chart-text').outerHeight();
-			if (windowWidth >= 1280) {
-				row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
-			} else if (windowWidth >= 992 && windowWidth < 1280) {
-				row.parents('.chart-body').css('padding-top', actionHeight);
-			} else {
-				row.parents('.chart-body').css('padding-top', actionHeight + textHeight);
+		$('.chart-table').each(function () {
+			if ($(this).find('.chart-table_header').length) {
+				$(this).find('.chart-table_header').each(function () {
+					let row = $(this),
+						rowHeight = row.outerHeight(),
+						actionHeight = $('#chart-action').outerHeight(),
+						textHeight = $('#chart-text').outerHeight();
+
+					if (windowWidth >= 1280) {
+						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
+					} else if (windowWidth >= 992 && windowWidth < 1280) {
+						row.parents('.chart-body').css('padding-top', actionHeight);
+					} else {
+						row.parents('.chart-body').css('padding-top', actionHeight + textHeight);
+					}
+				})
 			}
-		}
+		});
+
 	}
 
 	const formatPercent = function (value, fixed = 2) {
@@ -515,7 +525,7 @@
 				if (data.length) {
 					$('#chart-list').html('');
 
-					if (filter !== '') {
+					if (filter !== '' && filter > -1) {
 						data = data.filter(elm => elm.stock_type === filter);
 					} else {
 						data = data;
@@ -527,6 +537,7 @@
 					} else {
 						dataSorted = handleSortNumber(data, columnSort, type);
 					}
+
 					let renderTemplateList = '';
 					let arrTemp = [];
 					dataSorted.map(function (data, index) {
@@ -611,7 +622,6 @@
 					} else {
 						renderTemplateList += renderTemplateEmpty();
 					}
-
 					$('#chart-list').append(renderTemplateList);
 
 					$('.chart-table_sort').removeClass('chart-table_sort__up chart-table_sort__down');
@@ -640,7 +650,7 @@
 					} else {
 						handleFetchData();
 					}
-					$('#chart-main .chart-table').removeClass('is-show');
+					$('#chart-main .chart-body').removeClass('is-show');
 					$('#chart-table').addClass('is-show');
 					handleSetPadding();
 					handleSetMinWidth();
@@ -660,7 +670,7 @@
 
 					chartTab_elm.parent().find('.chart-filter_item').removeClass('active');
 					chartTab_elm.addClass('active');
-					$('#chart-main .chart-table').removeClass('is-show');
+					$('#chart-main .chart-body').removeClass('is-show');
 					$('#chart-table #chart-list').html('');
 					$(chartTab_type).addClass('is-show');
 					handleSetPadding();
@@ -727,6 +737,136 @@
 		});
 	}
 
+	let renderTemplateTangGia = function (data) {
+		return `<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.company_name}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.stock_code}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.total_volume !== null ? formatPercent(data.total_volume) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.total_value !== null ? formatPercent(data.total_value) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.change_percent !== null ? formatPercent(data.change_percent) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.close_price !== null ? formatPercent(data.close_price) : '---'}
+						</span>
+					</div>
+				</div>`
+	}
+
+	const handleFetchTopTangGia = function () {
+		fetch(urlAPI_TopTangGia, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					$('#chart-list_tanggia').html('');
+					let renderTemplateList = '';
+					data.map(function (data) {
+						renderTemplateList += renderTemplateTangGia(data);
+					});
+
+					$('#chart-list_tanggia').append(renderTemplateList);
+
+					handleSetMinWidth();
+				}
+			})
+			.catch((error) => {
+				setTimeout(function () {
+					handleFetchTopTangGia()
+				}, timeFetchPrice)
+			});
+	}
+
+	let renderTemplateKhoiNgoai = function (data) {
+		return `<div class="chart-table_row chart-table_border__row">
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.company_name}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.stock_code}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.buy_volume !== null ? formatPercent(data.buy_volume) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.buy_value !== null ? formatPercent(data.buy_value) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.sale_volume !== null ? formatPercent(data.sale_volume) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.sale_value !== null ? formatPercent(data.sale_value) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.change_percent !== null ? formatPercent(data.change_percent) : '---'}
+						</span>
+					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
+						<span class="chart-table_text">
+							${data.close_price !== null ? formatPercent(data.close_price) : '---'}
+						</span>
+					</div>
+				</div>`
+	}
+
+	const handleFetchKhoiNgoai = function () {
+		fetch(urlAPI_KhoiNgoai, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					$('#chart-list_khoingoai').html('');
+					let renderTemplateList = '';
+					data.map(function (data) {
+						renderTemplateList += renderTemplateKhoiNgoai(data);
+					});
+
+					$('#chart-list_khoingoai').append(renderTemplateList);
+
+					handleSetMinWidth();
+				}
+			})
+			.catch((error) => {
+				setTimeout(function () {
+					handleFetchTopTangGia()
+				}, timeFetchPrice)
+			});
+	}
+
 	$(function () {
 		handleFetchInfo(function () {
 			clearInterval(intervalInfo);
@@ -753,6 +893,9 @@
 				handleFetchPrice();
 			}, timeFetchPrice);
 		});
+
+		handleFetchTopTangGia();
+		handleFetchKhoiNgoai();
 
 		handleCallTab();
 
