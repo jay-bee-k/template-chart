@@ -692,9 +692,13 @@
 
 					handleFetchData(function (data) {
 						let renderTemplateSearch = '';
-						data = data.filter(elm => Object.values(elm.stock_code).some(val => val.includes(chartSearch_value)));
-						if (data.length > 0) {
-							data.map(function (data) {
+						let resultSearch = [];
+
+						resultSearch = data.filter(function (elm) {
+							return elm.stock_code.includes(chartSearch_value)
+						});
+						if (resultSearch.length > 0) {
+							resultSearch.map(function (data) {
 								renderTemplateSearch += `<li>
 															<a href="javascript:void(0)">
 																${data.stock_code}
