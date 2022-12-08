@@ -615,14 +615,12 @@ textarea:focus {
 	position: fixed;
 	z-index: 4;
 	bottom: 0;
-	left: 5px;
-	right: 5px;
 	background-color: #000000;
 	padding: 4px 5px 4px;
 	color: var(--bs-gray-500);
 	font-size: .9em;
 	height: 25px;
-	max-width: calc(100% - 10px);
+	width: 100%;
 }
 
 @media screen and (min-width: 1401px) and (max-width: 1730px) {
@@ -686,64 +684,52 @@ textarea:focus {
 	}
 
 	.chart-table .chart-table_col__1 {
-		max-width: 7%;
 		width: 7%;
 	}
 
 	.chart-table .chart-table_col__2 {
-		max-width: 5%;
 		width: 5%;
 	}
 
 	.chart-table .chart-table_col__3 {
-		max-width: 4%;
 		width: 4%;
 	}
 
 	.chart-table .chart-table_col__4 {
-		max-width: 4%;
 		width: 4%;
 	}
 
 	.chart-table .chart-table_col__5 {
-		max-width: 4%;
 		width: 4%;
 	}
 
 	.chart-table .chart-table_col__6 {
-		max-width: 6%;
 		width: 6%;
 	}
 
 	.chart-table .chart-table_col__7 {
-		max-width: 5%;
 		width: 5%;
 	}
 
 	.chart-table .chart-table_col__8 {
-		max-width: 6%;
 		width: 6%;
 	}
 
 	.chart-table .chart-table_col__9 {
-		max-width: 6%;
 		width: 6%;
 	}
 
 	.chart-table .chart-table_col__10 {
-		max-width: 6%;
 		width: 6%;
 	}
 
 	.chart-table .chart-table_col__11 {
-		max-width: 6%;
 		width: 6%;
 	}
 
 	.chart-table .chart-table_col__12,
 	.chart-table .chart-table_body__group {
-		max-width: 31%;
-		width: 31%;
+		width: 32%;
 	}
 }
 

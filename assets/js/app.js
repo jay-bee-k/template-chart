@@ -139,45 +139,42 @@
 						</span>
 					</div>
 					<div class="chart-table_body__group">
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
+						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end" data-col="1">
 							<span class="chart-table_text">
 								${data.stock_high_next_day1 !== null ? formatPercent(data.stock_high_next_day1) : '---'}
 							</span>
 						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
+						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end" data-col="2">
 							<span class="chart-table_text">
 								${data.stock_low_next_day1 !== null ? formatPercent(data.stock_low_next_day1) : '---'}
 							</span>
 						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
+						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end chart-table_highlight" data-col="3">
 							<span class="chart-table_text">
 								${data.stock_close_next_day1 !== null ? formatPercent(data.stock_close_next_day1) : '---'}
 							</span>
 						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
-							<span class="chart-table_text">
-								${data.stock_high_next_day2 !== null ? formatPercent(data.stock_high_next_day2) : '---'}
-							</span>
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end">
-							<span class="chart-table_text">
-								${data.stock_low_next_day2 !== null ? formatPercent(data.stock_low_next_day2) : '---'}
-							</span>
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same text-end chart-table_highlight">
-							<span class="chart-table_text">
-								${data.stock_close_next_day2 !== null ? formatPercent(data.stock_close_next_day2) : '---'}
-							</span>
-						</div>
 						<div class="chart-table_col__group___last d-flex">
-							<div class="chart-table_col chart-table_border__col chart-table_col__99 text-end chart-table_highlight">
+							<div class="chart-table_col chart-table_border__col chart-table_col__99 chart-table_col__getWidth text-end chart-table_highlight" data-col="4">
 								<span class="chart-table_text">
-								---
+									${data.change_month1 !== null ? formatPercent(data.change_month1) : '---'}
 								</span>
 							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__100 text-end chart-table_highlight">
+							<div class="chart-table_col chart-table_col__100 chart-table_col__getWidth text-end chart-table_highlight" data-col="5">
 								<span class="chart-table_text">
-									---
+									${data.close_month1 !== null ? formatPercent(data.close_month1) + '%' : '---'}
+								</span>
+							</div>
+						</div>
+						<div class="chart-table_col__group___last chart-table_col__pseudo d-flex">
+							<div class="chart-table_col chart-table_border__col chart-table_col__99 chart-table_col__getWidth text-end chart-table_highlight" data-col="6">
+								<span class="chart-table_text">
+									${data.change_month2 !== null ? formatPercent(data.change_month2) : '---'}
+								</span>
+							</div>
+							<div class="chart-table_col chart-table_border__col chart-table_col__100 chart-table_col__getWidth text-end chart-table_highlight" data-col="7">
+								<span class="chart-table_text">
+									${data.close_month1 !== null ? formatPercent(data.close_month1) + '%' : '---'}
 								</span>
 							</div>
 						</div>
@@ -238,6 +235,7 @@
 
 					$('.chart-table_sort').removeClass('chart-disabled');
 					handleSetMinWidth();
+					handleSetColWidth();
 
 					clearInterval(intervalPriceTemp);
 					intervalPriceTemp = setInterval(function () {
@@ -419,8 +417,8 @@
 					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + data.change_score + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
 					$('.chart-view').html(data.view_count);
 					$('#chart-day_1').html(data.next_day1);
-					$('#chart-day_2').html(data.next_day2);
-					$('#chart-month').html(data.next_month);
+					$('#chart-month_1').html(data.next_month1);
+					$('#chart-month_2').html(data.next_month2);
 
 					if (parseInt(data.active) === 1) {
 						timeStatus = true;
@@ -496,8 +494,14 @@
 				return 'stock_low_next_day2';
 			case 'close-day-2':
 				return 'stock_close_next_day2';
-			case 'agv':
-				return 'agv10';
+			case 'change_month1':
+				return 'change_month1';
+			case 'close_month1':
+				return 'close_month1';
+			case 'change_month2':
+				return 'change_month2';
+			case 'close_month2':
+				return 'close_month2';
 			default:
 				return 'stock_code';
 		}
@@ -587,7 +591,7 @@
 					handleFetchSort(chartSort_elm_column, 'up', filter);
 				} else if (chartSort_elm.hasClass('chart-table_sort__up') === true && chartSort_elm.hasClass('chart-table_sort__down') === false) {
 					chartSort_elm.removeClass('chart-table_sort__up');
-					if (filter !== '') {
+					if (!isNaN(parseInt(filter)) && parseInt(filter) > 0) {
 						handleFetchFilter(filter);
 					} else {
 						handleFetchData();
@@ -875,6 +879,20 @@
 			});
 	}
 
+	const handleSetColWidth = function () {
+		if ($('.chart-table_col__setWidth').length) {
+			$('.chart-table_col__setWidth').each(function (index) {
+				let getWidth = $(this).outerWidth();
+				if (windowWidth > 1600) {
+					$('.chart-table_col__getWidth[data-col=' + $(this).attr('data-col') + ']').css({
+						'min-width': (index === 6) ? getWidth + 1 : getWidth,
+						'max-width': (index === 6) ? getWidth + 1 : getWidth,
+					});
+				}
+			});
+		}
+	}
+
 	$(function () {
 		handleFetchInfo(function () {
 			clearInterval(intervalInfo);
@@ -911,6 +929,7 @@
 		$(window).resize(function () {
 			windowWidth = $(window).width();
 			handleSetMinWidth();
+			handleSetColWidth();
 			handleSetPadding();
 		});
 	});
