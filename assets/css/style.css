@@ -176,6 +176,13 @@ textarea:focus {
 	text-transform: uppercase;
 }
 
+.header .header-small {
+	font-size: 13px;
+	text-transform: initial;
+	color: var(--bs-gray-500);
+	margin-top: 3px;
+}
+
 .chart-action {
 	padding: 0 5px;
 	position: fixed;

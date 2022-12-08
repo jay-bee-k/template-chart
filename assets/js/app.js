@@ -47,15 +47,19 @@
 				$(this).find('.chart-table_header').each(function () {
 					let row = $(this),
 						rowHeight = row.outerHeight(),
+						headerHeight = $('#header').outerHeight(),
 						actionHeight = $('#chart-action').outerHeight(),
-						textHeight = $('#chart-text').outerHeight();
+						textHeight = $('#chart-text').outerHeight(),
+						smallHeight = $('#header > .header-small').outerHeight();
 
 					if (windowWidth >= 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
 					} else if (windowWidth >= 992 && windowWidth < 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight);
 					} else {
-						row.parents('.chart-body').css('padding-top', actionHeight + textHeight);
+						row.parents('.chart-body').css('padding-top', actionHeight + textHeight + smallHeight + 5);
+						$('#chart-action').css('top', headerHeight + 5);
+						$('#chart-text').css('top', headerHeight + actionHeight + 5);
 					}
 				})
 			}
