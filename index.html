@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<title>Template Chart</title>
 	<meta name="description" content="Template Chart">
@@ -18,7 +18,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-	      rel="stylesheet">
+		  rel="stylesheet">
 
 	<link rel="icon" href="/assets/images/favicon.png">
 	<link rel="apple-touch-icon" href="/assets/images/favicon.png">
@@ -29,226 +29,17 @@
 <body class="chart-scrollbar">
 
 <div class="modal fade chart-modal" id="chart-modal" tabindex="-1">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content chart-modal_content">
 			<div class="modal-header">
 				<div class="modal-title">
-					Chi tiết cổ phiếu AAA
+					Chi tiết cổ phiếu <span id="chart-modal_code"></span>
 				</div>
 				<button type="button" class="chart-modal_close" data-bs-dismiss="modal"><i class="fal fa-times"></i>
 				</button>
 			</div>
 			<div class="modal-body chart-scrollbar">
-				<div class="chart-table chart-table_small is-show">
-					<div class="chart-table_header chart-table_border__row">
-						<div class="chart-table_col chart-table_border__col chart-table_col__same"></div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							Open tăng giá
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							High
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							Low
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							Close
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							Volumn
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same">
-							Trading Date
-						</div>
-					</div>
-					<div class="chart-table_body mb-0">
-						<div class="chart-table_row chart-table_border__row">
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									4226500
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									2022-01-04
-								</span>
-							</div>
-						</div>
-						<div class="chart-table_row chart-table_border__row">
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									4226500
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									2022-01-04
-								</span>
-							</div>
-						</div>
-						<div class="chart-table_row chart-table_border__row">
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									4226500
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									2022-01-04
-								</span>
-							</div>
-						</div>
-						<div class="chart-table_row chart-table_border__row">
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									4226500
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									2022-01-04
-								</span>
-							</div>
-						</div>
-						<div class="chart-table_row chart-table_border__row">
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									32182.0
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									4226500
-								</span>
-							</div>
-							<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
-								<span class="chart-table_text">
-									2022-01-04
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="chart-modal_content" id="chart-modal_comment"></div>
 			</div>
 		</div>
 	</div>
@@ -283,7 +74,7 @@
 	<div class="chart-search position-relative">
 		<div class="chart-search_group d-flex align-items-center">
 			<input type="text" class="form-control chart-search_input" id="chartSearch"
-			       placeholder="Nhập mã CK...">
+				   placeholder="Nhập mã CK...">
 			<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
 		</div>
 		<div class="chart-search_result chart-scrollbar">
@@ -342,51 +133,51 @@
 			<div class="chart-table_header chart-table_border__row">
 				<div class="chart-table_col chart-table_border__col chart-table_col__14"></div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__1"
-				     data-sort="code">
+					 data-sort="code">
 					Mã CK
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2 chart-table_text chart-text_warning"
-				     data-sort="price-pre">
+					 data-sort="price-pre">
 					Giá tham chiếu <br>Reference Price
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2"
-				     data-sort="price">
+					 data-sort="price">
 					Giá hiện tại <br> Price
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__3 chart-table_highlight"
-				     data-sort="change">
+					 data-sort="change">
 					+/-
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__4 chart-table_highlight"
-				     data-sort="pe">
+					 data-sort="pe">
 					P/E
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__5 chart-table_highlight__2"
-				     data-sort="eps">
+					 data-sort="eps">
 					EPS
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__6"
-				     data-sort="year">
+					 data-sort="year">
 					Tăng trưởng năm <br> Year Revenue Growth <br> 2021
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__7"
-				     data-sort="quarter">
+					 data-sort="quarter">
 					Tăng trưởng quý <br> Quarter Revenue Growth <br> Q4/2022
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__8"
-				     data-sort="deposit">
+					 data-sort="deposit">
 					Tiền mặt <br> Deposit
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__9"
-				     data-sort="revenue">
+					 data-sort="revenue">
 					Tổng thu quý <br> Revenue <br> (tỷ)
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__10"
-				     data-sort="price-year">
+					 data-sort="price-year">
 					Giá thay đổi 1 năm <br> Price Change 1 Year
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__11"
-				     data-sort="price-quarter">
+					 data-sort="price-quarter">
 					Giá thay đổi 3 tháng <br> Price Change 3 Month
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__12">
@@ -400,36 +191,36 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth"
-								     data-col="1"
-								     data-sort="high-day-1">
+									 data-col="1"
+									 data-sort="high-day-1">
 									High
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth"
-								     data-col="2"
-								     data-sort="low-day-1">
+									 data-col="2"
+									 data-sort="low-day-1">
 									Low
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-								     data-col="3"
-								     data-sort="close-day-1">
+									 data-col="3"
+									 data-sort="close-day-1">
 									Close
 								</div>
 							</div>
 						</div>
 						<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__group___last">
 							<div class="chart-table_col chart-table_col__100 chart-table_col__pseudo"
-							     id="chart-month_1">
+								 id="chart-month_1">
 								-------
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-								     data-col="4"
-								     data-sort="change_month1">
+									 data-col="4"
+									 data-sort="change_month1">
 									Trung bình
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-								     data-col="5"
-								     data-sort="close_month1">
+									 data-col="5"
+									 data-sort="close_month1">
 									+/- %
 								</div>
 							</div>
@@ -440,13 +231,13 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-								     data-col="6"
-								     data-sort="change_month2">
+									 data-col="6"
+									 data-sort="change_month2">
 									Trung bình
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-								     data-col="7"
-								     data-sort="close_month2">
+									 data-col="7"
+									 data-sort="close_month2">
 									+/- %
 								</div>
 							</div>
@@ -556,7 +347,7 @@
 
 <script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
 <script type="text/javascript"
-        src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./assets/js/app.js"></script>
 </body>
 </html>

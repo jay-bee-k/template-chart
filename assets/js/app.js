@@ -79,7 +79,7 @@
 		return `<div class="chart-table_row chart-table_border__row ${formatClass(parseInt(data.price_status))}" data-row="${data.stock_code}">
 					<div class="chart-table_col chart-table_border__col chart-table_col__14 text-center justify-content-center">
 						<span class="chart-table_text">
-							<a href="javascript:void(0)" class="chart-table_btn chart-detail_code">View More</a>
+							<a href="javascript:void(0)" data-code="${data.stock_code}" class="chart-table_btn chart-detail_code">View More</a>
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__1 text-start justify-content-start">
@@ -745,11 +745,38 @@
 	}
 
 	const handleChartModal = function () {
+		let chartModal = $('#chart-modal');
 		$('.chart-detail_code').click(function () {
-			let chartModal = $('#chart-modal');
-			if (chartModal.length) {
-				chartModal.modal('show');
+			let chartCode = $(this).attr('data-code');
+
+			if (chartCode.length) {
+				fetch(urlAPI_Data, {
+					method: 'POST',
+				})
+					.then((response) => response.json())
+					.then((data) => {
+						if (data.length) {
+							data = data.filter(elm => elm.stock_code === chartCode);
+							console.log(data);
+							if (chartModal.length) {
+								chartModal.find('#chart-modal_code').text(data[0].stock_code);
+								chartModal.find('#chart-modal_comment').text(data[0].comment);
+								chartModal.modal('show');
+							}
+						}
+					})
+					.catch((error) => {
+						console.log(error);
+						setTimeout(function () {
+							location.reload();
+						}, 3000)
+					});
 			}
+		});
+
+		chartModal.on('hide.bs.modal', function () {
+			chartModal.find('#chart-modal_code').text('');
+			chartModal.find('#chart-modal_comment').text('');
 		});
 	}
 
