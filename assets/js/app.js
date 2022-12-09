@@ -67,6 +67,10 @@
 
 	}
 
+	const formatPrice = function (value) {
+		return value.replace(/[^0-9]/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 	const formatPercent = function (value, fixed = 2) {
 		return parseFloat(value).toFixed(fixed).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 	}
@@ -283,18 +287,18 @@
 								} else {
 									if (parseFloat(rowPrice.attr('data-temp1')) == parseFloat(data.stock_price)) {
 										rowPrice.attr({
-											'data-temp1': parseFloat(data.stock_price),
-											'data-temp2': parseFloat(data.stock_price) + 0.1
+											'data-temp1': formatPercent(parseFloat(data.stock_price)),
+											'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
 										});
 										isPriceSame = true;
 									} else {
 										if (parseFloat(rowPrice.attr('data-temp2')) != parseFloat(data.stock_price)) {
 											rowPrice.attr({
-												'data-temp3': parseFloat(rowPrice.attr('data-temp2')),
+												'data-temp3': formatPercent(parseFloat(rowPrice.attr('data-temp2'))),
 											});
 										}
 										rowPrice.attr({
-											'data-temp2': parseFloat(data.stock_price),
+											'data-temp2': formatPercent(parseFloat(data.stock_price)),
 										});
 									}
 								}
@@ -306,18 +310,18 @@
 								} else {
 									if (parseFloat(rowPercent.attr('data-temp1')) == parseFloat(data.changePercent)) {
 										rowPercent.attr({
-											'data-temp1': parseFloat(data.changePercent),
-											'data-temp2': parseFloat(data.changePercent) + 0.1
+											'data-temp1': formatPercent(parseFloat(data.changePercent)),
+											'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
 										});
 										isChangeSame = true;
 									} else {
 										if (parseFloat(rowPercent.attr('data-temp2')) != parseFloat(data.changePercent)) {
 											rowPercent.attr({
-												'data-temp3': parseFloat(rowPercent.attr('data-temp2')),
+												'data-temp3': formatPercent(parseFloat(rowPercent.attr('data-temp2')))
 											});
 										}
 										rowPercent.attr({
-											'data-temp2': parseFloat(data.changePercent),
+											'data-temp2': formatPercent(parseFloat(data.changePercent))
 										});
 									}
 								}
@@ -327,7 +331,7 @@
 									rowPrice.attr('data-temp2', formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
 								} else {
 									if (i > 1 && parseFloat(rowPrice.attr('data-temp1')) != parseFloat(rowPrice.attr('data-temp2'))) {
-										rowPrice.attr('data-temp1', formatPercentparseFloat(rowPrice.attr('data-temp3')));
+										rowPrice.attr('data-temp1', formatPercent(parseFloat(rowPrice.attr('data-temp3'))));
 									}
 									rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
 
@@ -375,7 +379,7 @@
 							});
 						} else {
 							rowPrice.attr({
-								'data-temp1': data.stock_price,
+								'data-temp1': formatPercent(parseFloat(data.stock_price)),
 								'data-temp2': formatPercent(parseFloat(data.stock_price) + 0.1)
 							});
 						}
@@ -385,7 +389,7 @@
 							});
 						} else {
 							rowPercent.attr({
-								'data-temp1': data.changePercent,
+								'data-temp1': formatPercent(parseFloat(data.changePercent)),
 								'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
 							});
 						}
@@ -414,8 +418,8 @@
 				if (data.length) {
 					data = data[0];
 					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
-					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + data.change_score + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
-					$('.chart-view').html(data.view_count);
+					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + formatPercent(parseFloat(data.change_score)) + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
+					$('.chart-view').html(formatPrice(data.view_count.toString()));
 					$('#chart-day_1').html(data.next_day1);
 					$('#chart-month_1').html(data.next_month1);
 					$('#chart-month_2').html(data.next_month2);
@@ -445,7 +449,7 @@
 			.then((response) => response.json())
 			.then((data) => {
 				let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
-				$('.chart-stock_dj').html(data.dj_index + '&nbsp;' + data.change_score + '&nbsp;(' + formatPercent(parseFloat(data.percent), 3) + '%)').addClass(classStatus);
+				$('.chart-stock_dj').html(formatPercent(parseFloat(data.dj_index)) + '&nbsp;' + formatPercent(parseFloat(data.change_score)) + '&nbsp;(' + formatPercent(parseFloat(data.percent), 3) + '%)').addClass(classStatus);
 
 				if (callBack) {
 					callBack();
