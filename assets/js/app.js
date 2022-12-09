@@ -773,7 +773,7 @@
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
 						<span class="chart-table_text">
-							${data.change_percent !== null ? formatPercent(data.change_percent) : '---'}
+							${data.change_percent !== null ? formatPercent(data.change_percent) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
@@ -843,7 +843,7 @@
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
 						<span class="chart-table_text">
-							${data.change_percent !== null ? formatPercent(data.change_percent) : '---'}
+							${data.change_percent !== null ? formatPercent(data.change_percent) + '%' : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__same text-center justify-content-center">
