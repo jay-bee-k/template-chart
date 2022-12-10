@@ -757,10 +757,9 @@
 					.then((data) => {
 						if (data.length) {
 							data = data.filter(elm => elm.stock_code === chartCode);
-							console.log(data);
 							if (chartModal.length) {
 								chartModal.find('#chart-modal_code').text(data[0].stock_code);
-								chartModal.find('#chart-modal_comment').text(data[0].comment);
+								chartModal.find('#chart-modal_comment').html(data[0].comment.replace(/\n/g, "<br>"));
 								chartModal.modal('show');
 							}
 						}
