@@ -712,7 +712,7 @@
 						if (resultSearch.length > 0) {
 							resultSearch.map(function (data) {
 								renderTemplateSearch += `<li>
-															<a href="javascript:void(0)">
+															<a href="javascript:void(0)" class="chart-search_item" data-code="${data.stock_code}">
 																${data.stock_code}
 															</a>
 														</li>`;
@@ -726,6 +726,8 @@
 						}
 
 						$('#chart-search_fill').html(renderTemplateSearch);
+
+						handleSearchResult();
 					});
 				} else {
 					if (chartSearch_wrap.hasClass('is-show')) {
@@ -734,12 +736,63 @@
 				}
 			});
 
-
 			$(document).mouseup(function (e) {
 				if (chartSearch_wrap.hasClass('is-show') && !chartSearch_wrap.is(e.target) && chartSearch_wrap.has(e.target).length === 0) {
 					chartSearch_wrap.removeClass('is-show');
 					chartSearch.val('');
 				}
+			});
+		}
+	}
+
+	const handleSearchResult = function () {
+		let searchItem = $('.chart-search_item');
+		if (searchItem.length) {
+			searchItem.click(function () {
+				let search_elm = $(this),
+					search_value = search_elm.attr('data-code');
+
+
+				let chartSearch = $('#chartSearch'), chartSearch_wrap = chartSearch.closest('.chart-search');
+
+				fetch(urlAPI_Data, {
+					method: 'POST',
+				})
+					.then((response) => response.json())
+					.then((data) => {
+						if (data.length) {
+							$('#chart-list').html('');
+							let renderTemplateList = '';
+
+							data = data.filter(elm => elm.stock_code === search_value);
+							if (data.length > 0) {
+								let arrTemp = [];
+								data.map(function (data, index) {
+									renderTemplateList += renderTemplate(data);
+									arrTemp[index] = {
+										'stock_code': data.stock_code,
+										'stock_price': data.stock_price,
+										'changePercent': data.changePercent
+									};
+								});
+
+								clearInterval(intervalPriceTemp);
+								intervalPriceTemp = setInterval(function () {
+									handlePriceTemp(arrTemp);
+								}, timeFetchPriceTemp);
+							} else {
+								renderTemplateList += renderTemplateEmpty();
+							}
+							$('#chart-list').append(renderTemplateList);
+							chartSearch_wrap.removeClass('is-show');
+
+							$('.chart-table_sort').removeClass('chart-table_sort__up chart-table_sort__down');
+							handleChartModal();
+						}
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 			});
 		}
 	}
