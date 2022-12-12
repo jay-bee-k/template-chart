@@ -6,8 +6,8 @@
 	const urlAPI_Price = 'https://wipomart.com/getprice.php';
 	const urlAPI_TopTangGia = 'https://wipomart.com/getvol.php';
 	const urlAPI_KhoiNgoai = 'https://wipomart.com/fore.php';
-	const timeFetchPrice = 20000;
-	const timeFetchPriceTemp = 5000;
+	const timeFetchPrice = 8000;
+	const timeFetchPriceTemp = 2000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
@@ -86,12 +86,12 @@
 							${data.stock_code}
 						</span>
 					</div>
-					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
+					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text chart-text_warning" data-price-pre> 
 							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1 / 1000) : '---'}
 						</span>
 					</div>
-					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
+					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text" data-price> 
 							${data.stock_price !== null ? formatPercent(data.stock_price) : '---'}
 						</span>
@@ -102,16 +102,16 @@
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__3 text-end justify-content-end chart-table_highlight">
-						<span class="chart-table_text" data-volumn>
-							${data.volume !== null ? formatPercent(data.volume) : '---'}
+						<span class="chart-table_text" data-volume>
+							${data.volume !== null ? formatPercent(data.volume) : '---'} 
 						</span>
 					</div>
-					<div class="chart-table_col chart-table_border__col chart-table_col__4 text-end justify-content-end chart-table_highlight">
+					<div class="chart-table_col chart-table_border__col chart-table_col__4 text-end justify-content-end">
 						<span class="chart-table_text">
 							${data.pe !== null ? formatPercent(data.pe) : '---'}
 						</span>
 					</div>
-					<div class="chart-table_col chart-table_border__col chart-table_col__5 text-end justify-content-end chart-table_highlight__2">
+					<div class="chart-table_col chart-table_border__col chart-table_col__5 text-end justify-content-end">
 						<span class="chart-table_text">
 							${data.eps !== null ? formatPercent(data.eps) : '---'}
 						</span>
@@ -220,7 +220,8 @@
 						arrTemp[index] = {
 							'stock_code': data.stock_code,
 							'stock_price': data.stock_price,
-							'changePercent': data.changePercent
+							'changePercent': data.changePercent,
+							'volume': data.volume
 						};
 					});
 
@@ -251,6 +252,7 @@
 	const handleFetchPrice = function () {
 		let isPriceSame = false;
 		let isChangeSame = false;
+		let isVolumeSame = false;
 		if (timeStatus) {
 			fetch(urlAPI_Price, {
 				method: 'POST',
@@ -264,6 +266,7 @@
 							if (rowChange.length) {
 								let rowPrice = rowChange.find('.chart-table_text[data-price]');
 								let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+								let rowVolume = rowChange.find('.chart-table_text[data-volume]');
 
 								rowChange.removeClass(function (index, className) {
 									return (className.match(/(^|\s)chart-text_\S+/g) || []).join(' ');
@@ -283,7 +286,7 @@
 									} else {
 										if (parseFloat(rowPrice.attr('data-temp2')) != parseFloat(data.stock_price)) {
 											rowPrice.attr({
-												'data-temp3': formatPercent(parseFloat(rowPrice.attr('data-temp2'))),
+												'data-temp3': rowPrice.attr('data-temp2'),
 											});
 										}
 										rowPrice.attr({
@@ -306,11 +309,34 @@
 									} else {
 										if (parseFloat(rowPercent.attr('data-temp2')) != parseFloat(data.changePercent)) {
 											rowPercent.attr({
-												'data-temp3': formatPercent(parseFloat(rowPercent.attr('data-temp2')))
+												'data-temp3': rowPercent.attr('data-temp2')
 											});
 										}
 										rowPercent.attr({
 											'data-temp2': formatPercent(parseFloat(data.changePercent))
+										});
+									}
+								}
+
+								if (data.volume === null) {
+									rowVolume.attr({
+										'data-temp2': '---'
+									});
+								} else {
+									if (parseFloat(rowVolume.attr('data-temp1')) == parseFloat(data.volume)) {
+										rowVolume.attr({
+											'data-temp1': formatPercent(parseFloat(data.volume)),
+											'data-temp2': formatPercent(parseFloat(data.volume) + 0.1)
+										});
+										isVolumeSame = true;
+									} else {
+										if (parseFloat(rowVolume.attr('data-temp2')) != parseFloat(data.volume)) {
+											rowVolume.attr({
+												'data-temp3': rowVolume.attr('data-temp2'),
+											});
+										}
+										rowVolume.attr({
+											'data-temp2': formatPercent(parseFloat(data.volume)),
 										});
 									}
 								}
@@ -334,6 +360,16 @@
 										rowPercent.attr('data-temp1', formatPercent(parseFloat(rowPercent.attr('data-temp3'))));
 									}
 									rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%');
+								}
+
+								if (isVolumeSame) {
+									rowVolume.html(formatPercent(parseFloat(rowVolume.attr('data-temp1'))));
+									rowVolume.attr('data-temp2', formatPercent(parseFloat(rowVolume.attr('data-temp2'))));
+								} else {
+									if (i > 1 && parseFloat(rowVolume.attr('data-temp1')) != parseFloat(rowVolume.attr('data-temp2'))) {
+										rowVolume.attr('data-temp1', formatPercent(parseFloat(rowVolume.attr('data-temp3'))));
+									}
+									rowVolume.html(formatPercent(parseFloat(rowVolume.attr('data-temp2'))));
 								}
 							}
 						});
@@ -360,6 +396,7 @@
 				if (rowChange.length) {
 					let rowPrice = rowChange.find('.chart-table_text[data-price]');
 					let rowPercent = rowChange.find('.chart-table_text[data-percent]');
+					let rowVolume = rowChange.find('.chart-table_text[data-volume]');
 
 					if (!isFetch) {
 						if (data.stock_price === null) {
@@ -382,14 +419,26 @@
 								'data-temp2': formatPercent(parseFloat(data.changePercent) + 0.1)
 							});
 						}
+						if (data.volume === null) {
+							rowVolume.attr({
+								'data-temp1': '---', 'data-temp2': '---'
+							});
+						} else {
+							rowVolume.attr({
+								'data-temp1': formatPercent(parseFloat(data.volume)),
+								'data-temp2': formatPercent(parseFloat(data.volume) + 0.1)
+							});
+						}
 					}
 
 					if (!isTemp) {
 						rowPrice.html(rowPrice.attr('data-temp2'));
 						rowPercent.html(rowPercent.attr('data-temp2') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
+						rowVolume.html(rowVolume.attr('data-temp2'));
 					} else {
 						rowPrice.html(rowPrice.attr('data-temp1'));
 						rowPercent.html(rowPercent.attr('data-temp1') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
+						rowVolume.html(rowVolume.attr('data-temp1'));
 					}
 				}
 			});
@@ -397,7 +446,7 @@
 		}
 	}
 
-	let timeStatus = false;
+	let timeStatus = true;
 	const handleFetchInfo = function (callBack) {
 		fetch(urlAPI_Info, {
 			method: 'POST',
@@ -413,9 +462,9 @@
 					$('#chart-month_2').html(data.next_month2);
 
 					if (parseInt(data.active) === 1) {
-						timeStatus = true;
-					} else {
 						timeStatus = false;
+					} else {
+						timeStatus = true;
 					}
 
 					if (callBack) {
@@ -458,6 +507,8 @@
 				return 'stock_price';
 			case 'change':
 				return 'changePercent';
+			case 'volume':
+				return 'volume';
 			case 'pe':
 				return 'pe';
 			case 'eps':
@@ -511,7 +562,6 @@
 		let arrTemp = data.sort(function (a, b) {
 			return parseFloat(a[columnSort] !== null ? a[columnSort] : 0) - parseFloat(b[columnSort] !== null ? b[columnSort] : 0)
 		});
-
 		return (type == 'up') ? arrTemp.reverse() : arrTemp;
 	}
 
@@ -545,7 +595,8 @@
 						arrTemp[index] = {
 							'stock_code': data.stock_code,
 							'stock_price': data.stock_price,
-							'changePercent': data.changePercent
+							'changePercent': data.changePercent,
+							'volume': data.volume
 						};
 					});
 
@@ -611,7 +662,8 @@
 							arrTemp[index] = {
 								'stock_code': data.stock_code,
 								'stock_price': data.stock_price,
-								'changePercent': data.changePercent
+								'changePercent': data.changePercent,
+								'volume': data.volume
 							};
 						});
 
@@ -760,7 +812,8 @@
 									arrTemp[index] = {
 										'stock_code': data.stock_code,
 										'stock_price': data.stock_price,
-										'changePercent': data.changePercent
+										'changePercent': data.changePercent,
+										'volume': data.volume
 									};
 								});
 
