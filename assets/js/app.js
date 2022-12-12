@@ -6,8 +6,8 @@
 	const urlAPI_Price = 'https://vinavote.com/getprice.php';
 	const urlAPI_TopTangGia = 'https://vinavote.com/getvol.php';
 	const urlAPI_KhoiNgoai = 'https://vinavote.com/fore.php';
-	const timeFetchPrice = 8000;
-	const timeFetchPriceTemp = 2000;
+	const timeFetchPrice = 20000;
+	const timeFetchPriceTemp = 4000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
@@ -371,6 +371,10 @@
 									}
 									rowVolume.html(rowVolume.attr('data-temp2'));
 								}
+
+								handleHighLightPrice(rowPrice, parseFloat(rowPrice.attr('data-temp2')), parseFloat(rowPrice.html()));
+								handleHighLightPrice(rowPercent, parseFloat(rowPercent.attr('data-temp2')), parseFloat(rowPercent.html()));
+								handleHighLightPrice(rowVolume, parseFloat(rowVolume.attr('data-temp2')), parseFloat(rowVolume.html()));
 							}
 						});
 
@@ -435,18 +439,37 @@
 						rowPrice.html(rowPrice.attr('data-temp2'));
 						rowPercent.html(rowPercent.attr('data-temp2') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%' : 0);
 						rowVolume.html(rowVolume.attr('data-temp2'));
+
 					} else {
 						rowPrice.html(rowPrice.attr('data-temp1'));
 						rowPercent.html(rowPercent.attr('data-temp1') !== '---' ? formatPercent(parseFloat(rowPercent.attr('data-temp1'))) + '%' : 0);
 						rowVolume.html(rowVolume.attr('data-temp1'));
 					}
+
+					handleHighLightPrice(rowPrice, parseFloat(rowPrice.attr('data-temp2')), parseFloat(rowPrice.html()));
+					handleHighLightPrice(rowPercent, parseFloat(rowPercent.attr('data-temp2')), parseFloat(rowPercent.html()));
+					handleHighLightPrice(rowVolume, parseFloat(rowVolume.attr('data-temp2')), parseFloat(rowVolume.html()));
 				}
 			});
 			isTemp = !isTemp;
 		}
 	}
 
-	let timeStatus = true;
+	const handleHighLightPrice = function (column, price_first, price_second) {
+		let highLightPrice = 'chart-highlight_success';
+		if (price_first === price_second) {
+			highLightPrice = 'chart-highlight_success';
+		} else if (price_first > price_second) {
+			highLightPrice = 'chart-highlight_danger';
+		}
+
+		column.parent().addClass(highLightPrice);
+		setTimeout(function () {
+			column.parent().removeClass(highLightPrice);
+		}, 1500)
+	}
+
+	let timeStatus = false;
 	const handleFetchInfo = function (callBack) {
 		fetch(urlAPI_Info, {
 			method: 'POST',
