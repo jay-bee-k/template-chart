@@ -738,7 +738,24 @@ textarea:focus {
 	}
 }
 
-@media screen and (max-width: 1420px) {
+@media screen and (min-width: 1200px) and (max-width: 1420px) {
+	.chart-action .chart-search {
+		max-width: 120px;
+	}
+
+	.chart-text .chart-text_item b {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.chart-text .chart-text_item + .chart-text_item:before {
+		display: none;
+	}
+
+	.chart-action .chart-text {
+		gap: 20px;
+	}
+
 	.chart-filter {
 		overflow-x: auto;
 	}
@@ -747,7 +764,24 @@ textarea:focus {
 		white-space: nowrap;
 	}
 
+	.chart-filter::-webkit-scrollbar {
+		height: 4px;
+	}
+
+	.chart-filter::-webkit-scrollbar-track {
+		background: var(--dark-200);
+	}
+
+	.chart-filter::-webkit-scrollbar-thumb {
+		background: var(--dark-500);
+		border-radius: 10px;
+	}
+
+	.chart-filter::-webkit-scrollbar-thumb:hover {
+		background: var(--dark-600);
+	}
 }
+
 @media screen and (max-width: 1279px) {
 	.chart-main .chart-body {
 		padding-top: 57px;
