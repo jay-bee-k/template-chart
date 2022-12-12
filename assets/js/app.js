@@ -88,7 +88,7 @@
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
 						<span class="chart-table_text chart-text_warning" data-price-pre> 
-							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1) : '---'}
+							${data.stock_pre_day1 !== null ? formatPercent(data.stock_pre_day1 / 1000) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__2 text-end justify-content-end">
@@ -150,24 +150,24 @@
 						<div class="chart-table_col__group___last d-flex">
 							<div class="chart-table_col chart-table_border__col chart-table_col__99 chart-table_col__getWidth text-end chart-table_highlight" data-col="4">
 								<span class="chart-table_text">
-									${data.change_month1 !== null ? formatPercent(data.change_month1) : '---'}
+									${data.close_month1 !== null ? formatPercent(data.close_month1) + '%' : '---'}
 								</span>
 							</div>
 							<div class="chart-table_col chart-table_col__100 chart-table_col__getWidth text-end chart-table_highlight" data-col="5">
 								<span class="chart-table_text">
-									${data.close_month1 !== null ? formatPercent(data.close_month1) + '%' : '---'}
+									${data.change_month1 !== null ? formatPercent(data.change_month1) : '---'}
 								</span>
 							</div>
 						</div>
 						<div class="chart-table_col__group___last chart-table_col__pseudo d-flex">
 							<div class="chart-table_col chart-table_border__col chart-table_col__99 chart-table_col__getWidth text-end chart-table_highlight" data-col="6">
 								<span class="chart-table_text">
-									${data.change_month2 !== null ? formatPercent(data.change_month2) : '---'}
+									${data.close_month2 !== null ? formatPercent(data.close_month2) + '%' : '---'}
 								</span>
 							</div>
 							<div class="chart-table_col chart-table_border__col chart-table_col__100 chart-table_col__getWidth text-end chart-table_highlight" data-col="7">
 								<span class="chart-table_text">
-									${data.close_month2 !== null ? formatPercent(data.close_month2) + '%' : '---'}
+									${data.change_month2 !== null ? formatPercent(data.change_month2) : '---'}
 								</span>
 							</div>
 						</div>
