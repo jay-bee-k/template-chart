@@ -49,15 +49,14 @@
 						rowHeight = row.outerHeight(),
 						headerHeight = $('#header').outerHeight(),
 						actionHeight = $('#chart-action').outerHeight(),
-						textHeight = $('#chart-text').outerHeight(),
-						smallHeight = $('#header > .header-small').outerHeight();
+						textHeight = $('#chart-text').outerHeight();
 
 					if (windowWidth >= 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
 					} else if (windowWidth >= 992 && windowWidth < 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight);
 					} else {
-						row.parents('.chart-body').css('padding-top', actionHeight + textHeight + smallHeight + 5);
+						row.parents('.chart-body').css('padding-top', actionHeight + textHeight + 10);
 						$('#chart-action').css('top', headerHeight + 5);
 						$('#chart-text').css('top', headerHeight + actionHeight + 5);
 					}
@@ -178,7 +177,7 @@
 							</div>
 							<div class="chart-table_col chart-table_border__col chart-table_col__100 chart-table_col__getWidth text-end chart-table_highlight" data-col="7">
 								<span class="chart-table_text">
-									${data.close_month1 !== null ? formatPercent(data.close_month1) + '%' : '---'}
+									${data.close_month2 !== null ? formatPercent(data.close_month2) + '%' : '---'}
 								</span>
 							</div>
 						</div>

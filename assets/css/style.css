@@ -733,6 +733,16 @@ textarea:focus {
 	}
 }
 
+@media screen and (max-width: 1420px) {
+	.chart-filter {
+		overflow-x: auto;
+	}
+
+	.chart-filter .chart-filter_item {
+		white-space: nowrap;
+	}
+
+}
 @media screen and (max-width: 1279px) {
 	.chart-main .chart-body {
 		padding-top: 57px;
@@ -748,14 +758,6 @@ textarea:focus {
 
 	.chart-action .chart-search {
 		min-width: 130px;
-	}
-
-	.chart-filter {
-		overflow-x: auto;
-	}
-
-	.chart-filter .chart-filter_item {
-		white-space: nowrap;
 	}
 
 	.chart-table {
