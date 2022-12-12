@@ -282,6 +282,7 @@ textarea:focus {
     background-color: var(--dark-300);
     color: var(--bs-gray-200);
     border-radius: 2px 2px 0 0;
+    white-space: nowrap;
 }
 
 .chart-filter .chart-filter_item:hover {
@@ -633,7 +634,7 @@ textarea:focus {
 
 .chart-table .chart-highlight_success > *,
 .chart-table .chart-highlight_danger > *,
-.chart-table .chart-highlight_warning > *{
+.chart-table .chart-highlight_warning > * {
     color: var(--bs-white) !important;
 }
 
@@ -713,24 +714,28 @@ textarea:focus {
         font-size: .85em;
     }
 
+    .chart-table .chart-table_col__14 {
+        width: 6%;
+    }
+
     .chart-table .chart-table_col__1 {
-        width: 7%;
+        width: 6%;
     }
 
     .chart-table .chart-table_col__2 {
-        width: 5%;
+        width: 5.5%;
     }
 
     .chart-table .chart-table_col__3 {
-        width: 4%;
+        width: 6%;
     }
 
     .chart-table .chart-table_col__4 {
-        width: 4%;
+        width: 5%;
     }
 
     .chart-table .chart-table_col__5 {
-        width: 4%;
+        width: 5%;
     }
 
     .chart-table .chart-table_col__6 {
@@ -738,7 +743,7 @@ textarea:focus {
     }
 
     .chart-table .chart-table_col__7 {
-        width: 5%;
+        width: 8%;
     }
 
     .chart-table .chart-table_col__8 {
@@ -759,7 +764,7 @@ textarea:focus {
 
     .chart-table .chart-table_col__12,
     .chart-table .chart-table_body__group {
-        width: 32%;
+        width: 23%;
     }
 }
 
@@ -874,6 +879,21 @@ textarea:focus {
         color: var(--bs-gray-200);
     }
 
+    .header .header-title {
+        height: 10vh;
+    }
+
+    .chart-search .chart-search_group {
+        margin-bottom: 0;
+    }
+
+    .chart-filter {
+        overflow-x: auto;
+    }
+
+    .chart-main {
+        padding-top: 9.5vh;
+    }
 }
 
 @media screen and (max-width: 375px) {
