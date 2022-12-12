@@ -389,7 +389,12 @@ textarea:focus {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	flex-direction: column;
 	background-color: var(--dark-200);
+}
+
+.chart-table .chart-table_col small {
+	font-size: .8em;
 }
 
 .chart-table .chart-table_col__same {
