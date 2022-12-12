@@ -1,11 +1,11 @@
 ;(function ($) {
 	'use strict';
-	const urlAPI_Info = 'https://wipomart.com/systeminfor.php';
-	const urlAPI_DJIndex = 'https://wipomart.com/dj_index.php';
-	const urlAPI_Data = 'https://wipomart.com/main.php';
-	const urlAPI_Price = 'https://wipomart.com/getprice.php';
-	const urlAPI_TopTangGia = 'https://wipomart.com/getvol.php';
-	const urlAPI_KhoiNgoai = 'https://wipomart.com/fore.php';
+	const urlAPI_Info = 'https://vinavote.com/systeminfor.php';
+	const urlAPI_DJIndex = 'https://vinavote.com/dj_index.php';
+	const urlAPI_Data = 'https://vinavote.com/main.php';
+	const urlAPI_Price = 'https://vinavote.com/getprice.php';
+	const urlAPI_TopTangGia = 'https://vinavote.com/getvol.php';
+	const urlAPI_KhoiNgoai = 'https://vinavote.com/fore.php';
 	const timeFetchPrice = 8000;
 	const timeFetchPriceTemp = 2000;
 	let intervalPrice = '';
@@ -348,7 +348,7 @@
 									if (i > 1 && parseFloat(rowPrice.attr('data-temp1')) != parseFloat(rowPrice.attr('data-temp2'))) {
 										rowPrice.attr('data-temp1', formatPercent(parseFloat(rowPrice.attr('data-temp3'))));
 									}
-									rowPrice.html(formatPercent(parseFloat(rowPrice.attr('data-temp2'))));
+									rowPrice.html(rowPrice.attr('data-temp2'));
 
 								}
 
@@ -359,7 +359,7 @@
 									if (i > 1 && parseFloat(rowPercent.attr('data-temp1')) != parseFloat(rowPercent.attr('data-temp2'))) {
 										rowPercent.attr('data-temp1', formatPercent(parseFloat(rowPercent.attr('data-temp3'))));
 									}
-									rowPercent.html(formatPercent(parseFloat(rowPercent.attr('data-temp2'))) + '%');
+									rowPercent.html(rowPercent.attr('data-temp2') + '%');
 								}
 
 								if (isVolumeSame) {
@@ -369,7 +369,7 @@
 									if (i > 1 && parseFloat(rowVolume.attr('data-temp1')) != parseFloat(rowVolume.attr('data-temp2'))) {
 										rowVolume.attr('data-temp1', formatPercent(parseFloat(rowVolume.attr('data-temp3'))));
 									}
-									rowVolume.html(formatPercent(parseFloat(rowVolume.attr('data-temp2'))));
+									rowVolume.html(rowVolume.attr('data-temp2'));
 								}
 							}
 						});
