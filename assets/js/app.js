@@ -101,14 +101,19 @@
 							${data.changePercent !== null ? formatPercent(data.changePercent) + '%' : '---'}
 						</span>
 					</div>
+					<div class="chart-table_col chart-table_border__col chart-table_col__3 text-end justify-content-end chart-table_highlight">
+						<span class="chart-table_text" data-volumn>
+							${data.volume !== null ? formatPercent(data.volume) : '---'}
+						</span>
+					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__4 text-end justify-content-end chart-table_highlight">
 						<span class="chart-table_text">
-							${data.pe !== null ? formatPercent(data.pe) + '%' : '---'}
+							${data.pe !== null ? formatPercent(data.pe) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__5 text-end justify-content-end chart-table_highlight__2">
 						<span class="chart-table_text">
-							${data.eps !== null ? formatPercent(data.eps) + '%' : '---'}
+							${data.eps !== null ? formatPercent(data.eps) : '---'}
 						</span>
 					</div>
 					<div class="chart-table_col chart-table_border__col chart-table_col__6 text-end justify-content-end">
@@ -142,21 +147,6 @@
 						</span>
 					</div>
 					<div class="chart-table_body__group">
-						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end" data-col="1">
-							<span class="chart-table_text">
-								${data.stock_high_next_day1 !== null ? formatPercent(data.stock_high_next_day1) : '---'}
-							</span>
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end" data-col="2">
-							<span class="chart-table_text">
-								${data.stock_low_next_day1 !== null ? formatPercent(data.stock_low_next_day1) : '---'}
-							</span>
-						</div>
-						<div class="chart-table_col chart-table_border__col chart-table_col__same chart-table_col__getWidth text-end chart-table_highlight" data-col="3">
-							<span class="chart-table_text">
-								${data.stock_close_next_day1 !== null ? formatPercent(data.stock_close_next_day1) : '---'}
-							</span>
-						</div>
 						<div class="chart-table_col__group___last d-flex">
 							<div class="chart-table_col chart-table_border__col chart-table_col__99 chart-table_col__getWidth text-end chart-table_highlight" data-col="4">
 								<span class="chart-table_text">
@@ -419,7 +409,6 @@
 					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
 					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + formatPercent(parseFloat(data.change_score)) + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
 					$('.chart-view').html(formatPrice(data.view_count.toString()));
-					$('#chart-day_1').html(data.next_day1);
 					$('#chart-month_1').html(data.next_month1);
 					$('#chart-month_2').html(data.next_month2);
 
