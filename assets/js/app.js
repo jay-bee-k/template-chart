@@ -485,9 +485,9 @@
 					$('#chart-month_2').html(data.next_month2);
 
 					if (parseInt(data.active) === 1) {
-						timeStatus = false;
-					} else {
 						timeStatus = true;
+					} else {
+						timeStatus = false;
 					}
 
 					if (callBack) {
