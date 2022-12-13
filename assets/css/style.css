@@ -881,6 +881,7 @@ textarea:focus {
 
     .header .header-title {
         height: 10vh;
+	    padding: 10px 0;
     }
 
     .chart-search .chart-search_group {
