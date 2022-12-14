@@ -812,7 +812,7 @@
 		let chartModal = $('#chart-modal');
 		$('.chart-detail_code').click(function () {
 			let chartCode = $(this).attr('data-code');
-
+			$('.chart-detail_code').css('pointer-events', 'none');
 			if (chartCode.length) {
 				fetch(urlAPI_Data, {
 					method: 'POST',
@@ -825,11 +825,11 @@
 								chartModal.find('#chart-modal_code').text(data[0].stock_code);
 								chartModal.find('#chart-modal_comment').html(data[0].comment.replace(/\n/g, "<br>"));
 								chartModal.modal('show');
+								$('.chart-detail_code').css('pointer-events', 'auto');
 							}
 						}
 					})
 					.catch((error) => {
-						console.log(error);
 						setTimeout(function () {
 							location.reload();
 						}, 3000)
@@ -837,7 +837,7 @@
 			}
 		});
 
-		chartModal.on('hide.bs.modal', function () {
+		chartModal.on('hidden.bs.modal', function () {
 			chartModal.find('#chart-modal_code').text('');
 			chartModal.find('#chart-modal_comment').text('');
 		});
