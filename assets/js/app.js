@@ -6,12 +6,15 @@
 	const urlAPI_Price = 'https://vinavote.com/getprice.php';
 	const urlAPI_TopTangGia = 'https://vinavote.com/getvol.php';
 	const urlAPI_KhoiNgoai = 'https://vinavote.com/fore.php';
+	const urlAPI_News = 'https://vinavote.com/news.php';
 	const timeFetchPrice = 20000;
 	const timeFetchPriceTemp = 4000;
+	const timeFetchNews = 7200000;
 	let intervalPrice = '';
 	let intervalPriceTemp = '';
 	let intervalInfo = '';
 	let intervalDJIndex = '';
+	let intervalFetchNews = '';
 	let isTemp = false;
 	let windowWidth = $(window).width();
 
@@ -987,6 +990,73 @@
 		}
 	}
 
+	const handleFetchNews = function (callBack) {
+		if ($('#chart-floating').length) {
+			let chartFloatingContent = $('#chart-floating .content-list');
+
+			fetch(urlAPI_News, {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.length) {
+						chartFloatingContent.html('');
+						let renderTemplateNews = '';
+
+						if (data.length > 0) {
+							data.map(function (data) {
+								let dataRender = data.new.split("---");
+								renderTemplateNews += `<div class="content-list_item">
+															<div class="content-item_title">
+																${dataRender[1]}
+															</div>
+															<div class="content-item_text">
+																${dataRender[0].trim()}
+															</div>
+														</div>`;
+							});
+
+							chartFloatingContent.html(renderTemplateNews);
+
+							if (callBack) {
+								callBack(chartFloatingContent)
+							}
+
+						}
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+	}
+
+	const handleSetAnimationNews = function (chartFloatingContent) {
+		let item = chartFloatingContent.find('.content-list_item'),
+			defaultDelay = 20,
+			defaultHeight = 37,
+			height = 0,
+			maxHeight = 0,
+			newDelay = 0;
+
+		item.each(function () {
+			height = $(this).height();
+
+			maxHeight += height;
+			newDelay = defaultDelay * (height / defaultHeight);
+		});
+		item.parent().css({
+			'animation-duration': newDelay + 's',
+			'--max-height': -1 * maxHeight + 'px',
+		})
+	}
+
+	const handleToggleNews = function () {
+		$('#call-floating').click(function () {
+			$('#chart-floating').toggleClass('is-hidden')
+		});
+	}
+
 	$(function () {
 		handleFetchInfo(function () {
 			clearInterval(intervalInfo);
@@ -1020,6 +1090,17 @@
 		handleCallTab();
 
 		handleSetPadding();
+
+		handleFetchNews(function (chartFloatingContent) {
+			handleSetAnimationNews(chartFloatingContent);
+			handleToggleNews();
+
+			clearInterval(intervalFetchNews);
+			intervalFetchNews = setInterval(function () {
+				handleFetchNews();
+			}, timeFetchNews);
+		});
+
 		$(window).resize(function () {
 			windowWidth = $(window).width();
 			handleSetMinWidth();
