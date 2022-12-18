@@ -1004,7 +1004,7 @@
 						let renderTemplateNews = '';
 
 						if (data.length > 0) {
-							data.map(function (data) {
+							data.map(function (data, index) {
 								let dataRender = data.new.split("---");
 								renderTemplateNews += `<div class="content-list_item">
 															<div class="content-item_title">
@@ -1018,10 +1018,29 @@
 
 							chartFloatingContent.html(renderTemplateNews);
 
+							chartFloatingContent.slick({
+								slidesToShow: 3,
+								slidesToScroll: 1,
+								speed: 4000,
+								cssEase: 'linear',
+								draggable: false,
+								swipe: false,
+								touchMove: false,
+								autoplay: true,
+								autoplaySpeed: 0,
+								useTransform: true,
+								vertical: true,
+								verticalSwiping: true,
+								adaptiveHeight: true,
+								infinite: true,
+								pauseOnHover: false,
+								pauseOnFocus: false,
+								swipeToSlide: true,
+							});
+
 							if (callBack) {
 								callBack(chartFloatingContent)
 							}
-
 						}
 					}
 				})
@@ -1029,26 +1048,6 @@
 					console.log(error);
 				});
 		}
-	}
-
-	const handleSetAnimationNews = function (chartFloatingContent) {
-		let item = chartFloatingContent.find('.content-list_item'),
-			defaultDelay = 20,
-			defaultHeight = 37,
-			height = 0,
-			maxHeight = 0,
-			newDelay = 0;
-
-		item.each(function () {
-			height = $(this).height();
-
-			maxHeight += height;
-			newDelay = defaultDelay * (height / defaultHeight);
-		});
-		item.parent().css({
-			'animation-duration': newDelay + 's',
-			'--max-height': -1 * maxHeight + 'px',
-		})
 	}
 
 	const handleToggleNews = function () {
@@ -1091,8 +1090,7 @@
 
 		handleSetPadding();
 
-		handleFetchNews(function (chartFloatingContent) {
-			handleSetAnimationNews(chartFloatingContent);
+		handleFetchNews(function () {
 			handleToggleNews();
 
 			clearInterval(intervalFetchNews);

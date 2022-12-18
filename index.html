@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<title>Dự báo chỉ số chứng khoán</title>
 	<meta name="description" content="Dự báo chỉ số chứng khoán bằng trí tuệ nhân tạo AI">
@@ -13,17 +13,18 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://vinavote.com/">
 	<meta property="og:description"
-		  content="Dự báo chỉ số chứng khoán bằng trí tuệ nhân tạo AI, dự báo dư địa tăng, xu hướng của các nhành bất động sản, ngân hàng, thép. Giúp đưa ra khuyến nghị tin cậy và là một lựa chọn tham khảo dành cho các nhà đâu tư không chuyênn">
+	      content="Dự báo chỉ số chứng khoán bằng trí tuệ nhân tạo AI, dự báo dư địa tăng, xu hướng của các nhành bất động sản, ngân hàng, thép. Giúp đưa ra khuyến nghị tin cậy và là một lựa chọn tham khảo dành cho các nhà đâu tư không chuyênn">
 	<meta property="og:image" content="">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-		  rel="stylesheet">
+	      rel="stylesheet">
 
 	<link rel="icon" href="/assets/images/favicon.png">
 	<link rel="apple-touch-icon" href="/assets/images/favicon.png">
 	<link rel="stylesheet" href="./assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/plugins/slick/slick-theme.css">
 	<link rel="stylesheet" href="./assets/fonts/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -63,7 +64,7 @@
 	<div class="chart-search position-relative">
 		<div class="chart-search_group d-flex align-items-center">
 			<input type="text" class="form-control chart-search_input" id="chartSearch"
-				   placeholder="Nhập mã CK...">
+			       placeholder="Nhập mã CK...">
 			<button type="button" class="chart-search_button"><i class="fas fa-search"></i></button>
 		</div>
 		<div class="chart-search_result chart-scrollbar">
@@ -122,55 +123,55 @@
 			<div class="chart-table_header chart-table_border__row">
 				<div class="chart-table_col chart-table_border__col chart-table_col__14"></div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__1"
-					 data-sort="code">
+				     data-sort="code">
 					Mã CK
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2 chart-table_text chart-table_highlight chart-text_warning"
-					 data-sort="price-pre">
+				     data-sort="price-pre">
 					Giá tham chiếu <br><small>(Reference Price)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__2 chart-table_highlight"
-					 data-sort="price">
+				     data-sort="price">
 					Giá hiện tại <br><small>(Price)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__3 chart-table_highlight"
-					 data-sort="change">
+				     data-sort="change">
 					+/-
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__3 chart-table_highlight"
-					 data-sort="volume">
+				     data-sort="volume">
 					Khớp lệnh <br><small>(Order Matching)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__4"
-					 data-sort="pe">
+				     data-sort="pe">
 					P/E
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__5"
-					 data-sort="eps">
+				     data-sort="eps">
 					EPS
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__6"
-					 data-sort="year">
+				     data-sort="year">
 					Tăng trưởng năm 2021<br><small>(Year Revenue Growth)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__7"
-					 data-sort="quarter">
+				     data-sort="quarter">
 					Tăng trưởng quý Q4/2022<br><small>(Quarter Revenue Growth Q4/2022)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__8"
-					 data-sort="deposit">
+				     data-sort="deposit">
 					Tiền mặt <br><small>(Deposit)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__9"
-					 data-sort="revenue">
+				     data-sort="revenue">
 					Tổng thu quý (tỷ)<br><small>(Revenue - (Billion))</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__10"
-					 data-sort="price-year">
+				     data-sort="price-year">
 					Giá thay đổi 1 năm <br><small>(Price Change 1 Year)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__11"
-					 data-sort="price-quarter">
+				     data-sort="price-quarter">
 					Giá thay đổi 3 tháng <br><small>(Price Change 3 Month)</small>
 				</div>
 				<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__12">
@@ -180,18 +181,18 @@
 					<div class="chart-table_col__group__item chart-table_border__row">
 						<div class="chart-table_col chart-table_border__col chart-table_col__group chart-table_col__group___last">
 							<div class="chart-table_col chart-table_col__100 chart-table_col__pseudo"
-								 id="chart-month_1">
+							     id="chart-month_1">
 								-------
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-									 data-col="4"
-									 data-sort="change_month1">
+								     data-col="4"
+								     data-sort="change_month1">
 									Trung bình
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-									 data-col="5"
-									 data-sort="close_month1">
+								     data-col="5"
+								     data-sort="close_month1">
 									+/- %
 								</div>
 							</div>
@@ -202,13 +203,13 @@
 							</div>
 							<div class="chart-table_col__group__item chart-table_border__row chart-table_col__pseudo">
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-									 data-col="6"
-									 data-sort="change_month2">
+								     data-col="6"
+								     data-sort="change_month2">
 									Trung bình
 								</div>
 								<div class="chart-table_col chart-table_border__col chart-table_sort chart-table_col__same chart-table_col__setWidth chart-table_highlight"
-									 data-col="7"
-									 data-sort="close_month2">
+								     data-col="7"
+								     data-sort="close_month2">
 									+/- %
 								</div>
 							</div>
@@ -316,7 +317,7 @@
 </div>
 <div class="chart-footer">Dữ liệu tính toán bên trên chỉ mang tính chất tham khảo</div>
 
-<div class="chart-floating d-none" id="chart-floating">
+<div class="chart-floating" id="chart-floating">
 	<div class="chart-floating_heading">
 		<div class="floating-heading_title">
 			Tin tức mới nhất từ các báo mạng
@@ -328,14 +329,14 @@
 		</div>
 	</div>
 	<div class="chart-floating_content">
-		<div class="content-list">
-		</div>
+		<div class="content-list"></div>
 	</div>
 </div>
 
 <script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
 <script type="text/javascript"
-		src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="./assets/plugins/slick/slick.min.js"></script>
 <script type="text/javascript" src="./assets/js/app.js"></script>
 </body>
 </html>
