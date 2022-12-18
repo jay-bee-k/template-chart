@@ -1131,6 +1131,7 @@ textarea:focus {
     -ms-flex-direction: column;
     flex-direction: column;
     gap: 3px;
+    width: 100%;
 }
 
 .chart-floating .chart-floating_content .content-list .content-list_item .content-item_title {

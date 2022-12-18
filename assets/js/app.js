@@ -1050,9 +1050,34 @@
 		}
 	}
 
-	const handleToggleNews = function () {
+	const handleToggleNews = function (chartFloatingContent) {
 		$('#call-floating').click(function () {
-			$('#chart-floating').toggleClass('is-hidden')
+			if($('#chart-floating').hasClass('is-hidden')) {
+				// chartFloatingContent.slick('slickPlay');
+				chartFloatingContent.slick({
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					speed: 4000,
+					cssEase: 'linear',
+					draggable: false,
+					swipe: false,
+					touchMove: false,
+					autoplay: true,
+					autoplaySpeed: 0,
+					useTransform: true,
+					vertical: true,
+					verticalSwiping: true,
+					adaptiveHeight: true,
+					infinite: true,
+					pauseOnHover: false,
+					pauseOnFocus: false,
+					swipeToSlide: true,
+				});
+				$('#chart-floating').removeClass('is-hidden');
+			} else {
+				chartFloatingContent.slick('unslick');
+				$('#chart-floating').addClass('is-hidden');
+			}
 		});
 	}
 
@@ -1090,8 +1115,8 @@
 
 		handleSetPadding();
 
-		handleFetchNews(function () {
-			handleToggleNews();
+		handleFetchNews(function (chartFloatingContent) {
+			handleToggleNews(chartFloatingContent);
 
 			clearInterval(intervalFetchNews);
 			intervalFetchNews = setInterval(function () {
