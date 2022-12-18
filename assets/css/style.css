@@ -1043,6 +1043,7 @@ textarea:focus {
 
 .chart-floating {
     position: fixed;
+    transition: var(--transition-default);
     bottom: 0;
     right: 0;
     background-color: rgba(34, 34, 34, .9);
@@ -1056,7 +1057,6 @@ textarea:focus {
     flex-direction: column;
     width: 20%;
     border-radius: 4px 0 0 4px;
-    overflow: hidden;
 }
 
 .chart-floating .chart-floating_heading {
@@ -1069,33 +1069,24 @@ textarea:focus {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 10px 15px;
-    background-color: var(--dark-400);
+    padding: 8px 15px;
+    background-color: var(--dark-700);
 }
 
 .chart-floating .chart-floating_heading .floating-heading_title {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: var(--bs-gray-200);
     font-weight: 700;
 }
 
 .chart-floating .chart-floating_heading .floating-heading_button {
     margin-left: auto;
+    display: none;
 }
 
 .chart-floating .chart-floating_heading .floating-heading_button > .call-floating {
     color: var(--bs-gray-600);
     font-size: 1.5em;
-}
-
-.chart-floating.is-hidden .chart-floating_content {
-    display: none;
-}
-
-.chart-floating.is-hidden .chart-floating_heading .floating-heading_button > .call-floating i {
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
 }
 
 .chart-floating .chart-floating_content {
@@ -1117,11 +1108,13 @@ textarea:focus {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    height: 65vh;
-    padding: 5px 0;
+    height: 84vh;
+    padding: 5px;
+    transition: var(--transition-default);
 }
 
 .chart-floating .chart-floating_content .content-list .content-list_item {
+    margin: 5px 0;
     padding: 5px 15px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1132,6 +1125,8 @@ textarea:focus {
     flex-direction: column;
     gap: 3px;
     width: 100%;
+    background-color: var(--dark-600);
+    border-radius: 4px;
 }
 
 .chart-floating .chart-floating_content .content-list .content-list_item .content-item_title {
@@ -1145,6 +1140,57 @@ textarea:focus {
     color: var(--bs-gray-400);
 }
 
+.chart-floating .slick-prev, .chart-floating .slick-next {
+    display: none !important;
+}
+
+.chart-floating .floating-header_toggle {
+    border-radius: 4px 0 0 4px;
+    height: 48px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bs-gray-600);
+    background-color: var(--dark-300);
+    font-size: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -25px;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+}
+
+.chart-floating .floating-header_toggle > i {
+    transition: var(--transition-default);
+}
+
+.chart-floating .floating-header_toggle:hover {
+    color: var(--bs-white);
+}
+
+.chart-floating.is-toggle {
+    right: -20%;
+}
+
+.chart-floating.is-toggle .floating-header_toggle > i {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.chart-floating.is-hidden .chart-floating_content {
+    display: none;
+}
+
+.chart-floating.is-hidden .chart-floating_heading .floating-heading_button > .call-floating i {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 @media screen and (max-width: 991px) {
     .chart-floating {
         width: 100%;
@@ -1156,5 +1202,13 @@ textarea:focus {
     .chart-floating .chart-floating_heading {
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+
+    .chart-floating .chart-floating_heading .floating-heading_button {
+        display: block;
+    }
+
+    .chart-floating .floating-header_toggle {
+        display: none;
     }
 }
