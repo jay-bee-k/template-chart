@@ -1063,7 +1063,7 @@
 		chartFloatingContent.slick({
 			slidesToShow: 3,
 			slidesToScroll: 1,
-			speed: 4000,
+			speed: 2000,
 			cssEase: 'linear',
 			draggable: false,
 			swipe: false,
