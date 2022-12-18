@@ -419,7 +419,7 @@
 		column.parent().addClass(highLightPrice);
 		setTimeout(function () {
 			column.parent().removeClass(highLightPrice);
-		}, 1500)
+		}, 1000)
 	}
 
 	let timeStatus = false;
