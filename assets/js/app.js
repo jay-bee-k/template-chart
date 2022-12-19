@@ -826,7 +826,9 @@
 							data = data.filter(elm => elm.stock_code === chartCode);
 							if (chartModal.length) {
 								chartModal.find('#chart-modal_code').text(data[0].stock_code);
-								chartModal.find('#chart-modal_comment').html(data[0].comment.replace(/\n/g, "<br>"));
+								if (data[0].comment !== null) {
+									chartModal.find('#chart-modal_comment').html(data[0].comment.replace(/\n/g, "<br>"));
+								}
 								chartModal.modal('show');
 								$('.chart-detail_code').css('pointer-events', 'auto');
 							}
