@@ -1230,7 +1230,7 @@ textarea:focus {
 }
 
 .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image {
-    background: var(--dark-100) var(--backgroundURL) center center/120% no-repeat;
+    background: var(--dark-100) url('../images/subscribe-email.svg') center center/120% no-repeat;
     position: relative;
     width: 40%;
 }
