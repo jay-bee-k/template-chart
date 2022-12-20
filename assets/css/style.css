@@ -1239,22 +1239,21 @@ textarea:focus {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 0;
     border-radius: 50%;
-    background: var(--bs-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    color: var(--bs-gray-900);
     border: 0;
-    transition: var(--transition-default);
-    font-size: 1.3em;
-}
-
-.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image .button-close:hover {
-    background: var(--bs-light);
+    background-color: var(--dark-500);
+    color: var(--bs-gray-500);
+    height: 25px;
+    width: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
 .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image:before {

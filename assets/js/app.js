@@ -1092,14 +1092,26 @@
 							const status = result.status;
 							switch (status) {
 								case 200:
-									subscribeButton.html('Gửi thành công');
+									subscribeButton.html('Ok');
+									subscribeButton.attr({
+										'type': 'button',
+										'data-bs-dismiss': 'modal',
+										'disabled': false,
+										'id': '',
+									})
 									subscribeError.html('');
 									subscribeError.removeClass('is-error');
 									break;
 								case 501:
 									subscribeError.html('Thất bại. Email đã đăng ký nhận tin trước đây');
 									subscribeError.addClass('is-error');
-									subscribeButton.html('Gửi liên hệ');
+									subscribeButton.html('Ok');
+									subscribeButton.attr({
+										'type': 'button',
+										'data-bs-dismiss': 'modal',
+										'disabled': false,
+										'id': '',
+									})
 									subscribeButton.prop('disabled', false);
 									break;
 								default:
