@@ -30,6 +30,49 @@
 </head>
 <body class="chart-scrollbar">
 
+<div class="modal fade subscribe-modal" id="subscribe-modal" tabindex="-1">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content chart-modal_content">
+			<div class="modal-body p-0">
+				<div class="subscribe-modal_wrapper">
+					<div class="subscribe-modal_content">
+						<div class="subscribe-modal_heading">
+							Nhập email để nhận thông tin thị trường sớm nhất
+						</div>
+						<div class="subscribe-modal_form">
+							<form id="subscribe-form" autocomplete="off" class="needs-validation" novalidate="">
+								<div class="d-flex flex-column">
+									<input type="email" class="form-control" name="mail" id="mail"
+									       placeholder="Địa chỉ email của bạn là..."
+									       value="" required="">
+									<div class="invalid-feedback">Vui lòng nhập địa chỉ email của bạn.</div>
+								</div>
+								<div class="mt-4 text-center">
+									<button type="submit" id="subscribe-button" class="button-theme">
+										Gửi liên hệ
+									</button>
+								</div>
+								<div class="mt-2 text-center">
+									<button type="button"
+									        class="text-white-50 opacity-75 small p-0 border-0 bg-transparent button-text"
+									        data-bs-dismiss="modal">
+										Không, cám ơn
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="subscribe-modal_error" id="subscribe-error">
+						</div>
+					</div>
+					<div class="subscribe-modal_image"
+					     style="--backgroundURL: url('/assets/images/subscribe-email.svg');">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="modal fade chart-modal" id="chart-modal" tabindex="-1">
 	<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content chart-modal_content">

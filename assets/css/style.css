@@ -1184,10 +1184,6 @@ textarea:focus {
     transform: rotate(180deg);
 }
 
-.chart-floating.is-hidden .chart-floating_content {
-    display: none;
-}
-
 .chart-floating.is-hidden .chart-floating_heading .floating-heading_button > .call-floating i {
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
@@ -1200,6 +1196,7 @@ textarea:focus {
         max-width: 375px;
         border-radius: 0;
         max-height: 50vh;
+        right: 0 !important;
     }
 
     .chart-floating .chart-floating_heading {
@@ -1214,4 +1211,170 @@ textarea:focus {
     .chart-floating .floating-header_toggle {
         display: none;
     }
+
+    .chart-floating.is-hidden .chart-floating_content {
+        display: none;
+    }
+}
+
+.subscribe-modal {
+    border-radius: 0;
+}
+
+.subscribe-modal .subscribe-modal_wrapper {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--bs-gray-200);
+    background-color: var(--dark-200);
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image {
+    background: var(--dark-100) var(--backgroundURL) center center/120% no-repeat;
+    position: relative;
+    width: 40%;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image .button-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--bs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: var(--bs-gray-900);
+    border: 0;
+    transition: var(--transition-default);
+    font-size: 1.3em;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image .button-close:hover {
+    background: var(--bs-light);
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image:before {
+    padding-top: 100%;
+    display: block;
+    content: "";
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content {
+    display: flex;
+    align-self: center;
+    gap: 30px;
+    flex-direction: column;
+    padding: 50px;
+    width: 60%;
+    position: relative;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_heading {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 1.6em;
+    font-weight: 900;
+    color: var(--secondary-color);
+    padding: 0 30px;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form input {
+    height: 46px;
+    border-radius: 8px;
+    background-color: var(--dark-400);
+    border: 1px solid var(--dark-600);
+    font-size: 1em;
+    padding: 8px 15px;
+    color: var(--bs-gray-200);
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form input:focus {
+    border-color: var(--dark-600) !important;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form input::placeholder {
+    color: var(--bs-gray-500);
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form input.is-invalid, .footer .subscribe-form .was-validated .form-control:invalid {
+    border-color: #dc3545 !important;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form .was-validated input.is-valid, .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_form .was-validated input:valid {
+    border-color: var(--bs-gray-300);
+    padding-right: 0.75rem;
+    background-image: none;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .button-theme {
+    border: 0;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--bs-white);
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px 11px;
+    font-size: 1em;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .button-theme:hover {
+    background-color: var(--secondary-hover);
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_error {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    bottom: 10px;
+    font-size: 1em;
+    color: var(--bs-danger);
+    width: 100%;
+    transition: var(--transition-default);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_error.is-error {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .subscribe-modal .subscribe-modal_wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image:before {
+        padding-top: 200px;
+    }
+
+    .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_image {
+        background-size: contain;
+    }
+
+    .subscribe-modal .subscribe-modal_wrapper > * {
+        width: 100% !important;
+    }
+
+    .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content {
+        padding: 30px;
+    }
+
+    .subscribe-modal .subscribe-modal_wrapper > .subscribe-modal_content .subscribe-modal_heading {
+        padding: 0;
+        font-size: 1.4em;
+    }
+
 }

@@ -7,6 +7,7 @@
 	const urlAPI_TopTangGia = 'https://vinavote.com/getvol.php';
 	const urlAPI_KhoiNgoai = 'https://vinavote.com/fore.php';
 	const urlAPI_News = 'https://vinavote.com/news.php';
+	const urlAPI_Subscribe = 'https://vinavote.com/postmail.php';
 	const timeFetchPrice = 20000;
 	const timeFetchPriceTemp = 4000;
 	const timeFetchNews = 7200000;
@@ -48,11 +49,8 @@
 		$('.chart-table').each(function () {
 			if ($(this).find('.chart-table_header').length) {
 				$(this).find('.chart-table_header').each(function () {
-					let row = $(this),
-						rowHeight = row.outerHeight(),
-						headerHeight = $('#header').outerHeight(),
-						actionHeight = $('#chart-action').outerHeight(),
-						textHeight = $('#chart-text').outerHeight();
+					let row = $(this), rowHeight = row.outerHeight(), headerHeight = $('#header').outerHeight(),
+						actionHeight = $('#chart-action').outerHeight(), textHeight = $('#chart-text').outerHeight();
 
 					if (windowWidth >= 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
@@ -763,8 +761,7 @@
 		let searchItem = $('.chart-search_item');
 		if (searchItem.length) {
 			searchItem.click(function () {
-				let search_elm = $(this),
-					search_value = search_elm.attr('data-code');
+				let search_elm = $(this), search_value = search_elm.attr('data-code');
 
 
 				let chartSearch = $('#chartSearch'), chartSearch_wrap = chartSearch.closest('.chart-search');
@@ -1061,6 +1058,68 @@
 		}
 	}
 
+	const handleSubscribe = function () {
+		if ($('#subscribe-form').length > 0) {
+			$('#subscribe-form').submit(function (event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				let subscribeFrm = $(this),
+					subscribeButton = subscribeFrm.find('#subscribe-button'),
+					subscribeButtonContent = subscribeButton.html(),
+					subscribeError = $('#subscribe-error');
+
+				subscribeButton.html(`Vui lòng chờ <i class="fal fa-spinner fa-spin ms-2"></i>`);
+				subscribeButton.prop('disabled', true);
+
+				if (!subscribeFrm[0].checkValidity()) {
+					event.preventDefault();
+					event.stopPropagation();
+					subscribeFrm.addClass('was-validated');
+					subscribeFrm.find('[name][required]:invalid').first().focus();
+					subscribeButton.prop('disabled', false);
+				} else {
+					const urlEncoded = new URLSearchParams({
+						"mail": subscribeFrm.find('#mail').val(),
+					});
+
+					fetch(urlAPI_Subscribe, {
+						method: 'POST',
+						body: urlEncoded,
+					})
+						.then((response) => response.json())
+						.then((result) => {
+							const status = result.status;
+							switch (status) {
+								case 200:
+									subscribeButton.html('Gửi thành công');
+									subscribeError.html('');
+									subscribeError.removeClass('is-error');
+									break;
+								case 501:
+									subscribeError.html('Thất bại. Email đã đăng ký nhận tin trước đây');
+									subscribeError.addClass('is-error');
+									subscribeButton.html('Gửi liên hệ');
+									subscribeButton.prop('disabled', false);
+									break;
+								default:
+									subscribeError.html('Có lỗi trong quá trình gửi, vui lòng thử lại');
+									subscribeError.addClass('is-error');
+									subscribeButton.html('Gửi liên hệ');
+									subscribeButton.prop('disabled', false);
+									break;
+							}
+						})
+						.catch((error) => {
+							subscribeButton.html('Gửi liên hệ');
+							subscribeButton.prop('disabled', false);
+						});
+				}
+				return false;
+			})
+		}
+	}
+
 	const handleInitSlick = function (chartFloatingContent) {
 		chartFloatingContent.slick({
 			slidesToShow: 3,
@@ -1133,5 +1192,8 @@
 			handleSetColWidth();
 			handleSetPadding();
 		});
+
+		$('#subscribe-modal').modal('show');
+		handleSubscribe();
 	});
 })(jQuery);
