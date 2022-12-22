@@ -76,13 +76,13 @@
 					setTimeout(function () {
 						let computedStyle = getComputedStyle(elm);
 						let elementHeight = elm.clientHeight;
-						elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+						// elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
 						$(elm).css('min-height', elementHeight);
 						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
 						}
 						$(elm).parents('.chart-table_header').css('min-height', elmHeaderHeight);
-					}, 250);
+					}, 550);
 				});
 			}
 		}
@@ -1230,7 +1230,7 @@
 			handleSetHeightColumn();
 		});
 
-		// $('#subscribe-modal').modal('show');
-		// handleSubscribe();
+		/*$('#subscribe-modal').modal('show');
+		handleSubscribe();*/
 	});
 })(jQuery);
