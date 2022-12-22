@@ -77,7 +77,7 @@
 						let computedStyle = getComputedStyle(elm);
 						let elementHeight = elm.clientHeight;
 						elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
-						$(elm).css('height', elementHeight);
+						$(elm).css('min-height', elementHeight);
 						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
 						}
