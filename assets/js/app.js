@@ -76,10 +76,10 @@
 					setTimeout(function () {
 						let elementHeight = elm.clientHeight;
 						$(elm).css('height', elementHeight);
-						if(elementHeight > elmHeaderHeight) {
+						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
 						}
-						$(elm).parents('.chart-table_header').css('height', elmHeaderHeight);
+						$(elm).parents('.chart-table_header').css('min-height', elmHeaderHeight);
 					}, 250);
 				});
 			}
