@@ -74,12 +74,16 @@
 				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
 					let elm = $(this)[0];
 					setTimeout(function () {
-						// let computedStyle = getComputedStyle(elm);
+						let computedStyle = getComputedStyle(elm);
 						let elementHeight = elm.clientHeight;
 						elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
-						$(elm).css('min-height', elementHeight);
 						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
+						}
+						if($(elm).closest('.chart-table_col__group').length == 0) {
+							$(elm).css('min-height', elementHeight);
+						} else {
+							$(elm).css('min-height', elementHeight / 3);
 						}
 						$(elm).parents('.chart-table_header').css('min-height', elmHeaderHeight);
 					}, 250);
