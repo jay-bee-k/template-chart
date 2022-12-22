@@ -83,7 +83,7 @@
 						if($(elm).closest('.chart-table_col__group').length == 0) {
 							$(elm).css('min-height', elementHeight);
 						} else {
-							$(elm).css('min-height', elementHeight / 3);
+							$(elm).css('min-height', elmHeaderHeight / 3);
 						}
 						$(elm).parents('.chart-table_header').css('min-height', elmHeaderHeight);
 					}, 250);
