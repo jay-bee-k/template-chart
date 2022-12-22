@@ -74,8 +74,9 @@
 				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
 					let elm = $(this)[0];
 					setTimeout(function () {
-						console.log($(elm), elm.clientHeight);
+						let computedStyle = getComputedStyle(elm);
 						let elementHeight = elm.clientHeight;
+						elementHeight -= parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
 						$(elm).css('height', elementHeight);
 						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
