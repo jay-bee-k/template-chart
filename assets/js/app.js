@@ -1234,7 +1234,7 @@
 			handleSetHeightColumn();
 		});
 
-		/*$('#subscribe-modal').modal('show');
-		handleSubscribe();*/
+		$('#subscribe-modal').modal('show');
+		handleSubscribe();
 	});
 })(jQuery);
