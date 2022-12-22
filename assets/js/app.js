@@ -70,11 +70,16 @@
 	let handleSetHeightColumn = function () {
 		if (windowWidth < 768) {
 			if ($('.chart-table:visible').length) {
+				let elmHeaderHeight = 0;
 				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
 					let elm = $(this)[0];
 					setTimeout(function () {
 						let elementHeight = elm.clientHeight;
 						$(elm).css('height', elementHeight);
+						if(elementHeight > elmHeaderHeight) {
+							elmHeaderHeight = elementHeight;
+						}
+						$(elm).parents('.chart-table_header').css('height', elmHeaderHeight);
 					}, 250);
 				});
 			}
