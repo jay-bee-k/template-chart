@@ -85,7 +85,7 @@
 							}
 						}
 					}, 300)*/
-					$('.chart-table:visible .chart-table_header').css('height', setHeightParent)
+					$('.chart-table:visible .chart-table_header').css('min-height', setHeightParent)
 				});
 			}
 		}
