@@ -74,6 +74,7 @@
 				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
 					let elm = $(this)[0];
 					setTimeout(function () {
+						console.log($(elm), elm.clientHeight);
 						let elementHeight = elm.clientHeight;
 						$(elm).css('height', elementHeight);
 						if (elementHeight > elmHeaderHeight) {
