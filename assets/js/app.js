@@ -67,6 +67,18 @@
 
 	}
 
+	let handleSetHeightColumn = function () {
+		if (windowWidth < 768) {
+			if ($('.chart-table:visible').length) {
+				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
+					if (!$(this).hasClass('chart-table_col__group')) {
+						$(this).css('height', $(this).outerHeight());
+					}
+				});
+			}
+		}
+	}
+
 	const formatPrice = function (value) {
 		return value.replace(/[^0-9]/g, '').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
@@ -432,8 +444,8 @@
 					let classStatus = (data.change_score > 0) ? 'chart-text_success' : 'chart-text_danger';
 					$('.chart-stock_vn').html(data.vn_index + '&nbsp;' + formatPercent(parseFloat(data.change_score)) + '&nbsp;(' + formatPercent(parseFloat(data.change_percent), 3) + '%)').addClass(classStatus);
 					$('.chart-view').html(formatPrice(data.view_count.toString()));
-					$('#chart-month_1').html(data.next_month1);
-					$('#chart-month_2').html(data.next_month2);
+					$('#chart-month_1').html(`${data.next_month1} <br/>`);
+					$('#chart-month_2').html(`${data.next_month2} <br/>`);
 
 					if (parseInt(data.active) === 1) {
 						timeStatus = true;
@@ -699,9 +711,11 @@
 					$(chartTab_type).addClass('is-show');
 					handleSetPadding();
 					handleSetMinWidth();
+					handleSetHeightColumn();
 				} else {
 					return false;
 				}
+
 			});
 		}
 	}
@@ -1156,6 +1170,7 @@
 
 	$(function () {
 		handleFetchInfo(function () {
+			handleSetHeightColumn();
 			clearInterval(intervalInfo);
 			intervalInfo = setInterval(function () {
 				handleFetchInfo();
@@ -1203,9 +1218,10 @@
 			handleSetMinWidth();
 			handleSetColWidth();
 			handleSetPadding();
+			handleSetHeightColumn();
 		});
 
-		$('#subscribe-modal').modal('show');
-		handleSubscribe();
+		// $('#subscribe-modal').modal('show');
+		// handleSubscribe();
 	});
 })(jQuery);
