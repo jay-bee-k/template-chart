@@ -70,22 +70,12 @@
 	let handleSetHeightColumn = function () {
 		if (windowWidth < 768) {
 			if ($('.chart-table:visible').length) {
-				let setHeightParent = 0;
 				$('.chart-table:visible .chart-table_header .chart-table_col').each(function () {
-					let elmCol = $(this);
-					if(elmCol.height() > setHeightParent) {
-						setHeightParent = elmCol.height();
-					}
-					/*setTimeout(function () {
-						if (!elmCol.hasClass('chart-table_col__group')) {
-							if ($(this).closest('.chart-table_col__group').length) {
-								elmCol.attr('style', `height:${elmCol.outerHeight() + 10}px; padding: 16px 8px !important`);
-							} else {
-								elmCol.attr('style', `height:${elmCol.height() - 10}px; padding: 12px 8px !important`);
-							}
-						}
-					}, 300)*/
-					$('.chart-table:visible .chart-table_header').css('min-height', setHeightParent)
+					let elm = $(this)[0];
+					setTimeout(function () {
+						let elementHeight = elm.clientHeight;
+						$(elm).css('height', elementHeight);
+					}, 250);
 				});
 			}
 		}
