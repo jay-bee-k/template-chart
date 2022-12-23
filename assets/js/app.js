@@ -80,7 +80,7 @@
 						if (elementHeight > elmHeaderHeight) {
 							elmHeaderHeight = elementHeight;
 						}
-						if($(elm).closest('.chart-table_col__group').length == 0) {
+						if ($(elm).closest('.chart-table_col__group').length == 0) {
 							$(elm).css('min-height', elementHeight);
 						} else {
 							$(elm).css('min-height', elmHeaderHeight / 3);
@@ -1234,7 +1234,13 @@
 			handleSetHeightColumn();
 		});
 
-		$('#subscribe-modal').modal('show');
-		handleSubscribe();
+		const randomIntFromInterval = function (min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+		const rndInt = randomIntFromInterval(1, 3)
+		if (rndInt === 1) {
+			$('#subscribe-modal').modal('show');
+			handleSubscribe();
+		}
 	});
 })(jQuery);
