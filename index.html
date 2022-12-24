@@ -138,6 +138,9 @@
 		<button type="button" class="chart-filter_item chart-tab_call" data-target="#chart-tanggia">
 			Top tăng giá
 		</button>
+		<button type="button" class="chart-filter_item chart-tab_call" data-target="#chart-news">
+			Kiến thức chứng khoán
+		</button>
 	</div>
 	<div class="chart-text ms-auto align-items-center g-10 text-nowrap d-none d-lg-flex">
 		<div class="chart-text_item">
@@ -359,10 +362,17 @@
 			</div>
 		</div>
 	</div>
+	<div class="chart-body flex-grow-1 flex-shrink-1 chart-news" id="chart-news">
+		<div class="container-fluid">
+			<div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 rows-col-2 g-3" id="returnListNews">
+			</div>
+			<div class="chart-pagination"><ul class="pagination" id="pagination"></ul></div>
+		</div>
+	</div>
 </div>
 <div class="chart-footer">Dữ liệu tính toán bên trên chỉ mang tính chất tham khảo</div>
 
-<div class="chart-floating" id="chart-floating">
+<div class="chart-floating d-none" id="chart-floating">
 	<div class="chart-floating_heading">
 		<div class="floating-heading_title">
 			Tin tức mới nhất từ các báo mạng
@@ -381,7 +391,8 @@
 	</button>
 </div>
 
-<script type=" text/javascript" src="./assets/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/plugins/moment.min.js"></script>
 <script type="text/javascript"
         src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./assets/plugins/slick/slick.min.js"></script>

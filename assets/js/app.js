@@ -6,8 +6,9 @@
 	const urlAPI_Price = 'https://vinavote.com/getprice.php';
 	const urlAPI_TopTangGia = 'https://vinavote.com/getvol.php';
 	const urlAPI_KhoiNgoai = 'https://vinavote.com/fore.php';
-	const urlAPI_News = 'https://vinavote.com/news.php';
 	const urlAPI_Subscribe = 'https://vinavote.com/postmail.php';
+	const urlAPI_News = 'https://vinavote.com/news.php';
+	const urlAPI_ListNews = 'https://vinavote.com/getlist.php';
 	const timeFetchPrice = 20000;
 	const timeFetchPriceTemp = 4000;
 	const timeFetchNews = 7200000;
@@ -64,7 +65,18 @@
 				})
 			}
 		});
+	}
 
+	let handleSetPaddingNews = function () {
+		if ($('#chart-news').length > 0) {
+			let actionHeight = $('#chart-action').outerHeight(), textHeight = $('#chart-text').outerHeight();
+
+			if (windowWidth >= 992) {
+				$('#chart-news.chart-body').css('padding-top', actionHeight + 10);
+			} else {
+				$('#chart-news.chart-body').css('padding-top', actionHeight + textHeight + 10);
+			}
+		}
 	}
 
 	let handleSetHeightColumn = function () {
@@ -716,13 +728,16 @@
 			chartTab.click(function () {
 				let chartTab_elm = $(this), chartTab_type = chartTab_elm.attr('data-target');
 				if (chartTab_elm.hasClass('active') === false) {
-
 					chartTab_elm.parent().find('.chart-filter_item').removeClass('active');
 					chartTab_elm.addClass('active');
 					$('#chart-main .chart-body').removeClass('is-show');
 					$('#chart-table #chart-list').html('');
 					$(chartTab_type).addClass('is-show');
-					handleSetPadding();
+					if (chartTab_type === '#chart-news') {
+						handleSetPaddingNews();
+					} else {
+						handleSetPadding();
+					}
 					handleSetMinWidth();
 					handleSetHeightColumn();
 				} else {
@@ -1053,6 +1068,7 @@
 					}
 				})
 				.catch((error) => {
+					$('#chart-floating').remove();
 					console.log(error);
 				});
 		}
@@ -1085,15 +1101,156 @@
 		}
 	}
 
+	let listNewsArr = [];
+	let limitPage = 15;
+	let totalItem;
+	let totalPage;
+	const handleFetchListNews = function (page = 1) {
+		if ($('#chart-news').length) {
+
+			fetch(urlAPI_ListNews, {
+				method: 'POST',
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					if (data.length) {
+						listNewsArr = data;
+						totalItem = listNewsArr.length;
+						totalPage = (totalItem == 0) ? 1 : Math.ceil(totalItem / limitPage);
+						handleManageListNews(page, totalItem, totalPage, limitPage);
+						if (totalPage > 1) {
+							handlePagination();
+						}
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+	}
+
+	const handleManageListNews = function (page = 1, totalItem, totalPage, limitPage) {
+		let renderTemplateCardNews = '';
+		let startItem = (page == 1) ? 0 : (page - 1) * limitPage;
+
+		listNewsArr.map(function (data, index) {
+			if (index >= startItem && index < (limitPage * page)) {
+				renderTemplateCardNews += `<div class="col">
+															<div class="card-news card">
+																<div class="card-header position-relative overflow-hidden border-0 bg-transparent p-0">
+																	<div class="ratio ratio-16x9">
+																		<img src="https://vinavote.com/${data.img}"
+																		     class="img-fluid w-100 object-fit-cover" alt="${data.title}">
+																	</div>
+																	<a href="" class="stretched-link"></a>
+																</div>
+																<div class="card-body">
+																	<div class="card-date"><i class="fas fa-calendar-alt"></i> 
+																		<span>Ngày đăng:</span>
+																		${moment(data.dt).format('DD/MM/YYYY')}
+																	</div>
+																	<div class="card-title">
+																		<a href="">
+																			<span>
+																				${data.title}
+																			</span>
+																		</a>
+																	</div>
+																	<div class="card-desc">
+																		${data.content}
+																	</div>
+																	<div class="card-button">
+																		<a href="" class="card-button_link">Xem chi tiết <i class="fal fa-angle-right"></i></a>
+																	</div>
+																</div>
+															</div>
+														</div>`;
+			}
+		});
+		$('#returnListNews').html(renderTemplateCardNews);
+		if (totalItem > limitPage) {
+			$('#returnListNews').parent().find('#pagination').html(`${handleRenderPagination(totalPage, page)}</ul></div>`)
+		}
+	}
+
+	const handlePagination = function () {
+		if ($('#pagination').length) {
+			$(document).on('click', '#pagination .page-link', function () {
+				if ($(this).hasClass('pageactive')) {
+					return false;
+				} else {
+					$('#pagination .page-link').removeClass('pageactive');
+					$(this).addClass('pageactive')
+					handleManageListNews($(this).attr('data-page'), totalItem, totalPage, limitPage, false);
+				}
+			});
+		}
+	}
+
+	const handleRenderPagination = function (total, current_page) {
+		let cur_page = parseInt(current_page);
+		let total_page = parseInt(total);
+		let current_range = new Array();
+		let start = cur_page - 2;
+		let end = cur_page + 2;
+
+		if (cur_page - 2 < 1) {
+			start = 1;
+		}
+		if (cur_page + 2 > total_page) {
+			end = total_page;
+		}
+
+		current_range[0] = start;
+		current_range[1] = end;
+
+		let first_page = '';
+		if (cur_page > 3) {
+			first_page += '<li  data-page="1" class="page-item" ><a class="page-link">1</a></li>';
+		}
+		if (cur_page >= 5) {
+			first_page += '<li> <a>...</a> <li>';
+		}
+
+		let last_page = '';
+		if (cur_page <= (total_page - 4)) {
+			last_page += '<li> <a>...</a> <li>';
+		}
+		if (cur_page < (total_page - 2)) {
+			last_page += '<li class="page-item" ><a data-page="' + total_page + '" class="page-link">' + total_page + '</a></li>';
+		}
+
+		let previous_page = '';
+		if (cur_page > 1) {
+			previous_page = '<li class="page-item" ><a data-page="' + (cur_page - 1) + '" class="page-link"><i class="fa fa-angle-left"></i></a></li>';
+		}
+
+		let next_page = '';
+		if (cur_page < total_page) {
+			next_page = '<li class="page-item" ><a data-page="' + (cur_page + 1) + '" class="page-link"><i class="fa fa-angle-right"></i></a></li>';
+		}
+
+		let page = new Array();
+		for (let x = current_range[0]; x <= current_range[1]; ++x) {
+			let active = '';
+			if (x == cur_page) {
+				active = "pageactive";
+			}
+			let html = '<li class="page-item"><a data-page="' + x + '" class="page-link ' + active + '">' + x + '</a></li>';
+			page.push(html);
+		}
+		if (total_page > 1) {
+			return previous_page + first_page + page.join(" ") + last_page + next_page;
+		} else return '';
+	}
+
 	const handleSubscribe = function () {
 		if ($('#subscribe-form').length > 0) {
 			$('#subscribe-form').submit(function (event) {
 				event.preventDefault();
 				event.stopPropagation();
 
-				let subscribeFrm = $(this),
-					subscribeButton = subscribeFrm.find('#subscribe-button'),
-					subscribeButtonContent = subscribeButton.html(),
+				let subscribeFrm = $(this), subscribeButton = subscribeFrm.find('#subscribe-button'),
 					subscribeError = $('#subscribe-error');
 
 				subscribeButton.html(`Vui lòng chờ <i class="fal fa-spinner fa-spin ms-2"></i>`);
@@ -1111,8 +1268,7 @@
 					});
 
 					fetch(urlAPI_Subscribe, {
-						method: 'POST',
-						body: urlEncoded,
+						method: 'POST', body: urlEncoded,
 					})
 						.then((response) => response.json())
 						.then((result) => {
@@ -1121,10 +1277,7 @@
 								case 200:
 									subscribeButton.html('Ok');
 									subscribeButton.attr({
-										'type': 'button',
-										'data-bs-dismiss': 'modal',
-										'disabled': false,
-										'id': '',
+										'type': 'button', 'data-bs-dismiss': 'modal', 'disabled': false, 'id': '',
 									})
 									subscribeError.html('');
 									subscribeError.removeClass('is-error');
@@ -1134,10 +1287,7 @@
 									subscribeError.addClass('is-error');
 									subscribeButton.html('Ok');
 									subscribeButton.attr({
-										'type': 'button',
-										'data-bs-dismiss': 'modal',
-										'disabled': false,
-										'id': '',
+										'type': 'button', 'data-bs-dismiss': 'modal', 'disabled': false, 'id': '',
 									})
 									subscribeButton.prop('disabled', false);
 									break;
@@ -1214,6 +1364,7 @@
 		handleCallTab();
 
 		handleSetPadding();
+		handleSetPaddingNews();
 		handleSetHeightColumn();
 
 		handleFetchNews(function (chartFloatingContent) {
@@ -1226,18 +1377,22 @@
 			}, timeFetchNews);
 		});
 
+		handleFetchListNews();
+
 		$(window).resize(function () {
 			windowWidth = $(window).width();
 			handleSetMinWidth();
 			handleSetColWidth();
 			handleSetPadding();
+			handleSetPaddingNews();
 			handleSetHeightColumn();
 		});
 
 		const randomIntFromInterval = function (min, max) {
 			return Math.floor(Math.random() * (max - min + 1) + min)
 		}
-		const rndInt = randomIntFromInterval(1, 3)
+		// const rndInt = randomIntFromInterval(1, 3)
+		const rndInt = 3;
 		if (rndInt === 1) {
 			$('#subscribe-modal').modal('show');
 			handleSubscribe();
