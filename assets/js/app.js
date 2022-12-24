@@ -1377,7 +1377,7 @@
 			}, timeFetchNews);
 		});
 
-		handleFetchListNews();
+		// handleFetchListNews();
 
 		$(window).resize(function () {
 			windowWidth = $(window).width();
