@@ -9,6 +9,7 @@
 	const urlAPI_Subscribe = 'https://vinavote.com/postmail.php';
 	const urlAPI_News = 'https://vinavote.com/news.php';
 	const urlAPI_ListNews = 'https://vinavote.com/getlist.php';
+	const urlAPI_DetailNews = 'https://vinavote.com/getnew.php?id=';
 	const timeFetchPrice = 20000;
 	const timeFetchPriceTemp = 4000;
 	const timeFetchNews = 7200000;
@@ -51,7 +52,8 @@
 			if ($(this).find('.chart-table_header').length) {
 				$(this).find('.chart-table_header').each(function () {
 					let row = $(this), rowHeight = row.outerHeight(), headerHeight = $('#header').outerHeight(),
-						actionHeight = $('#chart-action').outerHeight(), textHeight = $('#chart-text').outerHeight();
+						actionHeight = $('#chart-action').outerHeight(),
+						textHeight = $('#chart-text').outerHeight();
 
 					if (windowWidth >= 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
@@ -1065,6 +1067,8 @@
 								callBack(chartFloatingContent)
 							}
 						}
+					} else {
+						$('#chart-floating').remove();
 					}
 				})
 				.catch((error) => {
@@ -1142,7 +1146,7 @@
 																		<img src="https://vinavote.com/${data.img}"
 																		     class="img-fluid w-100 object-fit-cover" alt="${data.title}">
 																	</div>
-																	<a href="" class="stretched-link"></a>
+																	<a href="./detail.html?post=${data.id}" class="stretched-link"></a>
 																</div>
 																<div class="card-body">
 																	<div class="card-date"><i class="fas fa-calendar-alt"></i> 
@@ -1150,7 +1154,7 @@
 																		${moment(data.dt).format('DD/MM/YYYY')}
 																	</div>
 																	<div class="card-title">
-																		<a href="">
+																		<a href="./detail.html?post=${data.id}">
 																			<span>
 																				${data.title}
 																			</span>
@@ -1160,7 +1164,7 @@
 																		${data.content}
 																	</div>
 																	<div class="card-button">
-																		<a href="" class="card-button_link">Xem chi tiết <i class="fal fa-angle-right"></i></a>
+																		<a href="./detail.html?post=${data.id}" class="=card-button_link">Xem chi tiết <i class="fal fa-angle-right"></i></a>
 																	</div>
 																</div>
 															</div>
@@ -1209,12 +1213,12 @@
 			first_page += '<li  data-page="1" class="page-item" ><a class="page-link">1</a></li>';
 		}
 		if (cur_page >= 5) {
-			first_page += '<li> <a>...</a> <li>';
+			first_page += '<li> <a style="padding: 12px 5px 0; pointer-events: none;user-select: none; display:block;">...</a> <li>';
 		}
 
 		let last_page = '';
 		if (cur_page <= (total_page - 4)) {
-			last_page += '<li> <a>...</a> <li>';
+			last_page += '<li> <a style="padding: 12px 5px 0px; pointer-events: none;user-select: none; display:block;">...</a> <li>';
 		}
 		if (cur_page < (total_page - 2)) {
 			last_page += '<li class="page-item" ><a data-page="' + total_page + '" class="page-link">' + total_page + '</a></li>';
@@ -1242,6 +1246,203 @@
 		if (total_page > 1) {
 			return previous_page + first_page + page.join(" ") + last_page + next_page;
 		} else return '';
+	}
+
+	const handleDetailNews = function (id_news, callBack) {
+		fetch(urlAPI_DetailNews + id_news, {
+			method: 'GET',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data !== null) {
+					if (callBack) {
+						callBack(data)
+					}
+				} else {
+					// location.reload();
+				}
+			})
+			.catch((error) => {
+				// location.reload();
+				console.log(error)
+			});
+	}
+
+	const createState = function (data) {
+		return {
+			title: data.title,
+			content: data.content,
+			image: data.img,
+			createAT: moment(data.dt).format('DD/MM/YYYY'),
+		};
+	}
+
+	const displayContent = function (state) {
+		// Push title
+		document.title = state.title;
+		document.querySelector("meta[name='description']").setAttribute("content", state.content);
+		document.querySelector("meta[property='og:description']").setAttribute("content", state.content);
+		document.querySelector("meta[property='og:title']").setAttribute("content", state.title);
+		document.querySelector("meta[property='og:image']").setAttribute("content", 'https://vinavote.com/' + state.image);
+
+		return `<div class="chart-detail_news">
+									<div class="chart-breadcrumb py-3">
+										<div class="container-fluid">
+											<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+											     aria-label="breadcrumb">
+												<ol class="breadcrumb mb-0">
+													<li class="breadcrumb-item"><a href="https://vinavote.com"><i class="fas fa-home-alt"></i>&nbsp;Trang chủ</a></li>
+													<li class="breadcrumb-item active" id="breadcrumb-fill">${state.title}</li>
+												</ol>
+											</nav>
+											<div class="detail-news_wrapper">
+												<div class="row g-3">
+													<div class="col-lg-9">
+														<div class="rounded-1 p-lg-4 p-2 detail-news_content">
+															<h1 class="detail-news_title">
+																${state.title}
+															</h1>
+															<div class="row align-items-center flex-column flex-md-row">
+																<div class="col-auto flex-shrink-0 mb-1 mb-md-0">
+																	<div class="detail-news_metas">
+																		<div class="meta-list">
+																			<div class="meta-item">
+																				<i class="fas fa-calendar-alt"></i>
+																				Ngày đăng
+																				<span>${state.createAT}</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-auto flex-grow-1 d-flex justify-content-md-end">
+																	<div class="detail-news_social">
+																		<ul class="list-unstyled mb-0">
+																			<li class="share">
+																				Chia sẻ:
+																			</li>
+																			<li>
+																				<div class="fb-share-button"
+																				     data-href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																				     data-layout="button" data-size="small">
+																					<a target="_blank"
+																					   href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																					   class="fb-xfbml-parse-ignore">Chia sẻ</a>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="zalo-share-button"
+																				     data-href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																				     data-oaid="579745863508352884" data-layout="1"
+																				     data-color="blue" data-customize="false"
+																				     style="position: relative; display: inline-block; width: 70px; height: 20px;">
+																					<iframe id="69b9793d-9f38-4285-903b-85e1b9bf664e"
+																					        name="69b9793d-9f38-4285-903b-85e1b9bf664e"
+																					        frameborder="0" allowfullscreen="" scrolling="no"
+																					        width="70px" height="20px"
+																					        src="https://button-share.zalo.me/share_inline?id=69b9793d-9f38-4285-903b-85e1b9bf664e&amp;layout=1&amp;color=blue&amp;customize=false&amp;width=70&amp;height=20&amp;isDesktop=true&amp;url=https%3A%2F%2Fjaybee-k.github.io%2Ftemplate-baobi&amp;d=eyJ1cmwiOiJodHRwczovL2pheWJlZS1rLmdpdGh1Yi5pby90ZW1wbGF0ZS1iYW9iaSJ9&amp;shareType=0"
+																					        style="position: absolute; z-index: 99; top: 0px; left: 0px;"></iframe>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="pt-3 mt-3 detail-news_description" id="detail-news_description">
+																${state.content}
+															</div>
+															<div id="fb-root"></div>
+															<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0"
+																	nonce="yTOmTKsy"></script>
+															<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+														</div>
+													</div>
+													<div class="col-lg-3">
+														<div class="rounded-1 p-lg-4 p-2 detail-news_sidebar">
+															<div class="section-heading mb-0">
+																<div class="section-heading_title">
+																	Kiến thức chứng khoán mới
+																</div>
+															</div>
+															<div class="detail-news_list">
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+																<div class="detail-news_list__item">
+																	<a href="">
+																		<div class="article-list_item--title">
+																			Để in một bao bì giấy chất lượng cần những yếu tố nào
+																		</div>
+																		<div class="article-list_item--date">
+																			<i class="fas fa-calendar-alt"></i>
+																			<span>28-11-2022</span>
+																		</div>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>`
+	}
+
+
+	const handleSidebarNews = function (page, isSidebar) {
+		console.log(handleFetchListNews(page, isSidebar));
 	}
 
 	const handleSubscribe = function () {
@@ -1332,70 +1533,76 @@
 	}
 
 	$(function () {
-		handleFetchInfo(function () {
-			clearInterval(intervalInfo);
-			intervalInfo = setInterval(function () {
-				handleFetchInfo();
-			}, timeFetchPrice);
-		});
+		if (typeof page === 'undefined') {
+			handleFetchInfo(function () {
+				clearInterval(intervalInfo);
+				intervalInfo = setInterval(function () {
+					handleFetchInfo();
+				}, timeFetchPrice);
+			});
 
-		handleFetchDJIndex(function () {
-			clearInterval(intervalDJIndex);
-			intervalDJIndex = setInterval(function () {
-				handleFetchDJIndex();
-			}, timeFetchPrice);
-		});
+			handleFetchDJIndex(function () {
+				clearInterval(intervalDJIndex);
+				intervalDJIndex = setInterval(function () {
+					handleFetchDJIndex();
+				}, timeFetchPrice);
+			});
 
-		handleFetchData(function () {
-			handleSortData();
-			handleFilterData();
-			handleSearch();
-			handleChartModal();
+			handleFetchData(function () {
+				handleSortData();
+				handleFilterData();
+				handleSearch();
+				handleChartModal();
 
-			clearInterval(intervalPrice);
-			intervalPrice = setInterval(function () {
-				handleFetchPrice();
-			}, timeFetchPrice);
-		});
+				clearInterval(intervalPrice);
+				intervalPrice = setInterval(function () {
+					handleFetchPrice();
+				}, timeFetchPrice);
+			});
 
-		handleFetchTopTangGia();
-		handleFetchKhoiNgoai();
+			handleFetchTopTangGia();
+			handleFetchKhoiNgoai();
 
-		handleCallTab();
+			handleCallTab();
 
-		handleSetPadding();
-		handleSetPaddingNews();
-		handleSetHeightColumn();
-
-		handleFetchNews(function (chartFloatingContent) {
-			handleToggleNews(chartFloatingContent);
-			handleVisiableNews(chartFloatingContent);
-
-			clearInterval(intervalFetchNews);
-			intervalFetchNews = setInterval(function () {
-				handleFetchNews();
-			}, timeFetchNews);
-		});
-
-		// handleFetchListNews();
-
-		$(window).resize(function () {
-			windowWidth = $(window).width();
-			handleSetMinWidth();
-			handleSetColWidth();
 			handleSetPadding();
 			handleSetPaddingNews();
 			handleSetHeightColumn();
-		});
 
-		const randomIntFromInterval = function (min, max) {
-			return Math.floor(Math.random() * (max - min + 1) + min)
-		}
-		// const rndInt = randomIntFromInterval(1, 3)
-		const rndInt = 3;
-		if (rndInt === 1) {
-			$('#subscribe-modal').modal('show');
-			handleSubscribe();
+			handleFetchNews(function (chartFloatingContent) {
+				handleToggleNews(chartFloatingContent);
+				handleVisiableNews(chartFloatingContent);
+
+				clearInterval(intervalFetchNews);
+				intervalFetchNews = setInterval(function () {
+					handleFetchNews();
+				}, timeFetchNews);
+			});
+			$(window).resize(function () {
+				windowWidth = $(window).width();
+				handleSetMinWidth();
+				handleSetColWidth();
+				handleSetPadding();
+				handleSetPaddingNews();
+				handleSetHeightColumn();
+			});
+
+			const randomIntFromInterval = function (min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min)
+			}
+			const rndInt = randomIntFromInterval(1, 3)
+			if (rndInt === 1) {
+				$('#subscribe-modal').modal('show');
+				handleSubscribe();
+			}
+			handleFetchListNews();
+		} else {
+			if (window.history && 'pushState' in history) {
+				handleDetailNews(id_news, function (data) {
+					const state = createState(data);
+					$('#chart-main').html(displayContent(state))
+				});
+			}
 		}
 	});
 })(jQuery);
