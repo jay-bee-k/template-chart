@@ -1259,17 +1259,17 @@
 						callBack(data)
 					}
 				} else {
-					// location.reload();
+					location.reload();
 				}
 			})
 			.catch((error) => {
-				// location.reload();
-				console.log(error)
+				location.reload();
 			});
 	}
 
 	const createState = function (data) {
 		return {
+			id: data.id,
 			title: data.title,
 			content: data.content,
 			image: data.img,
@@ -1277,7 +1277,7 @@
 		};
 	}
 
-	const displayContent = function (state) {
+	const displayContent = function (state, sidebar) {
 		// Push title
 		document.title = state.title;
 		document.querySelector("meta[name='description']").setAttribute("content", state.content);
@@ -1322,16 +1322,16 @@
 																			</li>
 																			<li>
 																				<div class="fb-share-button"
-																				     data-href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																				     data-href="https://vinavote.com/detail.html?post=${state.id}"
 																				     data-layout="button" data-size="small">
 																					<a target="_blank"
-																					   href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																					   href="https://vinavote.com/detail.html?post=${state.id}"
 																					   class="fb-xfbml-parse-ignore">Chia sẻ</a>
 																				</div>
 																			</li>
 																			<li>
 																				<div class="zalo-share-button"
-																				     data-href="https://jay-bee-k.github.io/template-chart/detail.html?post=${state.id}"
+																				     data-href="https://vinavote.com/detail.html?post=${state.id}"
 																				     data-oaid="579745863508352884" data-layout="1"
 																				     data-color="blue" data-customize="false"
 																				     style="position: relative; display: inline-block; width: 70px; height: 20px;">
@@ -1363,74 +1363,7 @@
 																	Kiến thức chứng khoán mới
 																</div>
 															</div>
-															<div class="detail-news_list">
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-																<div class="detail-news_list__item">
-																	<a href="">
-																		<div class="article-list_item--title">
-																			Để in một bao bì giấy chất lượng cần những yếu tố nào
-																		</div>
-																		<div class="article-list_item--date">
-																			<i class="fas fa-calendar-alt"></i>
-																			<span>28-11-2022</span>
-																		</div>
-																	</a>
-																</div>
-															</div>
+															<div class="detail-news_list" id="detail-news_list"></div>
 														</div>
 													</div>
 												</div>
@@ -1440,9 +1373,41 @@
 								</div>`
 	}
 
+	const handleSidebarNews = function (id) {
+		fetch(urlAPI_ListNews, {
+			method: 'POST',
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.length) {
+					let renderTemplateSidebarNews = '';
+					data = data.filter(elm => elm.id !== id);
+					data = data.sort(function (a, b) {
+						return (a.dt < b.dt) - (a.dt > b.dt)
+					});
 
-	const handleSidebarNews = function (page, isSidebar) {
-		console.log(handleFetchListNews(page, isSidebar));
+					data.map(function (data, index) {
+						if (index < 5) {
+							renderTemplateSidebarNews += `<div class="detail-news_list__item">
+															<a href="./detail.html?post=${data.id}">
+																<div class="article-list_item--title">
+																	${data.title}
+																</div>
+																<div class="article-list_item--date">
+																	<i class="fas fa-calendar-alt"></i>
+																	<span>${moment(data.dt).format('DD/MM/YYYY')}</span>
+																</div>
+															</a>
+														</div>`;
+
+						}
+					});
+					$('#detail-news_list').html(renderTemplateSidebarNews);
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 
 	const handleSubscribe = function () {
@@ -1597,12 +1562,12 @@
 			}
 			handleFetchListNews();
 		} else {
-			if (window.history && 'pushState' in history) {
-				handleDetailNews(id_news, function (data) {
-					const state = createState(data);
-					$('#chart-main').html(displayContent(state))
-				});
-			}
+			let state;
+			handleDetailNews(id_news, function (data) {
+				state = createState(data);
+				handleSidebarNews(state.id);
+				$('#chart-main').html(displayContent(state));
+			});
 		}
 	});
 })(jQuery);

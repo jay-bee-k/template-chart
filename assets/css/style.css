@@ -1084,11 +1084,13 @@ textarea:focus {
 .chart-floating .chart-floating_heading .floating-heading_button {
     margin-left: auto;
     display: none;
+    margin-right: -8px;
 }
 
 .chart-floating .chart-floating_heading .floating-heading_button > .call-floating {
     color: var(--secondary-color);
     font-size: 1.5em;
+    padding: 8px;
 }
 
 .chart-floating .chart-floating_content {
@@ -1566,6 +1568,7 @@ textarea:focus {
 
 .chart-detail_news {
     background-color: var(--dark-300);
+    height: 100%;
 }
 
 .chart-breadcrumb .breadcrumb .breadcrumb-item {
@@ -1584,10 +1587,11 @@ textarea:focus {
     background-color: var(--dark-400);
 }
 
-.detail-news_wrapper .detail-news_content .detail-news_title{
+.detail-news_wrapper .detail-news_content .detail-news_title {
     font-size: 1.6em;
     font-weight: 700;
     color: var(--bs-white);
+    line-height: 1.4;
 }
 
 .detail-news_wrapper .detail-news_content .detail-news_metas .meta-list {
@@ -1778,4 +1782,25 @@ textarea:focus {
     width: 4px;
     left: 26px;
     transform: translateY(-50%);
+}
+
+@media screen and (max-width: 991px) {
+    .detail-news_wrapper .detail-news_content .detail-news_title {
+        font-size: 1.35em;
+    }
+
+    .chart-breadcrumb .breadcrumb {
+        flex-wrap: nowrap;
+    }
+
+    .chart-breadcrumb .breadcrumb .breadcrumb-item {
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        min-width: 82px;
+        line-height: 1.6;
+    }
 }
