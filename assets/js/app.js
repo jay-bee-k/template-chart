@@ -1351,7 +1351,7 @@
 																<div class="mb-3 mt-2 text-center">
 																	<img src="https://vinavote.com/${state.image}" class="img-fluid mw-100" alt="${state.title}">
 																</div>
-																${state.content}
+																${state.content.replace(/\n/g, "<br>")}
 															</div>
 															<div id="fb-root"></div>
 															<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0"
