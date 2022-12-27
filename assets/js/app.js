@@ -1348,6 +1348,9 @@
 																</div>
 															</div>
 															<div class="pt-3 mt-3 detail-news_description" id="detail-news_description">
+																<div class="mb-3 mt-2 text-center">
+																	<img src="https://vinavote.com/${state.image}" class="img-fluid mw-100" alt="${state.title}">
+																</div>
 																${state.content}
 															</div>
 															<div id="fb-root"></div>
