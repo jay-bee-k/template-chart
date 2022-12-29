@@ -1880,10 +1880,6 @@ textarea:focus {
 	color: var(--bs-gray-100);
 }
 
-.chart-profile .chart-profile_inner .chart-profile_right {
-	background: var(--secondary-color);
-}
-
 .chart-profile .chart-profile_inner .chart-profile_social {
 	margin-top: 40px;
 	display: flex;
@@ -1893,6 +1889,10 @@ textarea:focus {
 .chart-profile .chart-profile_inner .chart-profile_social > a {
 	color: var(--bs-white);
 	font-size: 1.7em;
+}
+
+.chart-profile .chart-profile_inner .chart-profile_right {
+	background: var(--secondary-color);
 }
 
 @media screen and (max-width: 991px) {
