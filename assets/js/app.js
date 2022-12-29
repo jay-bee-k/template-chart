@@ -736,14 +736,14 @@
 					$('#chart-table #chart-list').html('');
 					$(chartTab_type).addClass('is-show');
 					if (chartTab_type === '#chart-news') {
-						$('#header, #chart-action').addClass('position-static');
+						$('#header, #chart-action').addClass('position-static pt-1');
 						$('#chart-main').addClass('py-0');
 						$('#chart-news').addClass('py-2');
 						handleSetPaddingNews();
 					} else {
 						handleSetPadding();
 					}
-					$('#header, #chart-action').removeClass('position-static');
+					$('#header, #chart-action').removeClass('position-static pt-1');
 					$('#chart-main').removeClass('py-0');
 					$('#chart-news').removeClass('py-2');
 					handleSetMinWidth();
@@ -1580,7 +1580,7 @@
 		}
 
 		if (typeof page !== 'undefined') {
-			$('#header, #chart-action').addClass('position-static');
+			$('#header, #chart-action').addClass('position-static pt-1');
 			$('#chart-main').addClass('py-0');
 			$('#chart-news').addClass('py-2');
 		}
