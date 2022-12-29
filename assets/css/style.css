@@ -332,6 +332,8 @@ textarea:focus {
 	color: var(--bs-gray-200);
 	border-radius: 2px 2px 0 0;
 	white-space: nowrap;
+	display: flex;
+	align-items: center;
 }
 
 .chart-filter .chart-filter_item:hover {
