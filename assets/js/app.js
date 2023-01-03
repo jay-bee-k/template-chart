@@ -1364,6 +1364,73 @@
 																	nonce="yTOmTKsy"></script>
 															<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 														</div>
+														<div class="chart-profile_news">
+															<div class="chart-profile_left">
+																<div class="chart-profile_avatar ratio ratio-1x1">
+																	<img src="https://vinavote.com/hung.jpg"
+																	     class="img-fluid"
+																	     alt="">
+																</div>
+																<div class="chart-profile_title">
+																	Tác giả: NGUYỄN HUY HƯNG
+																</div>
+																<div class="chart-profile_button">
+																	<a href="./profile.html">
+																		Xem thêm
+																	</a>
+																</div>
+															</div>
+															<div class="chart-profile_right">
+																<div class="chart-profile_subtitle">
+																	Thông tin thêm về tác giả
+																</div>
+																<div class="chart-profile_text">
+																	Sollicitudin ac orci phasellus egestas tellus rutrum. Venenatis cras sed felis eget. Amet risus
+																	nullam eget felis eget nunc. Lacus vestibulum sed arcu non odio euismod. Consectetur adipiscing
+																	elit duis tristique.Pharetra magna ac placerat vestibulum lectus mauris ultrices.
+																</div>
+																<div class="chart-profile_list">
+																	<div class="row g-2">
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																		<div class="col-md-6">
+																			1. Trưởng Ban kiểm soát, Tập đoàn Hòa Bình (mã HBC)
+																		</div>
+																		<div class="col-md-6">
+																			2. Trưởng Ban Tài chính, Tập đoàn Tây Bắc
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
 													<div class="col-lg-3">
 														<div class="rounded-1 p-lg-4 p-2 detail-news_sidebar">
