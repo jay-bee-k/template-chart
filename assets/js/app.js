@@ -745,6 +745,9 @@
 						$('#chart-news').addClass('py-2');
 						handleSetPaddingNews();
 					} else {
+						$('#header, #chart-action, #chart-text').removeClass('position-static pt-1');
+						$('#chart-main').removeClass('py-0');
+						$('#chart-news').removeClass('py-2');
 						handleSetPadding();
 					}
 					handleSetMinWidth();
