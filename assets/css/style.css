@@ -188,6 +188,10 @@ textarea:focus {
     text-transform: uppercase;
 }
 
+.header .header-title br {
+    display: none;
+}
+
 .header .header-small {
     font-size: 13px;
     text-transform: initial;
@@ -595,7 +599,7 @@ textarea:focus {
 }
 
 .chart-table .chart-table_header .chart-table_col br {
-	display: none;
+    display: none;
 }
 
 .chart-table .chart-table_sort {
@@ -654,6 +658,7 @@ textarea:focus {
 
 .chart-table .chart-table_row .chart-table_col {
     border-top: 0;
+    white-space: nowrap;
 }
 
 .chart-table .chart-table_highlight {
@@ -975,8 +980,8 @@ textarea:focus {
     }
 
     .header .header-title {
-        height: 10.5vh;
-        padding: 10px 0;
+        height: 13.5vh;
+        padding: 50px 0 10px;
     }
 
     .chart-search .chart-search_group {

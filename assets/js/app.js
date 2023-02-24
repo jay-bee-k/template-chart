@@ -54,13 +54,12 @@
 					let row = $(this), rowHeight = row.outerHeight(), headerHeight = $('#header').outerHeight(),
 						actionHeight = $('#chart-action').outerHeight(),
 						textHeight = $('#chart-text').outerHeight();
-
 					if (windowWidth >= 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight + rowHeight);
 					} else if (windowWidth >= 992 && windowWidth < 1280) {
 						row.parents('.chart-body').css('padding-top', actionHeight);
 					} else {
-						row.parents('.chart-body').css('padding-top', actionHeight + textHeight + 10);
+						row.parents('.chart-body').css('padding-top', actionHeight + textHeight + 40);
 						$('#chart-action').css('top', headerHeight + 5);
 						$('#chart-text').css('top', headerHeight + actionHeight + 5);
 					}
@@ -1641,15 +1640,35 @@
 			}
 			handleFetchListNews();
 
-			$("body").on("change", "#google_translate_element .goog-te-combo", function (e) {
-				setTimeout(function () {
-					handleSetColWidth();
-					handleSetPadding();
-					handleSetPaddingNews();
-					handleSetHeightColumn();
-					console.log(1);
-				}, 3000)
-			});
+			let origValue = document.getElementById("translationDetector").innerHTML;
+
+			document.getElementById("translationDetector").addEventListener("DOMSubtreeModified", translationCallback, false);
+
+			function translationCallback() {
+				let currentValue = document.getElementById("translationDetector").innerHTML;
+				if (currentValue && currentValue.indexOf(origValue) < 0) {
+					origValue = currentValue;
+					$('.chart-table').each(function () {
+						if ($(this).find('.chart-table_header').length) {
+							$(this).find('.chart-table_header').each(function () {
+								let row = $(this), rowHeight = row.outerHeight(),
+									headerHeight = $('#header').outerHeight(),
+									actionHeight = $('#chart-action').outerHeight(),
+									textHeight = $('#chart-text').outerHeight();
+								if (windowWidth >= 1280) {
+									row.parents('.chart-body').css('padding-top', rowHeight - 2);
+								} else if (windowWidth >= 992 && windowWidth < 1280) {
+									row.parents('.chart-body').css('padding-top', actionHeight);
+								} else {
+									row.parents('.chart-body').css('padding-top', actionHeight + textHeight + 10);
+									$('#chart-action').css('top', headerHeight + 5);
+									$('#chart-text').css('top', headerHeight + actionHeight + 5);
+								}
+							})
+						}
+					});
+				}
+			}
 
 		} else if (page === 'detail_post') {
 			let state;
