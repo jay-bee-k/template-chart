@@ -1640,6 +1640,17 @@
 				handleSubscribe();
 			}
 			handleFetchListNews();
+
+			$("body").on("change", "#google_translate_element .goog-te-combo", function (e) {
+				setTimeout(function () {
+					handleSetColWidth();
+					handleSetPadding();
+					handleSetPaddingNews();
+					handleSetHeightColumn();
+					console.log(1);
+				}, 3000)
+			});
+
 		} else if (page === 'detail_post') {
 			let state;
 			handleDetailNews(id_news, function (data) {
@@ -1655,4 +1666,5 @@
 			$('#chart-news').addClass('py-2');
 		}
 	});
-})(jQuery);
+})
+(jQuery);

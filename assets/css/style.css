@@ -594,6 +594,10 @@ textarea:focus {
     background-color: var(--dark-400);
 }
 
+.chart-table .chart-table_header .chart-table_col br {
+	display: none;
+}
+
 .chart-table .chart-table_sort {
     position: relative;
     cursor: pointer;
