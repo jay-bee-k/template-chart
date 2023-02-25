@@ -449,7 +449,15 @@
 <script type="text/javascript" src="./assets/plugins/slick/slick.min.js"></script>
 <script type="text/javascript" src="./assets/js/app.js?ver=1"></script>
 <script type="text/javascript">
+
+	function setCookie(key, value, expiry) {
+		let expires = new Date();
+		expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+		document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+	}
+
 	function googleTranslateElementInit() {
+		setCookie('googtrans', '/vi/en', 1);
 		new google.translate.TranslateElement(
 			{
 				pageLanguage: 'vi',
